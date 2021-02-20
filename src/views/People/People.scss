@@ -7,11 +7,11 @@
     a {
         text-decoration: none !important;
     }
-    .search {
+    .info, .search {
         margin-bottom: 1em;
     }
     .MuiTableContainer-root {
-        height: calc(100vh - 5em);
+        height: calc(100vh - 7.5em);
     }
     .sticky-column {
         position: sticky;

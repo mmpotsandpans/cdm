@@ -29,6 +29,11 @@ export const PeopleBreakdown: FC<{}> = () => {
                 </Link>
             ))}
         </Breadcrumbs>
+        {peopleType === People.detained &&
+         <div className='info'>
+            နောက်ဆုံးရ အသေးစိတ်ကို <a target='_blank' rel='noreferrer' href='https://aappb.org/wp-content/uploads/2021/02/Recent-Arrests-List-Last-Updated-on-19-Feb-21.pdf'>ဒီမှာကြည့်နိုင်ပါသည်။</a>
+         </div>
+        }
         <div className='search'>
             <label>ရှာဖွေရန်</label>&nbsp;
             <input value={filter} onChange={e => setFilter(e.target.value)} />
