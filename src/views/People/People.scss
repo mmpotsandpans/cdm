@@ -1,0 +1,13 @@
+.PeopleBreakdown {
+    nav {
+        display: flex;
+        justify-content: center;
+        padding: 0.5em;
+    }
+    a {
+        text-decoration: none !important;
+    }
+    .MuiPaper-root {
+        height: calc(100vh - 10.5em);
+    }
+}
