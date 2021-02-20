@@ -2,21 +2,17 @@ import React, { FC, useState } from 'react';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Link from '@material-ui/core/Link';
 import { People, peopleData, peopleTypes, Person } from '../../models/People';
-import { TableContainer, Paper, Table, TableHead, TableRow, TableCell, TableBody, TableSortLabel } from '@material-ui/core';
+import { TableContainer, Paper, Table, TableHead, TableRow, TableCell, TableBody, TableSortLabel, Snackbar } from '@material-ui/core';
 import sort from 'lodash.sortby'
 import './People.scss';
 
 export const PeopleBreakdown: FC<{}> = () => {
     const [peopleType, setPeopleType] = useState<People>(People.detained)
     const [sortBy, setSortBy] = useState<keyof Person>("position");
+    const [snackbarOpen, setSnackbarOpen] = useState(true);
     const rows = sort(peopleData.filter(person => person.status === peopleType), [sortBy])
   return (
       <div className='PeopleBreakdown'>
-        <div>
-            <p>အချက်အလက်များကို Facebook မှရယူကာ ဖေဖော်ဝါရီလ ၁၉ရက်တွင် နောက်ဆုံးပြင်ဆင်ထားပါသည်။</p>
-            <p>အရေးတော်ပုံ အောင်ရမည်။</p>
-        </div>
-        <hr></hr>
         <Breadcrumbs aria-label="breadcrumb">
             {peopleTypes.map(pt => (
                 <Link key={pt} color={pt === peopleType ? 'textPrimary' : 'inherit'} href='#' onClick={() => setPeopleType(pt)}>
@@ -43,13 +39,19 @@ export const PeopleBreakdown: FC<{}> = () => {
                     <TableCell component="th" scope="row">
                     {row.name}
                     </TableCell>
-                    <TableCell align="right">{row.position}</TableCell>
-                    {row.tstamp && <TableCell align='right'>{(new Date(row.tstamp)).toLocaleDateString()}</TableCell>}
+                    <TableCell>{row.position}</TableCell>
+                    {row.tstamp && <TableCell>{(new Date(row.tstamp)).toLocaleDateString()}</TableCell>}
                 </TableRow>
                 ))}
             </TableBody>
             </Table>
         </TableContainer>
+        <Snackbar
+            open={snackbarOpen}
+            message="အချက်အလက်များကို Facebook မှရယူကာ ဖေဖော်ဝါရီလ ၁၉ရက်တွင် နောက်ဆုံးပြင်ဆင်ထားပါသည်။ အရေးတော်ပုံ အောင်ရမည်။"
+            autoHideDuration={2000}
+            onClose={() => setSnackbarOpen(false)}
+        ></Snackbar>
     </div>
   );
 }
