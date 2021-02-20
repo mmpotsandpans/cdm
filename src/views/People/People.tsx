@@ -9,8 +9,17 @@ import './People.scss';
 export const PeopleBreakdown: FC<{}> = () => {
     const [peopleType, setPeopleType] = useState<People>(People.fallen)
     const [sortBy, setSortBy] = useState<keyof Person>("name");
+    const [filter, setFilter] = useState('')
     const [snackbarOpen, setSnackbarOpen] = useState(true);
     const rows = sort(peopleData.filter(person => person.status === peopleType), [sortBy])
+        .filter((person: any) => {
+            for (let key in person) {
+                if (typeof person[key] === 'string' && (person[key]).toLowerCase().match(filter.toLowerCase())) {
+                    return true
+                }
+            }
+            return false
+        })
   return (
       <div className='PeopleBreakdown'>
         <Breadcrumbs aria-label="breadcrumb">
@@ -20,6 +29,10 @@ export const PeopleBreakdown: FC<{}> = () => {
                 </Link>
             ))}
         </Breadcrumbs>
+        <div className='search'>
+            <label>ရှာဖွေရန်</label>&nbsp;
+            <input value={filter} onChange={e => setFilter(e.target.value)} />
+        </div>
         <TableContainer component={Paper}>
             <Table stickyHeader size="small" aria-label="people">
             <TableHead>
@@ -61,7 +74,7 @@ export const PeopleBreakdown: FC<{}> = () => {
         <Snackbar
             open={snackbarOpen}
             message="အချက်အလက်များကို အွန်လိုင်း မှရယူကာ ဖေဖော်ဝါရီလ ၂၀ရက်တွင် နောက်ဆုံးပြင်ဆင်ထားပါသည်။ အာဇာနည်များအား ဝမ်းနည်းလှစွာဖြင့် ဂုဏ်ပြုမှတ်တမ်းတင်အပ်ပါသည်။ သတင်းမှားယွင်းမှုရှိပါက အတတ်နိုင်ဆုံး ပြင်ဆင်ပေးသွားပါမယ်။"
-            autoHideDuration={6000}
+            autoHideDuration={10000}
             onClose={() => setSnackbarOpen(false)}
         ></Snackbar>
     </div>

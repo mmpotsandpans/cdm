@@ -7,8 +7,11 @@
     a {
         text-decoration: none !important;
     }
+    .search {
+        margin-bottom: 1em;
+    }
     .MuiTableContainer-root {
-        height: calc(100vh - 2.5em);
+        height: calc(100vh - 5em);
     }
     .sticky-column {
         position: sticky;
