@@ -49,7 +49,7 @@ export const PeopleBreakdown: FC<{}> = () => {
         <Snackbar
             open={snackbarOpen}
             message="အချက်အလက်များကို Facebook မှရယူကာ ဖေဖော်ဝါရီလ ၁၉ရက်တွင် နောက်ဆုံးပြင်ဆင်ထားပါသည်။ အရေးတော်ပုံ အောင်ရမည်။"
-            autoHideDuration={2000}
+            autoHideDuration={4000}
             onClose={() => setSnackbarOpen(false)}
         ></Snackbar>
     </div>
