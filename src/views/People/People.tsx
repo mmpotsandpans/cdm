@@ -7,8 +7,8 @@ import sort from 'lodash.sortby'
 import './People.scss';
 
 export const PeopleBreakdown: FC<{}> = () => {
-    const [peopleType, setPeopleType] = useState<People>(People.detained)
-    const [sortBy, setSortBy] = useState<keyof Person>("position");
+    const [peopleType, setPeopleType] = useState<People>(People.fallen)
+    const [sortBy, setSortBy] = useState<keyof Person>("name");
     const [snackbarOpen, setSnackbarOpen] = useState(true);
     const rows = sort(peopleData.filter(person => person.status === peopleType), [sortBy])
   return (
@@ -27,7 +27,13 @@ export const PeopleBreakdown: FC<{}> = () => {
                 <TableCell></TableCell>
                 <TableCell onClick={() => setSortBy("name")}><TableSortLabel active={sortBy === 'name'}>နာမည်</TableSortLabel></TableCell>
                 <TableCell onClick={() => setSortBy("position")}><TableSortLabel active={sortBy === 'position'}>ရာထူး/နေရပ်</TableSortLabel></TableCell>
-                {peopleType === People.fallen && <TableCell onClick={() => setSortBy("tstamp")}><TableSortLabel active={sortBy === 'tstamp'}>ကျဆုံးချိန်</TableSortLabel></TableCell>}
+                {peopleType === People.fallen &&
+                    <>
+                        <TableCell onClick={() => setSortBy("age")}><TableSortLabel active={sortBy === 'age'}>အသက်</TableSortLabel></TableCell>
+                        <TableCell onClick={() => setSortBy("tstamp")}><TableSortLabel active={sortBy === 'tstamp'}>ကျဆုံးချိန်</TableSortLabel></TableCell>
+                        <TableCell onClick={() => setSortBy("details")}><TableSortLabel active={sortBy === 'details'}>အသေးစိတ်</TableSortLabel></TableCell>
+                    </>
+                }
                 </TableRow>
             </TableHead>
             <TableBody>
@@ -36,11 +42,17 @@ export const PeopleBreakdown: FC<{}> = () => {
                     <TableCell component="th" scope="row">
                     {i + 1}
                     </TableCell>
-                    <TableCell component="th" scope="row">
+                    <TableCell component="th" scope="row" className='sticky-column'>
                     {row.name}
                     </TableCell>
                     <TableCell>{row.position}</TableCell>
-                    {row.tstamp && <TableCell>{(new Date(row.tstamp)).toLocaleDateString()}</TableCell>}
+                    {peopleType === People.fallen &&
+                        <>
+                            <TableCell>{row.age}</TableCell>
+                            <TableCell>{row.tstamp ? (new Date(row.tstamp)).toLocaleDateString() : ''}</TableCell>
+                            <TableCell>{row.details}</TableCell>
+                        </>
+                    }
                 </TableRow>
                 ))}
             </TableBody>
@@ -48,8 +60,8 @@ export const PeopleBreakdown: FC<{}> = () => {
         </TableContainer>
         <Snackbar
             open={snackbarOpen}
-            message="အချက်အလက်များကို Facebook မှရယူကာ ဖေဖော်ဝါရီလ ၁၉ရက်တွင် နောက်ဆုံးပြင်ဆင်ထားပါသည်။ အရေးတော်ပုံ အောင်ရမည်။"
-            autoHideDuration={4000}
+            message="အချက်အလက်များကို အွန်လိုင်း မှရယူကာ ဖေဖော်ဝါရီလ ၂၀ရက်တွင် နောက်ဆုံးပြင်ဆင်ထားပါသည်။ အာဇာနည်များအား ဝမ်းနည်းလှစွာဖြင့် ဂုဏ်ပြုမှတ်တမ်းတင်အပ်ပါသည်။ သတင်းမှားယွင်းမှုရှိပါက အတတ်နိုင်ဆုံး ပြင်ဆင်ပေးသွားပါမယ်။"
+            autoHideDuration={6000}
             onClose={() => setSnackbarOpen(false)}
         ></Snackbar>
     </div>

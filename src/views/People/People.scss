@@ -10,4 +10,10 @@
     .MuiTableContainer-root {
         height: calc(100vh - 2.5em);
     }
+    .sticky-column {
+        position: sticky;
+        left: 0;
+        z-index: 1;
+        background: white;
+    }
 }
