@@ -2,15 +2,21 @@ import React, { FC, useState } from 'react';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Link from '@material-ui/core/Link';
 import { People, peopleData, peopleTypes, Person } from '../../models/People';
-import { TableContainer, Paper, Table, TableHead, TableRow, TableCell, TableBody, TableSortLabel, Snackbar } from '@material-ui/core';
+import { TableContainer, Paper, Table, TableHead, TableRow, TableCell, TableBody, TableSortLabel, Snackbar, GridListTile } from '@material-ui/core';
 import sort from 'lodash.sortby'
+import PhotoLibraryIcon from '@material-ui/icons/PhotoLibrary';
 import './People.scss';
+import { Modal } from '@material-ui/core';
+import { GridList } from '@material-ui/core';
+
+const hasTypeExtraInfo = (type: People) => [People.fallen, People.wounded].includes(type)
 
 export const PeopleBreakdown: FC<{}> = () => {
     const [peopleType, setPeopleType] = useState<People>(People.fallen)
     const [sortBy, setSortBy] = useState<keyof Person>("name");
     const [filter, setFilter] = useState('')
     const [snackbarOpen, setSnackbarOpen] = useState(true);
+    const [person, setPerson] = useState<Person | undefined>(undefined)
     const rows = sort(peopleData.filter(person => person.status === peopleType), [sortBy])
         .filter((person: any) => {
             for (let key in person) {
@@ -45,10 +51,10 @@ export const PeopleBreakdown: FC<{}> = () => {
                 <TableCell></TableCell>
                 <TableCell onClick={() => setSortBy("name")}><TableSortLabel active={sortBy === 'name'}>နာမည်</TableSortLabel></TableCell>
                 <TableCell onClick={() => setSortBy("position")}><TableSortLabel active={sortBy === 'position'}>ရာထူး/နေရပ်</TableSortLabel></TableCell>
-                {peopleType === People.fallen &&
+                {hasTypeExtraInfo(peopleType) &&
                     <>
                         <TableCell onClick={() => setSortBy("age")}><TableSortLabel active={sortBy === 'age'}>အသက်</TableSortLabel></TableCell>
-                        <TableCell onClick={() => setSortBy("tstamp")}><TableSortLabel active={sortBy === 'tstamp'}>ကျဆုံးချိန်</TableSortLabel></TableCell>
+                        <TableCell onClick={() => setSortBy("tstamp")}><TableSortLabel active={sortBy === 'tstamp'}>နေ့ရက်</TableSortLabel></TableCell>
                         <TableCell onClick={() => setSortBy("details")}><TableSortLabel active={sortBy === 'details'}>အသေးစိတ်</TableSortLabel></TableCell>
                     </>
                 }
@@ -61,10 +67,10 @@ export const PeopleBreakdown: FC<{}> = () => {
                     {i + 1}
                     </TableCell>
                     <TableCell component="th" scope="row" className='sticky-column'>
-                    {row.name}
+                        <div className='name-cell' onClick={() => setPerson(row)}>{row.name} {row.media && <PhotoLibraryIcon />}</div>
                     </TableCell>
                     <TableCell>{row.position}</TableCell>
-                    {peopleType === People.fallen &&
+                    {hasTypeExtraInfo(peopleType) &&
                         <>
                             <TableCell>{row.age}</TableCell>
                             <TableCell>{row.tstamp ? (new Date(row.tstamp)).toLocaleDateString() : ''}</TableCell>
@@ -78,10 +84,27 @@ export const PeopleBreakdown: FC<{}> = () => {
         </TableContainer>
         <Snackbar
             open={snackbarOpen}
-            message="အချက်အလက်များကို အွန်လိုင်း မှရယူကာ ဖေဖော်ဝါရီလ ၂၀ရက်တွင် နောက်ဆုံးပြင်ဆင်ထားပါသည်။ အာဇာနည်များအား ဝမ်းနည်းလှစွာဖြင့် ဂုဏ်ပြုမှတ်တမ်းတင်အပ်ပါသည်။ သတင်းမှားယွင်းမှုရှိပါက အတတ်နိုင်ဆုံး ပြင်ဆင်ပေးသွားပါမယ်။"
+            message="
+                အချက်အလက်များကို အွန်လိုင်း မှရယူကာ ဖေဖော်ဝါရီလ ၂၀ရက်တွင် နောက်ဆုံးပြင်ဆင်ထားပါသည်။
+                အာဇာနည်များအား ဝမ်းနည်းလှစွာဖြင့် ဂုဏ်ပြုမှတ်တမ်းတင်အပ်ပါသည်။
+                သတင်းနောက်ထပ်ရရှိပါက၊ သတင်းမှားယွင်းမှုရှိပါက အတတ်နိုင်ဆုံး ပြင်ဆင်ပေးသွားပါမယ်။ ရသမျှသတင်း အွန်လိုင်းတွင် မျှပေးကြပါ။
+            "
             autoHideDuration={10000}
             onClose={() => setSnackbarOpen(false)}
         ></Snackbar>
+        <Modal
+            open={!!person?.media}
+            onClose={() => setPerson(undefined)}
+            className='media-modal'
+        >
+            <GridList cols={1}>
+                {person?.media?.map((img) => (
+                    <GridListTile key={img} cols={1}>
+                    <img src={img} alt={person?.name} />
+                    </GridListTile>
+                ))}
+            </GridList>
+        </Modal>
     </div>
   );
 }

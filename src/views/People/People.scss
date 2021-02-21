@@ -12,11 +12,36 @@
     }
     .MuiTableContainer-root {
         height: calc(100vh - 7.5em);
+        .name-cell {
+            display: flex;
+            align-items: center;
+        }
+        .MuiSvgIcon-root {
+            cursor: pointer;
+        }
     }
     .sticky-column {
         position: sticky;
         left: 0;
         z-index: 1;
         background: white;
+    }
+}
+
+.media-modal {
+    width: calc(100vw - 4em);
+    margin: auto;
+    height: calc(100vh - 4em);
+    overflow-y: auto;
+    li {
+        height: auto !important;
+    }
+    li div {
+        display: flex;
+        justify-content: center;
+    }
+    img {
+        max-width: 400px;
+        max-height: 700px;
     }
 }
