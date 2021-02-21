@@ -1,8 +1,12 @@
 import kko1 from '../resources/images/fallen/ကိုနပွား(ခ)ကိုကိုဦး/1.jpg'
 import cma from '../resources/images/fallen/ချမ်းမြေ့အောင်/1.jpg'
 import ssn from '../resources/images/fallen/ဘားအံ/1.jpg'
+import ssn2 from '../resources/images/fallen/ဘားအံ/2.jpg'
+import kpo from '../resources/images/fallen/ဘားအံ/3.jpg'
 import mttk from '../resources/images/fallen/မြသွဲ့သွဲ့ခိုင်/1.jpg'
 import mttk2 from '../resources/images/fallen/မြသွဲ့သွဲ့ခိုင်/2.jpg'
+import wyt from '../resources/images/fallen/ဝေယံထွန်း/1.jpg'
+import wyt2 from '../resources/images/fallen/ဝေယံထွန်း/2.jpeg'
 
 const data = [
   {
@@ -36,7 +40,8 @@ const data = [
     "name": "ဝေယံထွန်း",
     "position": "မန္တလေး",
     "age": 16,
-    "details": "ဒဏ်ရာရသူကို လှည်းဖြင့်တွန်းပြေးရင်း ဦးခေါင်းသေနတ်ထိမှန်။ သား မရတော့ဘူးဟု နောက်ဆုံးပြောသွား"
+    "details": "ဒဏ်ရာရသူကို လှည်းဖြင့်တွန်းပြေးရင်း ဦးခေါင်းသေနတ်ထိမှန်။ သား မရတော့ဘူးဟု နောက်ဆုံးပြောသွား",
+    "media": [wyt, wyt2]
   },
   {
     "name": "လည်ပင်း တက်တူးနှင့် ဦးလေး",
@@ -54,14 +59,14 @@ const data = [
     "position": "ဘားအံ",
     "age": 4,
     "details": "ဒုက္ခသည်စခန်းတွင် မီးကွင်းပစ်ခံရပြီး မီးလောင်",
-    "media": [ssn]
+    "media": [ssn, ssn2]
   },
   {
     "name": "ကြည်ဖြူဦး",
     "position": "ဘားအံ",
     "age": 2,
     "details": "ဒုက္ခသည်စခန်းတွင် မီးကွင်းပစ်ခံရပြီး မီးလောင်",
-    "media": [ssn]
+    "media": [ssn, kpo]
   }
 ]
 
