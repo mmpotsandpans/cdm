@@ -2,6 +2,7 @@ import kko1 from '../resources/images/fallen/ကိုနပွား(ခ)ကိ
 import cma from '../resources/images/fallen/ချမ်းမြေ့အောင်/1.jpg'
 import ssn from '../resources/images/fallen/ဘားအံ/1.jpg'
 import mttk from '../resources/images/fallen/မြသွဲ့သွဲ့ခိုင်/1.jpg'
+import mttk2 from '../resources/images/fallen/မြသွဲ့သွဲ့ခိုင်/2.jpg'
 
 const data = [
   {
@@ -10,7 +11,7 @@ const data = [
     "tstamp": 1613106000000,
     "age": 20,
     "details": "ဆန္ဒပြရာမှ ဦးခေါင်းသေနတ်ဒဏ်ရာ",
-    "media": [mttk]
+    "media": [mttk, mttk2]
   },
   {
     "name": "နေနေဝင်းထက်",

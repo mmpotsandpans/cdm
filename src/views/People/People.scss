@@ -11,7 +11,8 @@
         margin-bottom: 1em;
     }
     .MuiTableContainer-root {
-        height: calc(100vh - 7.5em);
+        height: calc(100vh - 10.5em);
+        margin-top: 1em;
         .name-cell {
             display: flex;
             align-items: center;
@@ -43,5 +44,27 @@
     img {
         max-width: 400px;
         max-height: 700px;
+    }
+}
+
+.export-modal {
+    width: calc(100vw - 4em);
+    margin: auto;
+    height: calc(100vh - 4em);
+    overflow-y: auto;
+    pre {
+        padding: 1em;
+        background-color: white;
+        white-space: pre-wrap;
+        div {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+    }
+    textarea {
+        width: 0;
+        height: 0;
+        opacity: 0;
     }
 }

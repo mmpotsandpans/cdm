@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useRef, useState } from 'react';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Link from '@material-ui/core/Link';
 import { People, peopleData, peopleTypes, Person } from '../../models/People';
@@ -8,8 +8,24 @@ import PhotoLibraryIcon from '@material-ui/icons/PhotoLibrary';
 import './People.scss';
 import { Modal } from '@material-ui/core';
 import { GridList } from '@material-ui/core';
+import { Button } from '@material-ui/core';
+import FileCopyIcon from '@material-ui/icons/FileCopy';
 
 const hasTypeExtraInfo = (type: People) => [People.fallen, People.wounded].includes(type)
+
+const exportPeople = (people: Person[]) => {
+    let text = ''
+    const props = ['name', 'status', 'tstamp', 'position', 'details', 'age']
+    text += props.join('\t') + '\n\n'
+    people.forEach((person: any) => {
+        props.forEach((prop: any) => {
+            text += prop === 'tstamp' && person[prop] ? (new Date(person[prop])).toLocaleDateString() : (person[prop] || '-')
+            text += '\t'
+        })
+        text += '\n\n'
+    })
+    return text
+}
 
 export const PeopleBreakdown: FC<{}> = () => {
     const [peopleType, setPeopleType] = useState<People>(People.fallen)
@@ -17,6 +33,8 @@ export const PeopleBreakdown: FC<{}> = () => {
     const [filter, setFilter] = useState('')
     const [snackbarOpen, setSnackbarOpen] = useState(true);
     const [person, setPerson] = useState<Person | undefined>(undefined)
+    const [isExportModalOpen, setIsExportModalOpen] = useState(false);
+    const dataExportModalRef = useRef<HTMLElement | undefined>(undefined);
     const rows = sort(peopleData.filter(person => person.status === peopleType), [sortBy])
         .filter((person: any) => {
             for (let key in person) {
@@ -26,7 +44,14 @@ export const PeopleBreakdown: FC<{}> = () => {
             }
             return false
         })
-  return (
+    const handleDataCopy = () => {
+        if (dataExportModalRef.current) {
+            dataExportModalRef.current.querySelector('textarea')?.select()
+            document.execCommand('copy')
+        } 
+    }
+    const exportData = exportPeople(rows)
+    return (
       <div className='PeopleBreakdown'>
         <Breadcrumbs aria-label="breadcrumb">
             {peopleTypes.map(pt => (
@@ -44,6 +69,7 @@ export const PeopleBreakdown: FC<{}> = () => {
             <label>ရှာဖွေရန်</label>&nbsp;
             <input value={filter} onChange={e => setFilter(e.target.value)} />
         </div>
+        <Button variant="contained" color="secondary" onClick={() => setIsExportModalOpen(true)}>Export data</Button>
         <TableContainer component={Paper}>
             <Table stickyHeader size="small" aria-label="people">
             <TableHead>
@@ -104,6 +130,15 @@ export const PeopleBreakdown: FC<{}> = () => {
                     </GridListTile>
                 ))}
             </GridList>
+        </Modal>
+        <Modal ref={dataExportModalRef} className='export-modal' open={isExportModalOpen} onClose={() => setIsExportModalOpen(false)}>
+            <>
+                <pre>
+                    <div>Copy <FileCopyIcon onClick={handleDataCopy} /></div>
+                    {exportData}
+                </pre>
+                <textarea defaultValue={exportData}></textarea>
+            </>
         </Modal>
     </div>
   );
