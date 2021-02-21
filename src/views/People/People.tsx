@@ -2,7 +2,7 @@ import React, { FC, useRef, useState } from 'react';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Link from '@material-ui/core/Link';
 import { People, peopleData, peopleTypes, Person } from '../../models/People';
-import { TableContainer, Paper, Table, TableHead, TableRow, TableCell, TableBody, TableSortLabel, Snackbar, GridListTile } from '@material-ui/core';
+import { TableContainer, Paper, Table, TableHead, TableRow, TableCell, TableBody, TableSortLabel, Snackbar, GridListTile, Dialog, DialogContent } from '@material-ui/core';
 import sort from 'lodash.sortby'
 import PhotoLibraryIcon from '@material-ui/icons/PhotoLibrary';
 import './People.scss';
@@ -118,19 +118,23 @@ export const PeopleBreakdown: FC<{}> = () => {
             autoHideDuration={10000}
             onClose={() => setSnackbarOpen(false)}
         ></Snackbar>
-        <Modal
+        <Dialog
             open={!!person?.media}
             onClose={() => setPerson(undefined)}
             className='media-modal'
         >
-            <GridList cols={1}>
-                {person?.media?.map((img) => (
-                    <GridListTile key={img} cols={1}>
-                    <img src={img} alt={person?.name} />
-                    </GridListTile>
-                ))}
-            </GridList>
-        </Modal>
+            <DialogContent>
+                {person &&
+                    <GridList cols={1}>
+                        {person?.media?.map((img) => (
+                            <GridListTile key={img} cols={1}>
+                            <img src={img} alt={person?.name} />
+                            </GridListTile>
+                        ))}
+                    </GridList>
+                }
+            </DialogContent>
+        </Dialog>
         <Modal ref={dataExportModalRef} className='export-modal' open={isExportModalOpen} onClose={() => setIsExportModalOpen(false)}>
             <>
                 <pre>
