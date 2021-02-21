@@ -62,7 +62,7 @@ export const PeopleBreakdown: FC<{}> = () => {
         </Breadcrumbs>
         {peopleType === People.detained &&
          <div className='info'>
-            နောက်ဆုံးရ အသေးစိတ်ကို <a target='_blank' rel='noreferrer' href='https://aappb.org/wp-content/uploads/2021/02/Recent-Arrests-List-Last-Updated-on-19-Feb-21.pdf'>ဒီမှာကြည့်နိုင်ပါသည်။</a>
+            နောက်ဆုံးရ အသေးစိတ်ကို <a target='_blank' rel='noreferrer' href='https://aappb.org/bu?p=13208'>ဒီမှာကြည့်နိုင်ပါသည်။</a>
          </div>
         }
         <div className='search'>
@@ -113,7 +113,7 @@ export const PeopleBreakdown: FC<{}> = () => {
             message="
                 အချက်အလက်များကို အွန်လိုင်း မှရယူကာ ဖေဖော်ဝါရီလ ၂၀ရက်တွင် နောက်ဆုံးပြင်ဆင်ထားပါသည်။
                 အာဇာနည်များအား ဝမ်းနည်းလှစွာဖြင့် ဂုဏ်ပြုမှတ်တမ်းတင်အပ်ပါသည်။
-                သတင်းနောက်ထပ်ရရှိပါက၊ သတင်းမှားယွင်းမှုရှိပါက အတတ်နိုင်ဆုံး ပြင်ဆင်ပေးသွားပါမယ်။ ရသမျှသတင်း အွန်လိုင်းတွင် မျှပေးကြပါ။
+                သတင်းနောက်ထပ်ရရှိပါက၊ သတင်းမှားယွင်းမှုရှိပါက အတတ်နိုင်ဆုံး ပြင်ဆင်ပေးသွားပါမယ်။ ရသမျှသတင်းမှန် အွန်လိုင်းတွင် မျှပေးကြပါ။
             "
             autoHideDuration={10000}
             onClose={() => setSnackbarOpen(false)}

@@ -7,6 +7,8 @@ import mttk from '../resources/images/fallen/မြသွဲ့သွဲ့ခ�
 import mttk2 from '../resources/images/fallen/မြသွဲ့သွဲ့ခိုင်/2.jpg'
 import wyt from '../resources/images/fallen/ဝေယံထွန်း/1.jpg'
 import wyt2 from '../resources/images/fallen/ဝေယံထွန်း/2.jpeg'
+import hma from '../resources/images/fallen/လှမျိုးအောင်/1.jpg'
+import ks from '../resources/images/fallen/ကြည်စိုး/1.jpg'
 
 const data = [
   {
@@ -25,11 +27,6 @@ const data = [
     "age": 15
   },
   {
-    "name": "ဆလိုင်းခွါကုန်း",
-    "position": "ဗန်ဇမ်းရွာ",
-    "details": "စစ်ကားဖြင့် အတိုက်ခံရ"
-  },
-  {
     "name": "ကိုနပွား(ခ)ကိုကိုဦး",
     "position": "မန္တလေး",
     "age": 32,
@@ -44,9 +41,11 @@ const data = [
     "media": [wyt, wyt2]
   },
   {
-    "name": "လည်ပင်း တက်တူးနှင့် ဦးလေး",
+    "name": "တင်ထွဋ်ဟိန်း",
     "position": "ရန်ကုန်",
-    "details": "ညကင်းစောင့်စဥ် ဖြတ်သွားသောရဲကားမှ ခေါင်းကိုသေနတ်ဖြင့်ပစ်"
+    "age": 30,
+    "tstamp": 1613797200000,
+    "details": "ရွှေပြည်သာ ညကင်းစောင့်စဥ် ဖြတ်သွားသောရဲကားမှ ခေါင်းကိုသေနတ်ဖြင့် သုံးချက်ပစ်"
   },
   {
     "name": "ချမ်းမြေ့အောင်",
@@ -67,6 +66,22 @@ const data = [
     "age": 2,
     "details": "ဒုက္ခသည်စခန်းတွင် မီးကွင်းပစ်ခံရပြီး မီးလောင်",
     "media": [ssn, kpo]
+  },
+  {
+    "name": "လှမျိုးအောင်",
+    "position": "ရန်ကုန်",
+    "age": 39,
+    "tstamp": 1613797200000,
+    "details": "အင်းစိန်မြို့သစ်စျေးရှေ့ မသမာသူက ကားနဲ့တိုက်",
+    "media": [hma]
+  },
+  {
+    "name": "ကြည်စိုး",
+    "position": "မန္တလေး",
+    "age": 48,
+    "tstamp": 1613797200000,
+    "details": "အကြမ်းဖက်မှုများကို မှတ်တမ်းတင်ရင်း အရိုက်ခံရသော ဒဏ်ရာဖြင့် ကွယ်လွန် https://bit.ly/3bt1aie",
+    "media": [ks]
   }
 ]
 
