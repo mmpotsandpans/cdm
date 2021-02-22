@@ -10,6 +10,7 @@ import { Modal } from '@material-ui/core';
 import { GridList } from '@material-ui/core';
 import { Button } from '@material-ui/core';
 import FileCopyIcon from '@material-ui/icons/FileCopy';
+import ReactLinkify from 'react-linkify';
 
 const hasTypeExtraInfo = (type: People) => [People.fallen, People.wounded].includes(type)
 
@@ -100,7 +101,15 @@ export const PeopleBreakdown: FC<{}> = () => {
                         <>
                             <TableCell>{row.age}</TableCell>
                             <TableCell>{row.tstamp ? (new Date(row.tstamp)).toLocaleDateString() : ''}</TableCell>
-                            <TableCell>{row.details}</TableCell>
+                            <TableCell>
+                                <ReactLinkify componentDecorator={(decoratedHref, decoratedText, key) => (
+                                    <a target="blank" href={decoratedHref} key={key}>
+                                        {decoratedText}
+                                    </a>
+                                )}>
+                                    {row.details}
+                                </ReactLinkify>
+                            </TableCell>
                         </>
                     }
                 </TableRow>
