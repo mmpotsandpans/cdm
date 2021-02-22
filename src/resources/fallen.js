@@ -5,10 +5,13 @@ import ssn2 from '../resources/images/fallen/ဘားအံ/2.jpg'
 import kpo from '../resources/images/fallen/ဘားအံ/3.jpg'
 import mttk from '../resources/images/fallen/မြသွဲ့သွဲ့ခိုင်/1.jpg'
 import mttk2 from '../resources/images/fallen/မြသွဲ့သွဲ့ခိုင်/2.jpg'
+import mttk3 from '../resources/images/fallen/မြသွဲ့သွဲ့ခိုင်/3.jpg'
 import wyt from '../resources/images/fallen/ဝေယံထွန်း/1.jpg'
 import wyt2 from '../resources/images/fallen/ဝေယံထွန်း/2.jpeg'
 import hma from '../resources/images/fallen/လှမျိုးအောင်/1.jpg'
 import ks from '../resources/images/fallen/ကြည်စိုး/1.jpg'
+import tnw from '../resources/images/fallen/သက်နိုင်ဝင်း/1.jpg'
+import tnw2 from '../resources/images/fallen/သက်နိုင်ဝင်း/2.jpg'
 
 const data = [
   {
@@ -17,7 +20,7 @@ const data = [
     "tstamp": 1613106000000,
     "age": 20,
     "details": "ဆန္ဒပြရာမှ ဦးခေါင်းသေနတ်ဒဏ်ရာ",
-    "media": [mttk, mttk2]
+    "media": [mttk, mttk2, mttk3]
   },
   {
     "name": "နေနေဝင်းထက်",
@@ -82,6 +85,14 @@ const data = [
     "tstamp": 1613797200000,
     "details": "အကြမ်းဖက်မှုများကို မှတ်တမ်းတင်ရင်း အရိုက်ခံရသော ဒဏ်ရာဖြင့် ကွယ်လွန် https://bit.ly/3bt1aie",
     "media": [ks]
+  },
+  {
+    "name": "သက်နိုင်ဝင်း(ခ)ကိုမင်း",
+    "position": "မန္တလေး",
+    "age": 37,
+    "tstamp": 1613797200000,
+    "details": "ဗိုက်ထဲကျည်ဆန်ဝင်၊ အသည်းထိသွား https://bit.ly/3qGOcE3",
+    "media": [tnw, tnw2]
   }
 ]
 
