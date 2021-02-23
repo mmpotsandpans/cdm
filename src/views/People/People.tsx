@@ -61,11 +61,11 @@ export const PeopleBreakdown: FC<{}> = () => {
                 </Link>
             ))}
         </Breadcrumbs>
-        {peopleType === People.detained &&
-         <div className='info'>
-            နောက်ဆုံးရ အသေးစိတ်ကို <a target='_blank' rel='noreferrer' href='https://aappb.org/bu?p=13208'>ဒီမှာကြည့်နိုင်ပါသည်။</a>
-         </div>
-        }
+        <div className='info'>
+            {peopleType === People.detained && <span>AAPPBမှ ပဏာမစာရင်း။ နေ့စဥ်နောက်ဆုံးရ အသေးစိတ်ကို <a target='_blank' rel='noreferrer' href='https://aappb.org/bu?cat=17'>ဒီမှာကြည့်နိုင်ပါသည်။</a></span>}
+            {peopleType === People.wounded && <><span>ထိခိုက်သူစာရင်း အတိအကျမရှိသေးပါ</span><br></br></>}
+            {hasTypeExtraInfo(peopleType) && <span>စာရင်းပြင်ချင်ပါက <a target='_blank' rel='noreferrer' href='https://forms.gle/dZ4wKV2gFoPhTRff9'>ဒီမှာပြင်ဆင်ပါ</a></span>}
+        </div>
         <div className='search'>
             <label>ရှာဖွေရန်</label>&nbsp;
             <input value={filter} onChange={e => setFilter(e.target.value)} />
@@ -120,7 +120,7 @@ export const PeopleBreakdown: FC<{}> = () => {
         <Snackbar
             open={snackbarOpen}
             message="
-                အချက်အလက်များကို အွန်လိုင်း မှရယူကာ ဖေဖော်ဝါရီလ ၂၀ရက်တွင် နောက်ဆုံးပြင်ဆင်ထားပါသည်။
+                အချက်အလက်များကို အွန်လိုင်း မှရယူကာ ဖေဖော်ဝါရီလ ၂၂ရက်တွင် နောက်ဆုံးပြင်ဆင်ထားပါသည်။
                 အာဇာနည်များအား ဝမ်းနည်းလှစွာဖြင့် ဂုဏ်ပြုမှတ်တမ်းတင်အပ်ပါသည်။
                 သတင်းနောက်ထပ်ရရှိပါက၊ သတင်းမှားယွင်းမှုရှိပါက အတတ်နိုင်ဆုံး ပြင်ဆင်ပေးသွားပါမယ်။ ရသမျှသတင်းမှန် အွန်လိုင်းတွင် မျှပေးကြပါ။
             "

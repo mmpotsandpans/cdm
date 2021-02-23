@@ -93,6 +93,13 @@ const data = [
     "tstamp": 1613797200000,
     "details": "ဗိုက်ထဲကျည်ဆန်ဝင်၊ အသည်းထိသွား https://bit.ly/3qGOcE3",
     "media": [tnw, tnw2]
+  },
+  {
+    "name": "မျိုးမင်းထွန်း",
+    "position": "ပဲခူး",
+    "age": 44,
+    "tstamp": 1613970000000,
+    "details": "မီးရထားဝန်ထမ်း ဖြစ်ကာ ဆန္ဒပြပွဲအတွင်း မူးလဲကာ ကွယ်လွန်။ https://bit.ly/3pKzdHT"
   }
 ]
 
