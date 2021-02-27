@@ -1,5 +1,5 @@
 import mtl from '../resources/images/wounded/mtl/1.png'
-import mandalay from '../resources/images/wounded/mandalay/1.jpg'
+import mtzk from '../resources/images/wounded/mtzk/1.jpg'
 
 const data = [
   {
@@ -10,15 +10,11 @@ const data = [
     "media": [mtl]
   },
   {
-    "name": "မန္တလေး",
-    "position": "မန္တလေး",
-    "details": "စာရင်းအတိအကျမရှိသေး",
-    "media": [mandalay]
-  },
-  {
-    "name": "မြစ်ကြီးနား",
-    "position": "မြစ်ကြီးနား",
-    "details": "စာရင်းအတိအကျမရှိသေး",
+    "name": "မြတ်သူဇာခင်",
+    "position": "မုံရွာ",
+    "tstamp": 1614402000000,
+    "details": "ရုက္ခဗေဒဖြင့် ဒေါက်တာဘွဲ့ရထားသူ၊ ဆီးခုံ၌ သေနတ်ဒဏ်ရာဖြင့် အရေးပေါ်ကုသမှု ခံယူ https://bit.ly/3kuekQ5",
+    "media": [mtzk]
   }
 ]
 

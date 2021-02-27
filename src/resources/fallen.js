@@ -8,10 +8,13 @@ import mttk2 from '../resources/images/fallen/မြသွဲ့သွဲ့ခ�
 import mttk3 from '../resources/images/fallen/မြသွဲ့သွဲ့ခိုင်/3.jpg'
 import wyt from '../resources/images/fallen/ဝေယံထွန်း/1.jpg'
 import wyt2 from '../resources/images/fallen/ဝေယံထွန်း/2.jpeg'
+import wyt3 from '../resources/images/fallen/ဝေယံထွန်း/3.jpg'
 import hma from '../resources/images/fallen/လှမျိုးအောင်/1.jpg'
 import ks from '../resources/images/fallen/ကြည်စိုး/1.jpg'
 import tnw from '../resources/images/fallen/သက်နိုင်ဝင်း/1.jpg'
 import tnw2 from '../resources/images/fallen/သက်နိုင်ဝင်း/2.jpg'
+import yza from '../resources/images/fallen/ရာဇာအောင်/1.jpg'
+import yza2 from '../resources/images/fallen/ရာဇာအောင်/2.jpg'
 
 const data = [
   {
@@ -40,8 +43,8 @@ const data = [
     "name": "ဝေယံထွန်း",
     "position": "မန္တလေး",
     "age": 16,
-    "details": "ဒဏ်ရာရသူကို လှည်းဖြင့်တွန်းပြေးရင်း ဦးခေါင်းသေနတ်ထိမှန်။ သား မရတော့ဘူးဟု နောက်ဆုံးပြောသွား",
-    "media": [wyt, wyt2]
+    "details": "ဒဏ်ရာရသူများကို လှည်းဖြင့်တွန်းတင်ကာ ကူညီပေးသူ။ ကျည်ဆန်ကြားထဲ ဒဏ်ရာရသူကို ပြန်သွားကယ်ရာမှ ဦးခေါင်းသေနတ်ထိမှန်။ သား မရတော့ဘူးဟု နောက်ဆုံးပြောသွား",
+    "media": [wyt, wyt2, wyt3]
   },
   {
     "name": "တင်ထွဋ်ဟိန်း",
@@ -53,7 +56,7 @@ const data = [
   {
     "name": "ချမ်းမြေ့အောင်",
     "position": "ရန်ကုန်",
-    "details": "တောင်ဥက္ကလာပမှာ မီးကွင်းပစ်တယ်ဆိုလို့ ခြံကျော်လိုက်ရာမှ ဓာတ်လိုက်",
+    "details": "တောင်ဥက္ကလာပမှာ မီးကွင်းပစ်တယ်ဆိုလို့ ခြံကျော်လိုက်ရာမှ ဓာတ်လိုက် https://bit.ly/3pPYMHu",
     "media": [cma]
   },
   {
@@ -100,6 +103,13 @@ const data = [
     "age": 44,
     "tstamp": 1613970000000,
     "details": "မီးရထားဝန်ထမ်း ဖြစ်ကာ ဆန္ဒပြပွဲအတွင်း မူးလဲကာ ကွယ်လွန်။ https://bit.ly/3pKzdHT"
+  },
+  {
+    "name": "ရာဇာအောင်",
+    "position": "မန္တလေး",
+    "tstamp": 1614142800000,
+    "details": "ဖေဖော်ဝါရီ ၂၀ ရက်နေ့ မန္တလေး ဆိပ်ကမ်းတွင် အကြမ်းဖက် ပစ်ခတ်ဖမ်းဆီးမှုကြောင့် ဒူးခေါင်းတွင် ကျည်ဆံထိမှန် ဖမ်းဆီး ခံရပြီးနောက် စစ်ကြောရေး စခန်း တွင် ဆေးကုသပေးခြင်း မရှိဘဲ ပစ်ထားခဲ့ရာ ၄ ရက်မြောက်နေ့တွင် ဒဏ်ရာမှ ဝေဒနာ ပြင်းထန်စွာ ခံစားရင်း ဆုံးပါးသွားခဲ့ပါသည်။ သေဆုံးသောအခါ Covid လူနာ အမည်တပ်၍ မိသားစု လက်မှတ်မထိုးသည့်ကြားမှ ချက်ချင်း သဂြိုလ်ပစ်လိုက်သည်။ https://bit.ly/3qWVW4R https://bit.ly/3bzBAbw https://bit.ly/3bErdD8",
+    "media": [yza, yza2]
   }
 ]
 
