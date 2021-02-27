@@ -32,11 +32,46 @@ html, body {
   color: #61dafb;
 }
 
+.MuiToolbar-root {
+  display: flex;
+  justify-content: space-evenly;
+  background-color: #d32f2f;
+  h6 {
+    flex-basis: 50%;
+    display: flex;
+    justify-content: center;
+  }
+  a {
+    text-decoration: none !important;
+    color: white;
+    &.active {
+      color: #64b5f6;
+    }
+  }
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+.media-modal {
+  li {
+      height: auto !important;
+  }
+  li div {
+      display: flex;
+      justify-content: center;
+  }
+  img {
+      @media only screen and (min-width: 768px) {
+          max-width: 400px;
+          max-height: 700px;
+      }
+      max-width: 100%;
   }
 }

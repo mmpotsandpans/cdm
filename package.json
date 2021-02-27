@@ -53,6 +53,7 @@
   },
   "devDependencies": {
     "@types/lodash.sortby": "^4.7.6",
-    "@types/react-router-dom": "^5.1.7"
+    "@types/react-router-dom": "^5.1.7",
+    "@types/webpack-env": "^1.16.0"
   }
 }
