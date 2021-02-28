@@ -51,12 +51,13 @@ html, body {
   }
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+.legend {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5em;
+  > div {
+      display: flex;
+      align-items: center;
   }
 }
 

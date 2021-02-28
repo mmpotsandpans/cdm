@@ -2,7 +2,7 @@ import React, { FC, useRef, useState } from 'react';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Link from '@material-ui/core/Link';
 import { People, peopleData, peopleTypes, Person } from '../../models/People';
-import { TableContainer, Paper, Table, TableHead, TableRow, TableCell, TableBody, TableSortLabel, Snackbar, GridListTile, Dialog, DialogContent } from '@material-ui/core';
+import { TableContainer, Paper, Table, TableHead, TableRow, TableCell, TableBody, TableSortLabel, Snackbar, GridListTile, Dialog, DialogContent, Drawer, Accordion, AccordionDetails, AccordionSummary, Typography } from '@material-ui/core';
 import sort from 'lodash.sortby'
 import PhotoLibraryIcon from '@material-ui/icons/PhotoLibrary';
 import './People.scss';
@@ -12,6 +12,7 @@ import { Button } from '@material-ui/core';
 import FileCopyIcon from '@material-ui/icons/FileCopy';
 import ReactLinkify from 'react-linkify';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 const hasTypeExtraInfo = (type: People) => [People.fallen, People.wounded].includes(type)
 
@@ -38,6 +39,8 @@ export const PeopleBreakdown: FC<{}> = () => {
     const [snackbarOpen, setSnackbarOpen] = useState(true);
     const [person, setPerson] = useState<Person | undefined>(undefined)
     const [isExportModalOpen, setIsExportModalOpen] = useState(false);
+    const [drawerOpen, setDrawerOpen] = useState(false)
+    const [controlsExpanded, setControlsExpanded] = React.useState(false);
     const dataExportModalRef = useRef<HTMLElement | undefined>(undefined);
     const rows = sort(peopleData.filter(person => person.status === peopleType), [sortBy])
         .filter((person: any) => {
@@ -58,34 +61,38 @@ export const PeopleBreakdown: FC<{}> = () => {
     const exportData = exportPeople(rows)
     return (
       <div className='PeopleBreakdown'>
-        <Breadcrumbs aria-label="breadcrumb">
-            {peopleTypes.map(pt => (
-                <Link key={pt} color={pt === peopleType ? 'textPrimary' : 'inherit'} href='#' onClick={() => setPeopleType(pt)}>
-                    {pt.toString()}
-                </Link>
-            ))}
-        </Breadcrumbs>
-        <div className='info'>
-            {peopleType === People.detained && <span>AAPPBမှ ပဏာမစာရင်း။ နေ့စဥ်နောက်ဆုံးရ အသေးစိတ်ကို <a target='_blank' rel='noreferrer' href='https://aappb.org/bu?cat=17'>ဒီမှာကြည့်နိုင်ပါသည်။</a></span>}
-            {peopleType === People.wounded && <><span>ထိခိုက်သူစာရင်း အတိအကျမရှိသေးပါ</span><br></br></>}
-            {hasTypeExtraInfo(peopleType) && <span>စာရင်းပြင်ချင်ပါက <a target='_blank' rel='noreferrer' href='https://forms.gle/dZ4wKV2gFoPhTRff9'>ဒီမှာပြင်ဆင်ပါ</a></span>}
-        </div>
-        <div className='search'>
-            <label>ရှာဖွေရန်</label>&nbsp;
-            <input value={filter} onChange={e => setFilter(e.target.value)} />
-        </div>
-        <Button variant="contained" color="secondary" onClick={() => setIsExportModalOpen(true)}>Export data</Button>
-        <TableContainer component={Paper}>
+          <Accordion expanded={controlsExpanded}>
+            <AccordionSummary expandIcon={<ExpandMoreIcon />} onClick={() => setControlsExpanded(!controlsExpanded)}>
+                <Typography>Controls</Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+                <div className='controls'>
+                    <Breadcrumbs>
+                        {peopleTypes.map(pt => (
+                            <Link key={pt} color={pt === peopleType ? 'textPrimary' : 'inherit'} href='#' onClick={() => setPeopleType(pt)}>
+                                {pt.toString()}
+                            </Link>
+                        ))}
+                    </Breadcrumbs>
+                    <div className='info'>
+                        {peopleType === People.detained && <span>AAPPBမှ ပဏာမစာရင်း။ နေ့စဥ်နောက်ဆုံးရ အသေးစိတ်ကို <a target='_blank' rel='noreferrer' href='https://aappb.org/bu?cat=17'>ဒီမှာကြည့်နိုင်ပါသည်။</a></span>}
+                        {peopleType === People.wounded && <><span>ထိခိုက်သူစာရင်း အတိအကျမရှိသေးပါ</span><br></br></>}
+                        {hasTypeExtraInfo(peopleType) && <span>စာရင်းပြင်ချင်ပါက <a target='_blank' rel='noreferrer' href='https://forms.gle/dZ4wKV2gFoPhTRff9'>ဒီမှာပြင်ဆင်ပါ</a></span>}
+                    </div>
+                    <div className='search'>
+                        <label>ရှာဖွေရန်</label>&nbsp;
+                        <input value={filter} onChange={e => setFilter(e.target.value)} />
+                    </div>
+                    <div className='actions'>
+                        <Button variant="contained" color="secondary" onClick={() => setIsExportModalOpen(true)}>Export data</Button>
+                        <Button variant="contained" color="secondary" onClick={() => setDrawerOpen(true)}>Legend</Button>
+                    </div>
+                </div>
+            </AccordionDetails>
+        </Accordion>
+        <TableContainer component={Paper} onClick={() => setControlsExpanded(false)}>
             <Table stickyHeader size="small" aria-label="people">
             <TableHead>
-                <TableRow>
-                    <TableCell colSpan={5}>
-                        <div className='legend'>
-                            <div>{verifiedIcon} သတင်းမီဒီယာမှ အတည်ပြုထား</div>
-                            <div><PhotoLibraryIcon /> ဓာတ်ပုံများကို ကလစ်နှိပ်၍ကြည့်နိုင်</div>
-                        </div>
-                    </TableCell>
-                </TableRow>
                 <TableRow>
                     <TableCell></TableCell>
                     <TableCell onClick={() => setSortBy("name")}><TableSortLabel active={sortBy === 'name'}>နာမည်</TableSortLabel></TableCell>
@@ -166,6 +173,12 @@ export const PeopleBreakdown: FC<{}> = () => {
                 <textarea defaultValue={exportData}></textarea>
             </>
         </Modal>
+        <Drawer open={drawerOpen} onClose={() => setDrawerOpen(false)} anchor='bottom'>
+            <div className='legend'>
+                <div>{verifiedIcon} သတင်းမီဒီယာမှ အတည်ပြုထား</div>
+                <div><PhotoLibraryIcon /> ဓာတ်ပုံများကို ကလစ်နှိပ်၍ကြည့်နိုင်</div>
+            </div>
+        </Drawer>
     </div>
   );
 }
