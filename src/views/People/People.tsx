@@ -1,4 +1,4 @@
-import React, { FC, useRef, useState } from 'react';
+import React, { FC, useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Link from '@material-ui/core/Link';
 import { People, peopleData, peopleTypes, Person } from '../../models/People';
@@ -42,6 +42,8 @@ export const PeopleBreakdown: FC<{}> = () => {
     const [drawerOpen, setDrawerOpen] = useState(false)
     const [controlsExpanded, setControlsExpanded] = React.useState(false);
     const dataExportModalRef = useRef<HTMLElement | undefined>(undefined);
+    const controlsRef = useRef<HTMLDivElement | undefined>(undefined)
+    const tableRef = useRef<any>(undefined)
     const rows = sort(peopleData.filter(person => person.status === peopleType), [sortBy])
         .filter((person: any) => {
             for (let key in person) {
@@ -59,9 +61,20 @@ export const PeopleBreakdown: FC<{}> = () => {
         } 
     }
     const exportData = exportPeople(rows)
+    const adjustTableHeight = useCallback(() => {
+        if (tableRef.current && controlsRef.current) {
+            const headerHeight = document.querySelector('header')?.getBoundingClientRect().height || 0
+            const controlsHeight = controlsRef.current.getBoundingClientRect().height
+            tableRef.current.style.height = `calc(100vh - ${headerHeight + controlsHeight}px)`
+        }
+    }, [])
+    useLayoutEffect(() => {
+        const timeout = window.setTimeout(adjustTableHeight, 300)
+        return () => window.clearTimeout(timeout)
+    }, [peopleType, controlsExpanded, adjustTableHeight])
     return (
       <div className='PeopleBreakdown'>
-          <Accordion expanded={controlsExpanded}>
+          <Accordion expanded={controlsExpanded} ref={controlsRef} onAnimationEnd={adjustTableHeight}>
             <AccordionSummary expandIcon={<ExpandMoreIcon />} onClick={() => setControlsExpanded(!controlsExpanded)}>
                 <Typography>Controls</Typography>
             </AccordionSummary>
@@ -90,7 +103,7 @@ export const PeopleBreakdown: FC<{}> = () => {
                 </div>
             </AccordionDetails>
         </Accordion>
-        <TableContainer component={Paper} onClick={() => setControlsExpanded(false)}>
+        <TableContainer component={Paper} onClick={() => setControlsExpanded(false)} ref={tableRef}>
             <Table stickyHeader size="small" aria-label="people">
             <TableHead>
                 <TableRow>

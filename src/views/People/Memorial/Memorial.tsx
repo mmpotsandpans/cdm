@@ -18,7 +18,6 @@ const sortImages = (a: string, b: string) => {
 }
 const images = new Map<string, MonthImages>()
 const febImages = importAll(require.context('../../../resources/images/memorial/feb', true, /\.(png|jpe?g|svg)$/));
-console.log(febImages.map((m:any) => m.default).sort(sortImages))
 images.set('feb', ({
     srcs: febImages.map((m:any) => m.default).sort(sortImages),
     links: [
