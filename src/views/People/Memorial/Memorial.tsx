@@ -1,14 +1,31 @@
-import { Button, Dialog, DialogContent, GridList, GridListTile, List, ListItem } from "@material-ui/core";
+import { Button, Dialog, DialogContent, GridList, GridListTile, List, ListItem, ListSubheader } from "@material-ui/core";
 import React, { useState } from "react";
+import ReactLinkify from "react-linkify";
 import './Memorial.scss'
 
 function importAll(r: any) {
     return r.keys().map(r);
   }
-  
-const images = new Map()
+
+interface MonthImages {
+    srcs: string[],
+    links: string[]
+}
+const sortImages = (a: string, b: string) => {
+    const ia = a.replace('/cdm/static/media/', '')
+    const ib = b.replace('/cdm/static/media/', '')
+    return Number.parseInt(ia.split('.')[0]) - Number.parseInt(ib.split('.')[0])
+}
+const images = new Map<string, MonthImages>()
 const febImages = importAll(require.context('../../../resources/images/memorial/feb', true, /\.(png|jpe?g|svg)$/));
-images.set('feb', febImages.map((m:any) => m.default))
+console.log(febImages.map((m:any) => m.default).sort(sortImages))
+images.set('feb', ({
+    srcs: febImages.map((m:any) => m.default).sort(sortImages),
+    links: [
+        'https://bit.ly/3b22PMF',
+        'https://bit.ly/3sxuL0P'
+    ]
+}))
 
 export const Memorial = () => {
     const [month, setMonth] = useState(images.keys().next().value)
@@ -36,11 +53,25 @@ export const Memorial = () => {
             >
                 <DialogContent>
                     <GridList cols={1}>
-                        {monthImages.map((i: any) => (
+                        <GridListTile key="Subheader" cols={2} style={{ height: 'auto', width: 'auto' }}>
+                            <ListSubheader component='div'>
+                                {month}
+                            </ListSubheader>
+                        </GridListTile>
+                        {monthImages?.srcs.map((i: any) => (
                             <GridListTile key={i} cols={1}>
                                 <img src={i} alt={i} />
                             </GridListTile>
                         ))}
+                        <GridListTile key='credits' className='credits'>
+                                <ReactLinkify componentDecorator={(decoratedHref, decoratedText, key) => (
+                                    <a target="blank" href={decoratedHref} key={key}>
+                                        {decoratedText}
+                                    </a>
+                                )}>
+                                    {monthImages?.links.map(l => <div>{l}</div>)}
+                                </ReactLinkify>
+                        </GridListTile>
                     </GridList>
                 </DialogContent>
             </Dialog>

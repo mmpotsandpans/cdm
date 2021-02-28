@@ -11,6 +11,7 @@ import { GridList } from '@material-ui/core';
 import { Button } from '@material-ui/core';
 import FileCopyIcon from '@material-ui/icons/FileCopy';
 import ReactLinkify from 'react-linkify';
+import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 
 const hasTypeExtraInfo = (type: People) => [People.fallen, People.wounded].includes(type)
 
@@ -28,9 +29,11 @@ const exportPeople = (people: Person[]) => {
     return text
 }
 
+const verifiedIcon = <CheckCircleIcon style={{color: '#115293'}} />
+
 export const PeopleBreakdown: FC<{}> = () => {
     const [peopleType, setPeopleType] = useState<People>(People.fallen)
-    const [sortBy, setSortBy] = useState<keyof Person>("name");
+    const [sortBy, setSortBy] = useState<keyof Person>("tstamp");
     const [filter, setFilter] = useState('')
     const [snackbarOpen, setSnackbarOpen] = useState(true);
     const [person, setPerson] = useState<Person | undefined>(undefined)
@@ -45,6 +48,7 @@ export const PeopleBreakdown: FC<{}> = () => {
             }
             return false
         })
+        .reverse()
     const handleDataCopy = () => {
         if (dataExportModalRef.current) {
             dataExportModalRef.current.querySelector('textarea')?.select()
@@ -75,16 +79,24 @@ export const PeopleBreakdown: FC<{}> = () => {
             <Table stickyHeader size="small" aria-label="people">
             <TableHead>
                 <TableRow>
-                <TableCell></TableCell>
-                <TableCell onClick={() => setSortBy("name")}><TableSortLabel active={sortBy === 'name'}>နာမည်</TableSortLabel></TableCell>
-                <TableCell onClick={() => setSortBy("position")}><TableSortLabel active={sortBy === 'position'}>ရာထူး/နေရပ်</TableSortLabel></TableCell>
-                {hasTypeExtraInfo(peopleType) &&
-                    <>
-                        <TableCell onClick={() => setSortBy("age")}><TableSortLabel active={sortBy === 'age'}>အသက်</TableSortLabel></TableCell>
-                        <TableCell onClick={() => setSortBy("tstamp")}><TableSortLabel active={sortBy === 'tstamp'}>နေ့ရက်</TableSortLabel></TableCell>
-                        <TableCell onClick={() => setSortBy("details")}><TableSortLabel active={sortBy === 'details'}>အသေးစိတ်</TableSortLabel></TableCell>
-                    </>
-                }
+                    <TableCell colSpan={5}>
+                        <div className='legend'>
+                            <div>{verifiedIcon} သတင်းမီဒီယာမှ အတည်ပြုထား</div>
+                            <div><PhotoLibraryIcon /> ဓာတ်ပုံများကို ကလစ်နှိပ်၍ကြည့်နိုင်</div>
+                        </div>
+                    </TableCell>
+                </TableRow>
+                <TableRow>
+                    <TableCell></TableCell>
+                    <TableCell onClick={() => setSortBy("name")}><TableSortLabel active={sortBy === 'name'}>နာမည်</TableSortLabel></TableCell>
+                    <TableCell onClick={() => setSortBy("position")}><TableSortLabel active={sortBy === 'position'}>ရာထူး/နေရပ်</TableSortLabel></TableCell>
+                    {hasTypeExtraInfo(peopleType) &&
+                        <>
+                            <TableCell onClick={() => setSortBy("tstamp")}><TableSortLabel active={sortBy === 'tstamp'}>နေ့ရက်</TableSortLabel></TableCell>
+                            <TableCell onClick={() => setSortBy("age")}><TableSortLabel active={sortBy === 'age'}>အသက်</TableSortLabel></TableCell>
+                            <TableCell onClick={() => setSortBy("details")}><TableSortLabel active={sortBy === 'details'}>အသေးစိတ်</TableSortLabel></TableCell>
+                        </>
+                    }
                 </TableRow>
             </TableHead>
             <TableBody>
@@ -94,13 +106,13 @@ export const PeopleBreakdown: FC<{}> = () => {
                     {i + 1}
                     </TableCell>
                     <TableCell component="th" scope="row" className='sticky-column'>
-                        <div className='name-cell' onClick={() => setPerson(row)}>{row.name} {row.media && <PhotoLibraryIcon />}</div>
+                        <div className='name-cell' onClick={() => setPerson(row)}>{row.name} {row.confirmed && verifiedIcon} {row.media && <PhotoLibraryIcon />}</div>
                     </TableCell>
                     <TableCell>{row.position}</TableCell>
                     {hasTypeExtraInfo(peopleType) &&
                         <>
-                            <TableCell>{row.age}</TableCell>
                             <TableCell>{row.tstamp ? (new Date(row.tstamp)).toLocaleDateString() : ''}</TableCell>
+                            <TableCell>{row.age}</TableCell>
                             <TableCell>
                                 <ReactLinkify componentDecorator={(decoratedHref, decoratedText, key) => (
                                     <a target="blank" href={decoratedHref} key={key}>
@@ -114,13 +126,14 @@ export const PeopleBreakdown: FC<{}> = () => {
                     }
                 </TableRow>
                 ))}
+                <TableRow><TableCell colSpan={5}>End of list</TableCell></TableRow>
             </TableBody>
             </Table>
         </TableContainer>
         <Snackbar
             open={snackbarOpen}
             message="
-                အချက်အလက်များကို အွန်လိုင်း မှရယူကာ ဖေဖော်ဝါရီလ ၂၇ရက်တွင် နောက်ဆုံးပြင်ဆင်ထားပါသည်။
+                အချက်အလက်များကို အွန်လိုင်း မှရယူကာ ဖေဖော်ဝါရီလ ၂၈ရက်တွင် နောက်ဆုံးပြင်ဆင်ထားပါသည်။
                 အာဇာနည်များအား ဝမ်းနည်းလှစွာဖြင့် ဂုဏ်ပြုမှတ်တမ်းတင်အပ်ပါသည်။
                 သတင်းနောက်ထပ်ရရှိပါက၊ သတင်းမှားယွင်းမှုရှိပါက အတတ်နိုင်ဆုံး ပြင်ဆင်ပေးသွားပါမယ်။ ရသမျှသတင်းမှန် အွန်လိုင်းတွင် မျှပေးကြပါ။
             "

@@ -1,10 +1,10 @@
 import React from 'react';
 import './App.scss';
 import {
-  BrowserRouter as Router,
   Switch,
   Route,
   NavLink,
+  HashRouter,
 } from "react-router-dom";
 import { PeopleBreakdown } from './views/People/People';
 import { Memorial } from './views/People/Memorial/Memorial';
@@ -13,7 +13,7 @@ import { AppBar, Divider, Toolbar, Typography } from '@material-ui/core';
 function App() {
   return (
     <div className="App">
-      <Router>
+      <HashRouter>
         <div>
           <AppBar position="static">
             <Toolbar>
@@ -35,7 +35,7 @@ function App() {
             </Route>
           </Switch>
         </div>
-      </Router>
+      </HashRouter>
     </div>
   );
 }

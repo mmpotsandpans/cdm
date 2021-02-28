@@ -18,6 +18,7 @@ export interface Person {
   details?: string;
   age?: number;
   media?: string[];
+  confirmed?: boolean;
 }
 
 // on the run list is unreliable, so it's omitted for now

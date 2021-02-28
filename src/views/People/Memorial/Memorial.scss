@@ -4,3 +4,10 @@
         justify-content: center;
     }
 }
+
+.media-modal {
+    .credits > div {
+        display: flex;
+        flex-direction: column;
+    }
+}
