@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/cdm/static/css/main.e69a3ff0.chunk.css",
-    "main.js": "/cdm/static/js/main.05e905b2.chunk.js",
-    "main.js.map": "/cdm/static/js/main.05e905b2.chunk.js.map",
-    "runtime-main.js": "/cdm/static/js/runtime-main.61fe735c.js",
-    "runtime-main.js.map": "/cdm/static/js/runtime-main.61fe735c.js.map",
-    "static/js/2.34460507.chunk.js": "/cdm/static/js/2.34460507.chunk.js",
-    "static/js/2.34460507.chunk.js.map": "/cdm/static/js/2.34460507.chunk.js.map",
-    "static/js/3.033107e1.chunk.js": "/cdm/static/js/3.033107e1.chunk.js",
-    "static/js/3.033107e1.chunk.js.map": "/cdm/static/js/3.033107e1.chunk.js.map",
+    "main.css": "/cdm/static/css/main.120b4f02.chunk.css",
+    "main.js": "/cdm/static/js/main.9c11bb48.chunk.js",
+    "main.js.map": "/cdm/static/js/main.9c11bb48.chunk.js.map",
+    "runtime-main.js": "/cdm/static/js/runtime-main.b4a7af42.js",
+    "runtime-main.js.map": "/cdm/static/js/runtime-main.b4a7af42.js.map",
+    "static/js/2.6493b4d5.chunk.js": "/cdm/static/js/2.6493b4d5.chunk.js",
+    "static/js/2.6493b4d5.chunk.js.map": "/cdm/static/js/2.6493b4d5.chunk.js.map",
+    "static/js/3.179d22e3.chunk.js": "/cdm/static/js/3.179d22e3.chunk.js",
+    "static/js/3.179d22e3.chunk.js.map": "/cdm/static/js/3.179d22e3.chunk.js.map",
     "index.html": "/cdm/index.html",
-    "static/css/main.e69a3ff0.chunk.css.map": "/cdm/static/css/main.e69a3ff0.chunk.css.map",
-    "static/js/2.34460507.chunk.js.LICENSE.txt": "/cdm/static/js/2.34460507.chunk.js.LICENSE.txt",
+    "static/css/main.120b4f02.chunk.css.map": "/cdm/static/css/main.120b4f02.chunk.css.map",
+    "static/js/2.6493b4d5.chunk.js.LICENSE.txt": "/cdm/static/js/2.6493b4d5.chunk.js.LICENSE.txt",
     "static/media/1.04aca296.png": "/cdm/static/media/1.04aca296.png",
     "static/media/1.139ffa3c.jpg": "/cdm/static/media/1.139ffa3c.jpg",
     "static/media/1.24a1ebfd.jpg": "/cdm/static/media/1.24a1ebfd.jpg",
@@ -62,9 +62,9 @@
     "static/media/App.scss": "/cdm/static/media/Pyidaungsu-2.5_Regular.2a936b54.ttf"
   },
   "entrypoints": [
-    "static/js/runtime-main.61fe735c.js",
-    "static/js/2.34460507.chunk.js",
-    "static/css/main.e69a3ff0.chunk.css",
-    "static/js/main.05e905b2.chunk.js"
+    "static/js/runtime-main.b4a7af42.js",
+    "static/js/2.6493b4d5.chunk.js",
+    "static/css/main.120b4f02.chunk.css",
+    "static/js/main.9c11bb48.chunk.js"
   ]
 }
