@@ -68,7 +68,7 @@ export const Memorial = () => {
                                         {decoratedText}
                                     </a>
                                 )}>
-                                    {monthImages?.links.map(l => <div>{l}</div>)}
+                                    {monthImages?.links.map(l => <div key={l}>{l}</div>)}
                                 </ReactLinkify>
                         </GridListTile>
                     </GridList>

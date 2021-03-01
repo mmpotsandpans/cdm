@@ -25,6 +25,10 @@ import eyewound2 from '../resources/images/fallen/မျက်စိထိသူ
 import tny from '../resources/images/fallen/တင်နွဲ့ရီ/1.jpg'
 import tny2 from '../resources/images/fallen/တင်နွဲ့ရီ/2.jpg'
 import tny3 from '../resources/images/fallen/တင်နွဲ့ရီ/3.jpg'
+import tny4 from '../resources/images/fallen/တင်နွဲ့ရီ/4.jpg'
+import tny5 from '../resources/images/fallen/တင်နွဲ့ရီ/5.jpg'
+import hta from '../resources/images/fallen/ဟိန်းထွဋ်အောင်/1.jpg'
+import hta2 from '../resources/images/fallen/ဟိန်းထွဋ်အောင်/2.jpg'
 
 const data = [
   {
@@ -44,7 +48,7 @@ const data = [
     "age": 15,
   },
   {
-    "name": "ကိုနပွား(ခ)ကိုကိုဦး",
+    "name": "နပွား(ခ)ကိုကိုဦး",
     "position": "မန္တလေး",
     "age": 32,
     "tstamp": 1612760400000,
@@ -107,7 +111,8 @@ const data = [
     "age": 48,
     "tstamp": 1613797200000,
     "details": "အကြမ်းဖက်မှုများကို မှတ်တမ်းတင်ရင်း အရိုက်ခံရသော ဒဏ်ရာဖြင့် ကွယ်လွန် https://bit.ly/3bt1aie",
-    "media": [ks]
+    "media": [ks],
+    "confirmed": true
   },
   {
     "name": "သက်နိုင်ဝင်း(ခ)ကိုမင်း",
@@ -137,6 +142,7 @@ const data = [
   {
     "name": "နော်ငို(ခ)ကိုဖေသန်း",
     "position": "ထားဝယ်",
+    "age": 35,
     "tstamp": 1614488400000,
     "details": "ရေဖြူမြို့နယ် ပုဂေါဇွန်းရွာနေသူ။ ညာဖက်နံကြားအောက် ကျည်ဝင်၊ မယ်ဒီလန်းဆေးရုံတွင် ကွယ်လွန် https://bit.ly/3dUSGDs https://bit.ly/3uEAB2A https://bit.ly/2ZUWGvA",
     "confirmed": true
@@ -145,11 +151,12 @@ const data = [
     "name": "လွင်လွင်ဦး",
     "position": "ထားဝယ်",
     "tstamp": 1614488400000,
-    "details": "ထားဝယ်မြို့ပုံကျွန်းရပ်နေသူ ထားဝယ်ဆေးရုံတွင် ကွယ်လွန် https://bit.ly/2ZUWGvA",
+    "age": 33,
+    "details": "ထားဝယ်မြို့ပုံကျွန်းရပ်နေသူ ထားဝယ်ဆေးရုံတွင် ကွယ်လွန်။ ရှေ့တန်းလိုင်းမှ သံချပ်ကာ အနောက် ပုံးခိုရင်း ကျည်ဆံထိ https://bit.ly/2ZUWGvA",
     "confirmed": true
   },
   {
-    "name": "ဗညား",
+    "name": "ဗညားအောင်",
     "position": "ထားဝယ်",
     "tstamp": 1614488400000,
     "details": "လောင်းလုံးမြို့နယ် ကျောက်ဆည်ရွာနေသူ ထားဝယ်ဆေးရုံတွင် ကွယ်လွန် https://bit.ly/2ZUWGvA",
@@ -160,32 +167,50 @@ const data = [
     "position": "ရန်ကုန်",
     "age": 23,
     "tstamp": 1614488400000,
-    "details": "သင်္ဃန််းကျွန်း ဘဝမြင့်မှတ်တိုင်နားတွင် လည်ပင်း သေနတ်ထိ။ https://bit.ly/2Mvm0Fd https://bit.ly/2MCOHjO https://bit.ly/3uDq2MV",
+    "details": "သင်္ဃန််းကျွန်း ဘဝမြင့်မှတ်တိုင်နားတွင် လည်ပင်း သေနတ်ထိ။ https://bit.ly/2Mvm0Fd https://bit.ly/2MCOHjO https://bit.ly/3uDq2MV https://bit.ly/3ktpd4Q",
+    "media": [hta, hta2],
     "confirmed": true
   },
   {
     "name": "တင်နွဲ့ရီ",
     "position": "ရန်ကုန်",
     "tstamp": 1614488400000,
-    "details": "ကြည့်မြင်တိုင် ရန်ကုန်တိုင်းပညာရေးမှူးရုံးရှေ့ ဖြိုခွင်းမှုတွင် မျက်ရည်ယိုဗုံး ရော်ဘာကျည်နဲ့ပစ်တာ heart attackရ။ အလယ်တန်းပြဆရာမ ထ(ခွဲ)လ ၁၀ လှိုင်သာယာ(အနောက်မြို့နယ်) https://bit.ly/3kuODPk https://bit.ly/3ktwl10 https://bit.ly/3rfJIER",
-    "media": [tny, tny2, tny3],
+    "details": "ကြည့်မြင်တိုင် ရန်ကုန်တိုင်းပညာရေးမှူးရုံးရှေ့ ဖြိုခွင်းမှုတွင် မျက်ရည်ယိုဗုံး ရော်ဘာကျည်နဲ့ပစ်တာ heart attackရ။ အလယ်တန်းပြဆရာမ ထ(ခွဲ)လ ၁၀ လှိုင်သာယာ(အနောက်မြို့နယ်) https://bit.ly/3kuODPk https://bit.ly/3ktwl10 https://bit.ly/3rfJIER https://bit.ly/3b40EbI",
+    "media": [tny, tny2, tny3, tny4, tny5],
     "confirmed": true
   },
   {
     "name": "ဇင်လင်းထက်",
     "position": "ရန်ကုန်",
+    "age": 20,
     "tstamp": 1614488400000,
-    "details": "လှည်းတန်း၆လမ်းထိပ်တွင် သေနတ်ဒဏ်ရာဖြင့် မျက်လုံးပေါက်သွားပြီး လမ်းတွင်ကွယ်လွန် https://bit.ly/2MCOHjO https://bit.ly/3b08Edy https://bit.ly/3uEveAa",
-    "media": [eyewound, eyewound2]
+    "details": "လှည်းတန်း ကမာရွတ် ၆လမ်းထိပ်တွင် သေနတ်ဒဏ်ရာဖြင့် မျက်လုံးပေါက်သွားပြီး လမ်းတွင်ကွယ်လွန် https://bit.ly/2MCOHjO https://bit.ly/3b08Edy https://bit.ly/3uEveAa",
+    "media": [eyewound, eyewound2],
+    "confirmed": true
   },
   {
     "name": "ညီညီအောင်ထက်နိုင်(ခ)ညီညီ",
     "position": "ရန်ကုန်",
+    "age": 23,
     "tstamp": 1614488400000,
-    "details": "လှည်းတန်းတွင် သေနတ်ဒဏ်ရာဖြင့် ဗိုက်ပေါက်သွားပြီးကွယ်လွန် https://bit.ly/2ZUusRH https://bit.ly/3ktTBMx",
+    "details": "လှည်းတန်း ကမာရွတ်တွင် သေနတ်ဒဏ်ရာဖြင့် ဗိုက်ပေါက်သွားပြီးကွယ်လွန်။ WYTU ကျောင်းသား https://bit.ly/2ZUusRH https://bit.ly/3ktTBMx https://bit.ly/3uEYMO6 (သွေးထွက်သံယို)https://bit.ly/3r3Y6jg (အိမ်ရှိဗီဒီယို)https://bit.ly/3dPhrku",
     "media": [nn, nn2, nn3, nn4, nn5],
     "confirmed": true
   },
+  {
+    "name": "နေမျိုး(ခ)နေလင်းအောင်",
+    "position": "ပခုက္ကူ",
+    "tstamp": 1614488400000,
+    "details": "သေနတ်ဒဏ်ရာ https://bit.ly/3q3O3cw",
+  },
+  {
+    "name": "မော်လမြိုင်မှ ဦးခေါင်းသေနတ်ထိသူ (အမည် မသိရသေး)",
+    "position": "မော်လမြိုင်",
+    "tstamp": 1614488400000,
+    "age": 19,
+    "details": "စျေးကြိုရပ်၊ ရတနာထွန်းပွဲရုံအနီး ညနေငါးခွဲလောက်တွင် ဦးခေါင်းထိမှန်၍ ကွယ်လွန် https://bit.ly/3r46b7D",
+    "confirmed": true
+  }
 ]
 
 export default data

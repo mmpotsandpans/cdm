@@ -15,6 +15,11 @@
         flex-direction: column;
         width: 100%;
     }
+    .MuiAccordionSummary-content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
     .MuiAccordion-root.Mui-expanded {
         margin: 0;
     }

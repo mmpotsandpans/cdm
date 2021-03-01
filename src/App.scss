@@ -1,5 +1,18 @@
+@mixin font($font-family, $font-file) {
+  @font-face {
+    font-family: $font-family;
+    src: url($font-file) format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+}
+
+@include font('Pyidaungsu', './resources/fonts/Pyidaungsu-2.5_Regular.ttf');
+@include font('Pyidaungs-Bold', './resources/fonts/Pyidaungsu-2.5_Bold.ttf');
+
 html, body {
   overflow: hidden;
+  font-family: "Pyidaungsu", "Roboto", "Helvetica", "Arial", sans-serif;
 }
 
 .App {

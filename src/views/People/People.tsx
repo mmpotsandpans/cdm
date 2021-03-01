@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import React, { FC, useCallback, useLayoutEffect, useRef, useState } from 'react';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Link from '@material-ui/core/Link';
 import { People, peopleData, peopleTypes, Person } from '../../models/People';
@@ -13,6 +13,7 @@ import FileCopyIcon from '@material-ui/icons/FileCopy';
 import ReactLinkify from 'react-linkify';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import { Salute } from '../../components/Salute/Salute';
 
 const hasTypeExtraInfo = (type: People) => [People.fallen, People.wounded].includes(type)
 
@@ -30,7 +31,7 @@ const exportPeople = (people: Person[]) => {
     return text
 }
 
-const verifiedIcon = <CheckCircleIcon style={{color: '#115293'}} />
+const verifiedIcon = <CheckCircleIcon style={{color: '#115293'}} fontSize='small'/>
 
 export const PeopleBreakdown: FC<{}> = () => {
     const [peopleType, setPeopleType] = useState<People>(People.fallen)
@@ -76,6 +77,7 @@ export const PeopleBreakdown: FC<{}> = () => {
       <div className='PeopleBreakdown'>
           <Accordion expanded={controlsExpanded} ref={controlsRef} onAnimationEnd={adjustTableHeight}>
             <AccordionSummary expandIcon={<ExpandMoreIcon />} onClick={() => setControlsExpanded(!controlsExpanded)}>
+                <Salute />
                 <Typography>Controls</Typography>
             </AccordionSummary>
             <AccordionDetails>
@@ -126,7 +128,7 @@ export const PeopleBreakdown: FC<{}> = () => {
                     {i + 1}
                     </TableCell>
                     <TableCell component="th" scope="row" className='sticky-column'>
-                        <div className='name-cell' onClick={() => setPerson(row)}>{row.name} {row.confirmed && verifiedIcon} {row.media && <PhotoLibraryIcon />}</div>
+                        <div className='name-cell' onClick={() => setPerson(row)}>{row.name} {row.confirmed && verifiedIcon} {row.media && <PhotoLibraryIcon fontSize='small' />}</div>
                     </TableCell>
                     <TableCell>{row.position}</TableCell>
                     {hasTypeExtraInfo(peopleType) &&
