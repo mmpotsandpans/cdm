@@ -29,7 +29,7 @@ function App() {
             <AppBar position="static">
               <Toolbar>
                 <Typography variant="h6">
-                  <NavLink to="/" exact={true}>စာရင်း</NavLink>
+                  <NavLink to="/" exact={true}>နွေဦးတော်လှန်ရေးအာဇာနည်များ</NavLink>
                 </Typography>
                 <Divider orientation="vertical" flexItem />
                 <Typography variant="h6">
