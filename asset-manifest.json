@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/cdm/static/css/main.120b4f02.chunk.css",
-    "main.js": "/cdm/static/js/main.b1de1b21.chunk.js",
-    "main.js.map": "/cdm/static/js/main.b1de1b21.chunk.js.map",
+    "main.js": "/cdm/static/js/main.9de84a77.chunk.js",
+    "main.js.map": "/cdm/static/js/main.9de84a77.chunk.js.map",
     "runtime-main.js": "/cdm/static/js/runtime-main.cefc6f35.js",
     "runtime-main.js.map": "/cdm/static/js/runtime-main.cefc6f35.js.map",
     "static/js/2.bbffcd55.chunk.js": "/cdm/static/js/2.bbffcd55.chunk.js",
@@ -61,6 +61,7 @@
     "static/media/2.jpg": "/cdm/static/media/2.e042e0fa.jpg",
     "static/media/2.f5715a40.jpg": "/cdm/static/media/2.f5715a40.jpg",
     "static/media/2.f879b714.jpg": "/cdm/static/media/2.f879b714.jpg",
+    "static/media/2.fd10a86a.jpg": "/cdm/static/media/2.fd10a86a.jpg",
     "static/media/3.08da6583.jpg": "/cdm/static/media/3.08da6583.jpg",
     "static/media/3.1ad5f4d9.jpg": "/cdm/static/media/3.1ad5f4d9.jpg",
     "static/media/3.jpg": "/cdm/static/media/3.27efe6b3.jpg",
@@ -86,14 +87,17 @@
     "static/media/5.fc2839bd.jpg": "/cdm/static/media/5.fc2839bd.jpg",
     "static/media/6.jpg": "/cdm/static/media/6.5e2f8986.jpg",
     "static/media/6.7b1127c8.jpg": "/cdm/static/media/6.7b1127c8.jpg",
+    "static/media/6.acef642c.jpg": "/cdm/static/media/6.acef642c.jpg",
     "static/media/6.ad466c56.jpg": "/cdm/static/media/6.ad466c56.jpg",
     "static/media/6.f0d86e68.jpg": "/cdm/static/media/6.f0d86e68.jpg",
     "static/media/7.257c5e4d.jpg": "/cdm/static/media/7.257c5e4d.jpg",
     "static/media/7.3187dbc2.jpg": "/cdm/static/media/7.3187dbc2.jpg",
     "static/media/7.3ec6d132.jpg": "/cdm/static/media/7.3ec6d132.jpg",
     "static/media/7.jpg": "/cdm/static/media/7.458d4b7d.jpg",
+    "static/media/7.bd32b053.jpg": "/cdm/static/media/7.bd32b053.jpg",
     "static/media/8.07812c22.jpg": "/cdm/static/media/8.07812c22.jpg",
     "static/media/8.jpg": "/cdm/static/media/8.2e8a5753.jpg",
+    "static/media/8.df974192.jpg": "/cdm/static/media/8.df974192.jpg",
     "static/media/9.0618b90d.jpg": "/cdm/static/media/9.0618b90d.jpg",
     "static/media/9.jpg": "/cdm/static/media/9.1f092597.jpg",
     "static/media/App.scss": "/cdm/static/media/Pyidaungsu-2.5_Regular.2a936b54.ttf"
@@ -102,6 +106,6 @@
     "static/js/runtime-main.cefc6f35.js",
     "static/js/2.bbffcd55.chunk.js",
     "static/css/main.120b4f02.chunk.css",
-    "static/js/main.b1de1b21.chunk.js"
+    "static/js/main.9de84a77.chunk.js"
   ]
 }
