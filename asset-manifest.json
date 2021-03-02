@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/cdm/static/css/main.120b4f02.chunk.css",
-    "main.js": "/cdm/static/js/main.9de84a77.chunk.js",
-    "main.js.map": "/cdm/static/js/main.9de84a77.chunk.js.map",
+    "main.js": "/cdm/static/js/main.f39e573a.chunk.js",
+    "main.js.map": "/cdm/static/js/main.f39e573a.chunk.js.map",
     "runtime-main.js": "/cdm/static/js/runtime-main.cefc6f35.js",
     "runtime-main.js.map": "/cdm/static/js/runtime-main.cefc6f35.js.map",
     "static/js/2.bbffcd55.chunk.js": "/cdm/static/js/2.bbffcd55.chunk.js",
@@ -67,6 +67,7 @@
     "static/media/3.jpg": "/cdm/static/media/3.27efe6b3.jpg",
     "static/media/3.2a6e2e9a.jpg": "/cdm/static/media/3.2a6e2e9a.jpg",
     "static/media/3.411cbd58.jpg": "/cdm/static/media/3.411cbd58.jpg",
+    "static/media/3.4a8f7c53.jpg": "/cdm/static/media/3.4a8f7c53.jpg",
     "static/media/3.56150944.jpg": "/cdm/static/media/3.56150944.jpg",
     "static/media/3.7ba6ea75.jpg": "/cdm/static/media/3.7ba6ea75.jpg",
     "static/media/3.7e53133d.jpg": "/cdm/static/media/3.7e53133d.jpg",
@@ -100,12 +101,13 @@
     "static/media/8.df974192.jpg": "/cdm/static/media/8.df974192.jpg",
     "static/media/9.0618b90d.jpg": "/cdm/static/media/9.0618b90d.jpg",
     "static/media/9.jpg": "/cdm/static/media/9.1f092597.jpg",
+    "static/media/9.aa4c1982.jpg": "/cdm/static/media/9.aa4c1982.jpg",
     "static/media/App.scss": "/cdm/static/media/Pyidaungsu-2.5_Regular.2a936b54.ttf"
   },
   "entrypoints": [
     "static/js/runtime-main.cefc6f35.js",
     "static/js/2.bbffcd55.chunk.js",
     "static/css/main.120b4f02.chunk.css",
-    "static/js/main.9de84a77.chunk.js"
+    "static/js/main.f39e573a.chunk.js"
   ]
 }
