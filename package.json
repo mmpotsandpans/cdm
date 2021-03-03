@@ -1,7 +1,7 @@
 {
   "name": "cdm",
   "version": "1.0.0",
-  "homepage": "https://mmpotsandpans.github.io/cdm",
+  "homepage": "https://heroesofmyanmar.com",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.11.3",
