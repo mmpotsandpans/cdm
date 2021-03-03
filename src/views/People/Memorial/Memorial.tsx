@@ -21,8 +21,10 @@ const febImages = importAll(require.context('../../../resources/images/memorial/
 images.set('feb', ({
     srcs: febImages.map((m:any) => m.default).sort(sortImages),
     links: [
-        'https://bit.ly/3b22PMF',
-        'https://bit.ly/3sxuL0P'
+        'bit.ly/3b22PMF',
+        'bit.ly/3sxuL0P',
+        'shorturl.at/nqrAS',
+        'bit.ly/2NRLyx1'
     ]
 }))
 
