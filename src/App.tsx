@@ -9,6 +9,7 @@ import {
 import { PeopleBreakdown } from './views/People/People';
 import { Memorial } from './views/People/Memorial/Memorial';
 import { AppBar, createMuiTheme, Divider, ThemeProvider, Toolbar, Typography } from '@material-ui/core';
+import { Redirect } from './views/Redirect/Redirect';
 
 const theme = createMuiTheme({
   typography: {
@@ -40,6 +41,12 @@ function App() {
             <Switch>
                 <Route path="/memorial">
                   <Memorial />
+                </Route>
+                <Route path='/form'>
+                  <Redirect url='https://forms.gle/dZ4wKV2gFoPhTRff9' />
+                </Route>
+                <Route path='/list'>
+                  <Redirect url='https://docs.google.com/spreadsheets/d/1g5fnoIRgKa68ewRh9PS0lpz704SE5xUdVEqS4LVbBl0/edit?usp=sharing' />
                 </Route>
                 <Route path="/">
                   <PeopleBreakdown />

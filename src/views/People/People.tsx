@@ -14,6 +14,7 @@ import ReactLinkify from 'react-linkify';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { Salute } from '../../components/Salute/Salute';
+import { fallenImages } from '../../resources/fallen';
 
 const hasTypeExtraInfo = (type: People) => [People.fallen, People.wounded].includes(type)
 
@@ -32,6 +33,15 @@ const exportPeople = (people: Person[]) => {
 }
 
 const verifiedIcon = <CheckCircleIcon style={{color: '#115293'}} fontSize='small'/>
+
+// there's font encoding ordering issue for some names, so use english name for those
+const getPersonMedia = (person: Person | undefined, peopleType: People) => {
+    if (peopleType === People.fallen) {
+        return fallenImages.get(person?.folder || person?.name || '')
+    } else {
+        return person?.media
+    }
+}
 
 export const PeopleBreakdown: FC<{}> = () => {
     const [peopleType, setPeopleType] = useState<People>(People.fallen)
@@ -73,6 +83,7 @@ export const PeopleBreakdown: FC<{}> = () => {
         const timeout = window.setTimeout(adjustTableHeight, 300)
         return () => window.clearTimeout(timeout)
     }, [peopleType, controlsExpanded, adjustTableHeight])
+    const personMedia = getPersonMedia(person, peopleType)
     return (
       <div className='PeopleBreakdown'>
           <Accordion expanded={controlsExpanded} ref={controlsRef} onAnimationEnd={adjustTableHeight}>
@@ -128,7 +139,7 @@ export const PeopleBreakdown: FC<{}> = () => {
                     {i + 1}
                     </TableCell>
                     <TableCell component="th" scope="row" className='sticky-column'>
-                        <div className='name-cell' onClick={() => setPerson(row)}>{row.name} {row.confirmed && verifiedIcon} {row.media && <PhotoLibraryIcon fontSize='small' />}</div>
+                        <div className='name-cell' onClick={() => setPerson(row)}>{row.name} {row.confirmed && verifiedIcon} {getPersonMedia(row, peopleType) && <PhotoLibraryIcon fontSize='small' />}</div>
                     </TableCell>
                     <TableCell>{row.position}</TableCell>
                     {hasTypeExtraInfo(peopleType) &&
@@ -156,7 +167,7 @@ export const PeopleBreakdown: FC<{}> = () => {
             open={snackbarOpen}
             message={
                 <div>
-                    <p>အချက်အလက်များကို အွန်လိုင်း မှရယူကာ မတ်လ 2 ရက်တွင် နောက်ဆုံးပြင်ဆင်ထားပါသည်။</p>
+                    <p>အချက်အလက်များကို အွန်လိုင်း မှရယူကာ မတ်လ 3 ရက်တွင် နောက်ဆုံးပြင်ဆင်ထားပါသည်။</p>
                     <p>သတင်းနောက်ထပ်ရရှိပါက၊ သတင်းမှားယွင်းမှုရှိပါက အတတ်နိုင်ဆုံး ပြင်ဆင်ပေးသွားပါမယ်။ သတင်းပေးပို့၊ ဖြည့်စွက်လိုပါက Controlsကိုနှိပ်ပြီး Formဖြည့်ပေးနိုင်ပါတယ်။</p>
                     <p>အာဇာနည်များအား ဝမ်းနည်းလှစွာဖြင့် ဂုဏ်ပြုမှတ်တမ်းတင်အပ်ပါသည်။</p>
                     <p>သတိ! ဗီဒီယို ဓာတ်ပုံများသည် သွေးထွက်သံယိုများ ပါနိုင်ပါသည်။</p>
@@ -166,14 +177,14 @@ export const PeopleBreakdown: FC<{}> = () => {
             onClose={() => setSnackbarOpen(false)}
         ></Snackbar>
         <Dialog
-            open={!!person?.media}
+            open={!!personMedia}
             onClose={() => setPerson(undefined)}
             className='media-modal'
         >
             <DialogContent>
                 {person &&
                     <GridList cols={1}>
-                        {person?.media?.map((img) => (
+                        {personMedia?.map((img) => (
                             <GridListTile key={img} cols={1}>
                             <img src={img} alt={person?.name} />
                             </GridListTile>

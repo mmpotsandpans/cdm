@@ -18,6 +18,7 @@ export interface Person {
   details?: string;
   age?: number;
   media?: string[];
+  folder?: string;
   confirmed?: boolean;
 }
 
