@@ -222,7 +222,8 @@ const data = [
      "date":'03/03/2021',
      "age":36,
      "details":"အောင်ချမ်းသာရပ်မှ ဆရာမ၊ ရင်ဘတ်တည့်တည့် သေနတ်ထိမှန် bit.ly/3b9kcLJ bit.ly/3qcF9JR bit.ly/3sRfto5",
-     "confirmed":true
+     "confirmed":true,
+     "folder": "myint myint zin"
   },
   {
      "name":"မြသွဲ့သွဲ့ခိုင်",
