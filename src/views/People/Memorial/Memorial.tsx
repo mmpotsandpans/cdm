@@ -18,7 +18,7 @@ const sortImages = (a: string, b: string) => {
 }
 // TODO dir import
 const images = new Map<string, MonthImages>()
-const febImages = importAll(require.context('../../../resources/images/memorial/feb', true, /\.(png|jpe?g|svg)$/));
+const febImages = importAll(require.context('../../../resources/images/memorial/feb', true, /\.(png|jpe?g|svg|gif)$/i));
 images.set('feb', ({
     srcs: febImages.map((m:any) => m.default).sort(sortImages),
     links: [
@@ -28,7 +28,7 @@ images.set('feb', ({
         'bit.ly/2NRLyx1'
     ]
 }))
-const marImages = importAll(require.context('../../../resources/images/memorial/mar', true, /\.(png|jpe?g|svg)$/));
+const marImages = importAll(require.context('../../../resources/images/memorial/mar', true, /\.(png|jpe?g|svg|gif)$/i));
 images.set('mar', ({
     srcs: marImages.map((m:any) => m.default).sort(sortImages),
     links: [
