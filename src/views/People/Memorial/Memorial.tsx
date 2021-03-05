@@ -16,6 +16,7 @@ const sortImages = (a: string, b: string) => {
     const ib = b.replace('/cdm/static/media/', '')
     return Number.parseInt(ia.split('.')[0]) - Number.parseInt(ib.split('.')[0])
 }
+// TODO dir import
 const images = new Map<string, MonthImages>()
 const febImages = importAll(require.context('../../../resources/images/memorial/feb', true, /\.(png|jpe?g|svg)$/));
 images.set('feb', ({
@@ -25,6 +26,13 @@ images.set('feb', ({
         'bit.ly/3sxuL0P',
         'shorturl.at/nqrAS',
         'bit.ly/2NRLyx1'
+    ]
+}))
+const marImages = importAll(require.context('../../../resources/images/memorial/mar', true, /\.(png|jpe?g|svg)$/));
+images.set('mar', ({
+    srcs: marImages.map((m:any) => m.default).sort(sortImages),
+    links: [
+        'bit.ly/3uU6zaV'
     ]
 }))
 

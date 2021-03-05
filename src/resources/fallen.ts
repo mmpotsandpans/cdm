@@ -309,7 +309,16 @@ const data = [
      "tstamp":1614747600000,
      "age":19,
      "details":"bit.ly/3q79ARK"
-  }
+  },
+  {
+   "name":"နေမျိုးအောင်(ခ)ကုလား",
+   "position":"မန္တလေး",
+   "tstamp":1614747600000,
+   "age":16,
+   "confirmed": true,
+   "folder": "nay myo aung",
+   "details":"ပြည်ကြီးတံခွန် ဘ၂ကွက်စိတ်"
+}
 ]
 
 export default data
