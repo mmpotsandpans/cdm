@@ -13,8 +13,8 @@ export enum People {
 export interface Person {
   name: string;
   status: People;
-  tstamp?: number;
-  position?: string;
+  date?: string;
+  city?: string;
   details?: string;
   age?: number;
   media?: string[];

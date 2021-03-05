@@ -9,12 +9,12 @@ fs.readFile(path.resolve(__dirname, 'detainees.txt'), 'utf8', function(err, data
         if (groups) {
             return {
                 name: groups[1].trim(),
-                position: groups[2].replace('(', '').replace(')', '').trim()
+                city: groups[2].replace('(', '').replace(')', '').trim()
             }
         } else {
             return {
                 name: p,
-                position: ''
+                city: ''
             }
         } 
         
