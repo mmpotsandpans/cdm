@@ -15,6 +15,8 @@ import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { Salute } from '../../components/Salute/Salute';
 import { fallenImages } from '../../resources/fallen';
+import { getUrlMediaFormat } from '../../utils/formatUtils';
+import { Format } from '../../models/Format';
 
 const hasTypeExtraInfo = (type: People) => [People.fallen, People.wounded].includes(type)
 
@@ -218,9 +220,10 @@ export const PeopleBreakdown: FC<{}> = () => {
             <DialogContent>
                 {person &&
                     <GridList cols={1}>
-                        {personMedia?.map((img) => (
-                            <GridListTile key={img} cols={1}>
-                            <img src={img} alt={person?.name} />
+                        {personMedia?.map((m) => (
+                            <GridListTile key={m} cols={1}>
+                                {getUrlMediaFormat(m) === Format.image && <img src={m} alt={person?.name} />}
+                                {getUrlMediaFormat(m) === Format.video && <video controls><source src={m} /></video>}
                             </GridListTile>
                         ))}
                     </GridList>

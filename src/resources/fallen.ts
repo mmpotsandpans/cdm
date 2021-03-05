@@ -8,7 +8,7 @@ function importAll(r: any) {
   });
 }
 
-importAll(require.context('../resources/images/fallen', true, /\.(png|jpe?g|svg|gif)$/i));
+importAll(require.context('../resources/images/fallen', true, /.*/));
 
 // loaded from google sheets in People.tsx
 const data: any = []
