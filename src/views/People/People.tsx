@@ -10,13 +10,13 @@ import { Modal } from '@material-ui/core';
 import { GridList } from '@material-ui/core';
 import { Button } from '@material-ui/core';
 import FileCopyIcon from '@material-ui/icons/FileCopy';
-import ReactLinkify from 'react-linkify';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { Salute } from '../../components/Salute/Salute';
 import { fallenImages } from '../../resources/fallen';
 import { getUrlMediaFormat } from '../../utils/formatUtils';
 import { Format } from '../../models/Format';
+import { Linkify } from '../../components/Linkify/Linkify';
 
 const hasTypeExtraInfo = (type: People) => [People.fallen, People.wounded].includes(type)
 
@@ -66,7 +66,7 @@ export const PeopleBreakdown: FC<{}> = () => {
     const [sortBy, setSortBy] = useState<keyof Person>("date");
     const [filter, setFilter] = useState('')
     const [snackbarOpen, setSnackbarOpen] = useState(true);
-    const [person, setPerson] = useState<Person | undefined>(undefined)
+    const [personCol, setPersonCol] = useState<[Person | undefined, keyof Person | undefined] | undefined>(undefined)
     const [isExportModalOpen, setIsExportModalOpen] = useState(false);
     const [drawerOpen, setDrawerOpen] = useState(false)
     const [controlsExpanded, setControlsExpanded] = React.useState(false);
@@ -77,15 +77,20 @@ export const PeopleBreakdown: FC<{}> = () => {
     const [loading, setLoading] = useState(false)
     useEffect(() => {
         setLoading(true)
-        fetch('https://heroesofmyanmar.api.stdlib.com/gsheets-database@dev/select/')
-            .then(resp => resp.json())
-            .then(data => {
-                setFallenData(normalizePeopleData(data).map(p => ({
-                ...p,
-                status: People.fallen
-                })))
-            })
-            .finally(() => setLoading(false))
+        if (process.env.NODE_ENV === 'development') {
+            setLoading(false)
+            setFallenData(normalizedPeopleData)
+        } else {
+            fetch('https://heroesofmyanmar.api.stdlib.com/gsheets-database@dev/select/')
+                .then(resp => resp.json())
+                .then(data => {
+                    setFallenData(normalizePeopleData(data).map(p => ({
+                    ...p,
+                    status: People.fallen
+                    })))
+                })
+                .finally(() => setLoading(false))   
+        }
     }, [])
     // peopleData is static, but we fetch fallen list live from google sheets
     const data = peopleType === People.fallen ? fallenData : normalizedPeopleData
@@ -117,7 +122,8 @@ export const PeopleBreakdown: FC<{}> = () => {
         const timeout = window.setTimeout(adjustTableHeight, 300)
         return () => window.clearTimeout(timeout)
     }, [peopleType, controlsExpanded, adjustTableHeight, loading])
-    const personMedia = getPersonMedia(person, peopleType)
+    const [person, column] = personCol || []
+    const personMedia = person && column === 'name' ? getPersonMedia(person, peopleType) : undefined
     return (
       <div className='PeopleBreakdown'>
           <Accordion expanded={controlsExpanded} ref={controlsRef} onAnimationEnd={adjustTableHeight}>
@@ -151,7 +157,7 @@ export const PeopleBreakdown: FC<{}> = () => {
             </AccordionDetails>
         </Accordion>
         {loading && <CircularProgress color="secondary" style={{marginTop: '1em'}} />}
-        {!loading && <TableContainer component={Paper} onClick={() => setControlsExpanded(false)} ref={tableRef}>
+        {!loading && <TableContainer component={Paper} onClick={() => setControlsExpanded(false)} ref={tableRef}  onScroll={() => setSnackbarOpen(false)}>
             <Table stickyHeader size="small" aria-label="people">
             <TableHead>
                 <TableRow>
@@ -174,21 +180,15 @@ export const PeopleBreakdown: FC<{}> = () => {
                     {i + 1}
                     </TableCell>
                     <TableCell component="th" scope="row" className='sticky-column'>
-                        <div className='name-cell' onClick={() => setPerson(row)}>{row.name} {row.confirmed && verifiedIcon} {getPersonMedia(row, peopleType) && <PhotoLibraryIcon fontSize='small' />}</div>
+                        <div className='name-cell' onClick={() => setPersonCol([row, 'name'])}>{row.name} {row.confirmed && verifiedIcon} {getPersonMedia(row, peopleType) && <PhotoLibraryIcon fontSize='small' />}</div>
                     </TableCell>
                     <TableCell>{row.city}</TableCell>
                     {hasTypeExtraInfo(peopleType) &&
                         <>
                             <TableCell>{row.date ? (new Date(parseInt(row.date))).toLocaleDateString() : ''}</TableCell>
                             <TableCell>{row.age || '-'}</TableCell>
-                            <TableCell>
-                                <ReactLinkify componentDecorator={(decoratedHref, decoratedText, key) => (
-                                    <a target="blank" href={decoratedHref} key={key}>
-                                        {decoratedText}
-                                    </a>
-                                )}>
-                                    {row.details?.replace(/https?:\/\//g, '')}
-                                </ReactLinkify>
+                            <TableCell onClick={() => setPersonCol([row, 'details'])}>
+                                <Linkify><div className='details'>{row.details?.replace(/https?:\/\//g, '')}</div></Linkify>                                    
                             </TableCell>
                         </>
                     }
@@ -203,10 +203,10 @@ export const PeopleBreakdown: FC<{}> = () => {
             open={snackbarOpen}
             message={
                 <div style={{fontSize: '0.8em'}}>
-                    <p>အချက်အလက်များကို အွန်လိုင်း မှရယူကာ မတ်လ ၅ ရက်တွင် နောက်ဆုံးပြင်ဆင်ထားပါသည်။</p>
+                    <p>အချက်အလက်များကို အွန်လိုင်း မှရယူကာ မတ်လ ၆ ရက်တွင် နောက်ဆုံးပြင်ဆင်ထားပါသည်။</p>
                     <p>သတင်းနောက်ထပ်ရရှိပါက၊ သတင်းမှားယွင်းမှုရှိပါက အတတ်နိုင်ဆုံး ပြင်ဆင်ပေးသွားပါမယ်။ သတင်းပေးပို့၊ ဖြည့်စွက်လိုပါက Controlsကိုနှိပ်ပြီး Formဖြည့်ပေးနိုင်ပါတယ်။</p>
                     <p>သတင်းပေးရှာဖွေမှုလွယ်ကူစေရန် ကျဆုံးသွားသူများအတွက် #mmFallenHeroes နဲ့ ပျောက်ဆုံးနေသူများအတွက် #mmMissingHeroes ဟုအသုံးပြုပေးကြပါ။</p>
-                    <p>အာဇာနည်များအား ဝမ်းနည်းလှစွာဖြင့် ဂုဏ်ပြုမှတ်တမ်းတင်အပ်ပါသည်။ သတိ! ဗီဒီယို ဓာတ်ပုံများသည် သွေးထွက်သံယိုများ ပါနိုင်ပါသည်။</p>
+                    <p>အာဇာနည်များအား ဝမ်းနည်းလှစွာဖြင့် ဂုဏ်ပြုမှတ်တမ်းတင်အပ်ပါသည်။ <strong>သတိ! ဗီဒီယို ဓာတ်ပုံများသည် သွေးထွက်သံယိုများ ပါနိုင်ပါသည်။</strong></p>
                 </div>
             }
             autoHideDuration={20000}
@@ -214,7 +214,7 @@ export const PeopleBreakdown: FC<{}> = () => {
         ></Snackbar>
         <Dialog
             open={!!personMedia}
-            onClose={() => setPerson(undefined)}
+            onClose={() => setPersonCol(undefined)}
             className='media-modal'
         >
             <DialogContent>
@@ -228,6 +228,16 @@ export const PeopleBreakdown: FC<{}> = () => {
                         ))}
                     </GridList>
                 }
+            </DialogContent>
+        </Dialog>
+        <Dialog
+            open={!!(person && column === 'details' && person.details)}
+            onClose={() => setPersonCol(undefined)}
+            className='media-modal'
+        >
+            <DialogContent>
+                <div>{person?.name}</div><br />
+                <div><Linkify>{person?.details}</Linkify></div>
             </DialogContent>
         </Dialog>
         <Modal ref={dataExportModalRef} className='export-modal' open={isExportModalOpen} onClose={() => setIsExportModalOpen(false)}>

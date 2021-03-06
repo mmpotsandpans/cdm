@@ -1,6 +1,7 @@
 import { Button, Dialog, DialogContent, GridList, GridListTile, List, ListItem, ListSubheader } from "@material-ui/core";
 import React, { useState } from "react";
 import ReactLinkify from "react-linkify";
+import { Linkify } from "../../../components/Linkify/Linkify";
 import './Memorial.scss'
 
 function importAll(r: any) {
@@ -73,13 +74,7 @@ export const Memorial = () => {
                             </GridListTile>
                         ))}
                         <GridListTile key='credits' className='credits'>
-                                <ReactLinkify componentDecorator={(decoratedHref, decoratedText, key) => (
-                                    <a target="blank" href={decoratedHref} key={key}>
-                                        {decoratedText}
-                                    </a>
-                                )}>
-                                    {monthImages?.links.map(l => <div key={l}>{l}</div>)}
-                                </ReactLinkify>
+                            <Linkify>{monthImages?.links.map(l => <div key={l}>{l}</div>)}</Linkify>
                         </GridListTile>
                     </GridList>
                 </DialogContent>
