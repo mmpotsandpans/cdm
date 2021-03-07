@@ -8,7 +8,7 @@ function importAll(r: any) {
   });
 }
 
-importAll(require.context('../resources/images/fallen', true, /.*/));
+importAll(require.context('../resources/images/fallen', true));
 
 // loaded from google sheets in People.tsx
 // used for dev, on prod live data is loaded
@@ -153,7 +153,7 @@ const data: any = [
      "confirmed":"TRUE",
      "date":"3/3/2021",
      "city":"မုံရွာ",
-     "details":"",
+     "details":"ဆားလင်းကြီးမြို့နယ် လက်ပံတောင်းကျေးရွာ bit.ly/30l2lLC",
      "age":"39",
      "folder":"k za win"
   },
@@ -162,9 +162,9 @@ const data: any = [
      "confirmed":"TRUE",
      "date":"3/3/2021",
      "city":"မုံရွာ",
-     "details":"",
+     "details":"bit.ly/3c6JglH bit.ly/3v0y5DU",
      "age":"45",
-     "folder":""
+     "folder":"naing win"
   },
   {
      "name":"ဇော်သိန်းအောင်",
@@ -236,7 +236,7 @@ const data: any = [
      "city":"မြင်းခြံ",
      "details":"အမှတ် ၁၉ စွန်းလွန်းရပ်ကွက်။ ဦးခေါင်းထိမှန် bit.ly/3sOOMjx",
      "age":"14",
-     "folder":"zin ko zaw"
+     "folder":"zin ko ko zaw"
   },
   {
      "name":"ဇင်မျိုးမောင်",
@@ -245,7 +245,7 @@ const data: any = [
      "city":"ကလေး",
      "details":"မတ်လ ၂ ရက်နေ့က ဆန္ဒပြပွဲမှာ အဆုတ်နဲ့ ပေါင်ကို သေနတ်ထိမှန်ပြီး မတ်လ ၃ ရက်နေ့မှာ သေဆုံး။ တက္ကသိုလ်ဝင်တန်းအောင် shorturl.at/uEOR8 bit.ly/387Ok8l bit.ly/2OiZkc2",
      "age":"18",
-     "folder":"zin myo aung"
+     "folder":"zin myo maung"
   },
   {
      "name":"ကြယ်စင်(ခ)Angel(ခ)ကျားရှီး",

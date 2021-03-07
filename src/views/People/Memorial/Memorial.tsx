@@ -1,7 +1,7 @@
 import { Button, Dialog, DialogContent, GridList, GridListTile, List, ListItem, ListSubheader } from "@material-ui/core";
 import React, { useState } from "react";
-import ReactLinkify from "react-linkify";
 import { Linkify } from "../../../components/Linkify/Linkify";
+import { Media } from "../../../components/Media/Media";
 import './Memorial.scss'
 
 function importAll(r: any) {
@@ -19,21 +19,24 @@ const sortImages = (a: string, b: string) => {
 }
 // TODO dir import
 const images = new Map<string, MonthImages>()
-const febImages = importAll(require.context('../../../resources/images/memorial/feb', true, /\.(png|jpe?g|svg|gif)$/i));
+const febImages = importAll(require.context('../../../resources/images/memorial/feb', true));
 images.set('feb', ({
     srcs: febImages.map((m:any) => m.default).sort(sortImages),
     links: [
         'bit.ly/3b22PMF',
         'bit.ly/3sxuL0P',
-        'shorturl.at/nqrAS',
-        'bit.ly/2NRLyx1'
+        'shorturl.at/nqrAS'
     ]
 }))
-const marImages = importAll(require.context('../../../resources/images/memorial/mar', true, /\.(png|jpe?g|svg|gif)$/i));
+const marImages = importAll(require.context('../../../resources/images/memorial/mar', true));
 images.set('mar', ({
     srcs: marImages.map((m:any) => m.default).sort(sortImages),
     links: [
-        'bit.ly/3uU6zaV'
+        'bit.ly/3uU6zaV',
+        'bit.ly/2OsoWDp',
+        'https://bit.ly/3sSvvOr',
+        'bit.ly/2NRLyx1',
+        'bit.ly/3kTEnkc'
     ]
 }))
 
@@ -70,7 +73,7 @@ export const Memorial = () => {
                         </GridListTile>
                         {monthImages?.srcs.map((i: any) => (
                             <GridListTile key={i} cols={1}>
-                                <img src={i} alt={i} />
+                                <Media src={i} alt={i} />
                             </GridListTile>
                         ))}
                         <GridListTile key='credits' className='credits'>
