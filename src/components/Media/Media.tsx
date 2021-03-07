@@ -16,7 +16,7 @@ export const Media: FC<MediaProps> = ({src, alt}) => {
         {/* for now just do this because cra uses datauri for small images */}
         {getUrlMediaFormat(src) !== Format.video &&
             <div className='media-image-container'>
-                {blurred && <BlurOffIcon onClick={() => setBlurred(false)} fontSize='large' />}
+                {blurred && <BlurOffIcon onClick={() => setBlurred(false)} fontSize='large' color='secondary' />}
                 <img src={src} alt={alt} className={blurred ? 'blurred' : ''}/>
             </div>
         }

@@ -24,3 +24,6 @@ yarn-error.log*
 
 *.code-workspace
 .ssh/
+
+# exclude long vids
+.hidden
