@@ -76,10 +76,10 @@ export const PeopleBreakdown: FC<{}> = () => {
     const [loading, setLoading] = useState(false)
     useEffect(() => {
         setLoading(true)
-        // if (process.env.NODE_ENV === 'development' && !process.env.REACT_APP_LIVE_DATA) {
+        if (process.env.NODE_ENV === 'development' && !process.env.REACT_APP_LIVE_DATA) {
             setLoading(false)
             setFallenData(normalizedPeopleData)
-        // } else {
+        } else {
             fetch('https://heroesofmyanmar.api.stdlib.com/gsheets-database@dev/select/')
                 .then(resp => resp.json())
                 .then(data => {
@@ -89,7 +89,7 @@ export const PeopleBreakdown: FC<{}> = () => {
                     })))
                 })
                 .finally(() => setLoading(false))   
-        // }
+        }
     }, [])
     // peopleData is static, but we fetch fallen list live from google sheets
     const data = peopleType === People.fallen ? fallenData : normalizedPeopleData
