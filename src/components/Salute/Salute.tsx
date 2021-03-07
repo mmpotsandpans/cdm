@@ -3,7 +3,8 @@ import { FormControlLabel, Switch } from '@material-ui/core'
 import React, { FC, useRef, useState } from 'react'
 // import { Person } from '../../models/People'
 
-const songUrl = process.env.PUBLIC_URL + '/sounds/kabar-ma-kyay-buu.mp3'
+// const songUrl = process.env.PUBLIC_URL + '/sounds/kabar-ma-kyay-buu.mp3'
+const songUrl = process.env.PUBLIC_URL + '/sounds/revolution.mp3'
 
 const stopPropagation: React.MouseEventHandler = (e: any) => {
     e.stopPropagation()
@@ -35,7 +36,8 @@ export const Salute: FC<SaluteProps> = () => {
                     color="primary"
                 />
                 }
-                label="ကမ္ဘာမကျေသီချင်းဖွင့်"
+                // label="ကမ္ဘာမကျေသီချင်းဖွင့်"
+                label='Revolutionသီချင်းဖွင့်'
             />
             <audio ref={audioRef} loop>
                 <source src={songUrl} type='audio/mpeg' />

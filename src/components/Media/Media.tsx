@@ -8,7 +8,8 @@ export interface MediaProps {
 }
 export const Media: FC<MediaProps> = ({src, alt}) => {
     return <>
-        {getUrlMediaFormat(src) === Format.image && <img src={src} alt={alt} />}
+        {/* for now just do this because react uses datauri for small images */}
+        {getUrlMediaFormat(src) !== Format.video && <img src={src} alt={alt} />}
         {getUrlMediaFormat(src) === Format.video && <video controls><source src={src} /></video>}
     </>
 }
