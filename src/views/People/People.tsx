@@ -179,7 +179,7 @@ export const PeopleBreakdown: FC<{}> = () => {
                     {i + 1}
                     </TableCell>
                     <TableCell component="th" scope="row" className='sticky-column'>
-                        <div className='name-cell' onClick={() => setPersonCol([row, 'name'])}>{row.name} {row.confirmed && verifiedIcon} {getPersonMedia(row, peopleType) && <PhotoLibraryIcon fontSize='small' />}</div>
+                        <div className='name-cell' onClick={() => setPersonCol([row, 'name'])}>{row.honorific || ''}{row.name} {row.confirmed && verifiedIcon} {getPersonMedia(row, peopleType) && <PhotoLibraryIcon fontSize='small' />}</div>
                     </TableCell>
                     <TableCell>{row.city}</TableCell>
                     {hasTypeExtraInfo(peopleType) &&

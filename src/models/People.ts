@@ -20,6 +20,8 @@ export interface Person {
   media?: string[];
   folder?: string;
   confirmed?: boolean;
+  gender?: 'm' | 'f';
+  honorific?: 'string';
 }
 
 // on the run list is unreliable, so it's omitted for now
