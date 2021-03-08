@@ -2,7 +2,7 @@ import React, { FC, useCallback, useEffect, useLayoutEffect, useRef, useState } 
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Link from '@material-ui/core/Link';
 import { People, peopleData, peopleTypes, Person } from '../../models/People';
-import { TableContainer, Paper, Table, TableHead, TableRow, TableCell, TableBody, TableSortLabel, Snackbar, GridListTile, Dialog, DialogContent, Drawer, Accordion, AccordionDetails, AccordionSummary, Typography, CircularProgress } from '@material-ui/core';
+import { TableContainer, Paper, Table, TableHead, TableRow, TableCell, TableBody, TableSortLabel, Snackbar, GridListTile, Dialog, DialogContent, Drawer, Accordion, AccordionDetails, AccordionSummary, Typography, CircularProgress, Divider } from '@material-ui/core';
 import sort from 'lodash.sortby'
 import PhotoLibraryIcon from '@material-ui/icons/PhotoLibrary';
 import './People.scss';
@@ -16,6 +16,8 @@ import { Salute } from '../../components/Salute/Salute';
 import { fallenImages } from '../../resources/fallen';
 import { Linkify } from '../../components/Linkify/Linkify';
 import { Media } from '../../components/Media/Media';
+import { getMediaFormatFromUrl, shouldBlurImage } from '../../utils/mediaUtils';
+import { Format } from '../../models/Format';
 
 const hasTypeExtraInfo = (type: People) => [People.fallen, People.wounded].includes(type)
 
@@ -35,7 +37,6 @@ const exportPeople = (people: Person[]) => {
 
 const verifiedIcon = <CheckCircleIcon style={{color: '#115293'}} fontSize='small'/>
 
-// there's font encoding ordering issue for some names, so use english name for those
 const getPersonMedia = (person: Person | undefined, peopleType: People) => {
     if (peopleType === People.fallen) {
         return fallenImages.get(person?.folder || person?.name || '')
@@ -59,6 +60,21 @@ const normalizePeopleData = (data: Person[]) => data.map(p => {
 })
 
 const normalizedPeopleData = normalizePeopleData(peopleData)
+
+const splitPersonMediaIntoRegularBlurred = (media: string[] | undefined) => {
+    if (!media) {
+        return undefined
+    }
+    const [regular, blurred]: [string[], string[]] = [[], []]
+    media.forEach(m => {
+        if (getMediaFormatFromUrl(m) === Format.video || !shouldBlurImage(m)) {
+            regular.push(m)
+        }  else {
+            blurred.push(m)
+        }
+    })
+    return [regular, blurred]
+}
 
 export const PeopleBreakdown: FC<{}> = () => {
     const [peopleType, setPeopleType] = useState<People>(People.fallen)
@@ -122,7 +138,9 @@ export const PeopleBreakdown: FC<{}> = () => {
         return () => window.clearTimeout(timeout)
     }, [peopleType, controlsExpanded, adjustTableHeight, loading])
     const [person, column] = personCol || []
-    const personMedia = person && column === 'name' ? getPersonMedia(person, peopleType) : undefined
+    const personMedia = person && column === 'name'
+        ? splitPersonMediaIntoRegularBlurred(getPersonMedia(person, peopleType))
+        : undefined
     return (
       <div className='PeopleBreakdown'>
           <Accordion expanded={controlsExpanded} ref={controlsRef} onAnimationEnd={adjustTableHeight}>
@@ -219,7 +237,18 @@ export const PeopleBreakdown: FC<{}> = () => {
             <DialogContent>
                 {person &&
                     <GridList cols={1}>
-                        {personMedia?.map((m) => (
+                        {personMedia?.[0]?.map((m) => (
+                            <GridListTile key={m} cols={1}>
+                                <Media src={m} alt={person?.name || m} />
+                            </GridListTile>
+                        ))}
+                        {personMedia?.[1].length &&
+                            <GridListTile className='media-warning'>
+                                <Divider />
+                                <div>အောက်ပါ ရုပ်ပုံများသည် အလွန် အမြင်မတော် (သို့) သွေးထွက်သံယိုများပါသည်။ သူရဲကောင်းတို့ ပေးဆပ်ခဲ့ရမှုကို မှတ်တမ်းအရ သာ တင်ပါသည်။ မိသားစုမှ တောင်းဆိုပါက အမြန်ဆုံး ဖြုတ်ချပါမည်။</div>
+                            </GridListTile>
+                        }
+                        {personMedia?.[1]?.map((m) => (
                             <GridListTile key={m} cols={1}>
                                 <Media src={m} alt={person?.name || m} />
                             </GridListTile>

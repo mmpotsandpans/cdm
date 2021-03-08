@@ -1,11 +1,10 @@
 .media-image-container {
     position: relative;
-    svg {
+    .blur-icon {
         cursor: pointer;
         position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+        top: 0.5em;
+        right: 0.5em;
         z-index: 1;
     }
     .blurred {
