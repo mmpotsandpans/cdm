@@ -18,6 +18,7 @@ import { Linkify } from '../../components/Linkify/Linkify';
 import { Media } from '../../components/Media/Media';
 import { getMediaFormatFromUrl, shouldBlurImage } from '../../utils/mediaUtils';
 import { Format } from '../../models/Format';
+import { woundedImages } from '../../resources/wounded';
 
 const hasLiveData = (type: People) => [People.fallen, People.wounded].includes(type)
 
@@ -38,10 +39,11 @@ const exportPeople = (people: Person[]) => {
 const verifiedIcon = <CheckCircleIcon style={{color: '#115293'}} fontSize='small'/>
 
 const getPersonMedia = (person: Person | undefined, peopleType: People) => {
-    if (peopleType === People.fallen) {
-        return fallenImages.get(person?.folder || person?.name || '')
-    } else {
+    if (peopleType === People.detained) {
         return person?.media
+    } else {
+        const images = peopleType === People.fallen ? fallenImages : woundedImages
+        return images.get(person?.folder || person?.name || '')
     }
 }
 
