@@ -1,7 +1,9 @@
 import { Button, Dialog, DialogContent, GridList, GridListTile, List, ListItem, ListSubheader } from "@material-ui/core";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { Linkify } from "../../../components/Linkify/Linkify";
 import { Media } from "../../../components/Media/Media";
+import VolumeOffIcon from '@material-ui/icons/VolumeOff';
+import VolumeUpIcon from '@material-ui/icons/VolumeUp';
 import './Memorial.scss'
 
 function importAll(r: any) {
@@ -29,6 +31,7 @@ images.set('feb', ({
     ]
 }))
 const marImages = importAll(require.context('../../../resources/images/memorial/mar', true));
+const backgroundVid = marImages.find((i: any) => /v2/.test(i.default)).default
 images.set('mar', ({
     srcs: marImages.map((m:any) => m.default).sort(sortImages),
     links: [
@@ -45,9 +48,17 @@ export const Memorial = () => {
     const [month, setMonth] = useState(images.keys().next().value)
     const [galleryOpen, setGalleryOpen] = useState(false)
     const monthImages = images.get(month)
+    const vidRef = useRef<HTMLVideoElement | null>(null)
+    const [vidSoundOn, setVidSoundOn] = useState(false)
     const handleMonthClick = (month: any) => {
         setMonth(month)
         setGalleryOpen(true)
+    }
+    const toggleVidSound = () => {
+        setVidSoundOn(!vidSoundOn)
+        if (vidRef.current) {
+            vidRef.current.muted = !vidRef.current?.muted
+        }
     }
     return (
         <div className='Memorial'>
@@ -83,6 +94,12 @@ export const Memorial = () => {
                     </GridList>
                 </DialogContent>
             </Dialog>
+            <div className='background-vid'>
+                <video autoPlay loop muted  ref={vidRef}><source src={backgroundVid} /></video>
+                {vidSoundOn && <VolumeUpIcon onClick={toggleVidSound} />}
+                {!vidSoundOn && <VolumeOffIcon onClick={toggleVidSound} />}
+                <div className='background-vid-credit'><a href='https://bit.ly/3sVLFXc'>Fantasy of the new Worldမှ</a></div>
+            </div>
         </div>
     )
 }
