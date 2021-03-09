@@ -25,6 +25,7 @@ precacheAndRoute(self.__WB_MANIFEST);
 // are fulfilled with your index.html shell. Learn more at
 // https://developers.google.com/web/fundamentals/architecture/app-shell
 const fileExtensionRegexp = new RegExp('/[^/?]+\\.[^/]+$');
+
 registerRoute(
   // Return false to exempt requests from being fulfilled by index.html.
   ({ request, url }) => {
@@ -71,15 +72,17 @@ self.addEventListener('message', (event) => {
 
 // Any other custom service worker logic can go here.
 
-/* nuclear, here's hoping we won't need it https://gist.github.com/pugson/8f637ce5d885dcea9ff6c0ae3ff5fc20
-self.addEventListener("install", () => {
-  // Activate immediately, taking control from any broken service workers
+// nuclear to wipe sw cache
+self.addEventListener('install', function(e) {
   self.skipWaiting();
 });
 
-self.addEventListener("activate", () => {
-  self.clients.matchAll({ type: "window" }).then(clients => {
-    clients.forEach(windowClient => windowClient.navigate(windowClient.url));
-  });
+self.addEventListener('activate', function(e) {
+  self.registration.unregister()
+    .then(function() {
+      return self.clients.matchAll();
+    })
+    .then(function(clients) {
+      clients.forEach(client => client.navigate(client.url))
+    });
 });
-*/
