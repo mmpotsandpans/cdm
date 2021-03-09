@@ -1,6 +1,8 @@
 import mtl from '../resources/images/wounded/mtl/1.png'
 import mtzk from '../resources/images/wounded/mtzk/1.jpg'
 
+// loaded from google sheets in People.tsx
+// used for dev, on prod live data is loaded
 const data = [
   {
     "name": "နေပြည်တော်မှ ရင်ဘတ်ထုတ်ချင်းပေါက် အပစ်ခံရသူ",

@@ -19,7 +19,7 @@ import { Media } from '../../components/Media/Media';
 import { getMediaFormatFromUrl, shouldBlurImage } from '../../utils/mediaUtils';
 import { Format } from '../../models/Format';
 
-const hasTypeExtraInfo = (type: People) => [People.fallen, People.wounded].includes(type)
+const hasLiveData = (type: People) => [People.fallen, People.wounded].includes(type)
 
 const exportPeople = (people: Person[]) => {
     let text = ''
@@ -76,6 +76,9 @@ const splitPersonMediaIntoRegularBlurred = (media: string[] | undefined) => {
     return [regular, blurred]
 }
 
+const cachedData: any = {
+    [People.detained]: normalizedPeopleData.filter(p => p.status === People.detained)
+}
 export const PeopleBreakdown: FC<{}> = () => {
     const [peopleType, setPeopleType] = useState<People>(People.fallen)
     const [sortBy, setSortBy] = useState<keyof Person>("date");
@@ -88,28 +91,33 @@ export const PeopleBreakdown: FC<{}> = () => {
     const dataExportModalRef = useRef<HTMLElement | undefined>(undefined);
     const controlsRef = useRef<HTMLDivElement | undefined>(undefined)
     const tableRef = useRef<any>(undefined)
-    const [fallenData, setFallenData] = useState<Person[]>([])
     const [loading, setLoading] = useState(false)
+    const [data, setData] = useState<Person[]>([])
     useEffect(() => {
+        if (cachedData[peopleType]) {
+            setData(cachedData[peopleType])
+            return
+        }
         setLoading(true)
         if (process.env.NODE_ENV === 'development' && !process.env.REACT_APP_LIVE_DATA) {
+            cachedData[peopleType] = normalizedPeopleData.filter(p => p.status === peopleType)
             setLoading(false)
-            setFallenData(normalizedPeopleData)
+            setData(cachedData[peopleType])
         } else {
-            fetch('https://heroesofmyanmar.api.stdlib.com/gsheets-database@dev/select/')
+            const url = peopleType === People.fallen ? 'https://heroesofmyanmar.api.stdlib.com/gsheets-database@dev/select/' : 'https://heroesofmyanmar.api.stdlib.com/wounded@dev/select/'
+            fetch(url)
                 .then(resp => resp.json())
                 .then(data => {
-                    setFallenData(normalizePeopleData(data).map(p => ({
-                    ...p,
-                    status: People.fallen
-                    })))
+                    cachedData[peopleType] = normalizePeopleData(data).map(p => ({
+                        ...p,
+                        status: peopleType
+                    }))
+                    setData(cachedData[peopleType])
                 })
                 .finally(() => setLoading(false))   
         }
-    }, [])
-    // peopleData is static, but we fetch fallen list live from google sheets
-    const data = peopleType === People.fallen ? fallenData : normalizedPeopleData
-    const rows = sort(data.filter(person => person.status === peopleType), [sortBy])
+    }, [peopleType])
+    const rows = sort(data.filter((person: Person) => person.status === peopleType), [sortBy])
         .filter((person: any) => {
             for (let key in person) {
                 if (typeof person[key] === 'string' && (person[key]).toLowerCase().match(filter.toLowerCase())) {
@@ -160,7 +168,7 @@ export const PeopleBreakdown: FC<{}> = () => {
                     <div className='info'>
                         {peopleType === People.detained && <span>AAPPBမှ ပဏာမစာရင်း။ နေ့စဥ်နောက်ဆုံးရ အသေးစိတ်ကို <a target='_blank' rel='noreferrer' href='https://aappb.org/bu?cat=17'>ဒီမှာကြည့်နိုင်ပါသည်။</a></span>}
                         {peopleType === People.wounded && <><span>ထိခိုက်သူစာရင်း အတိအကျမရှိသေးပါ</span><br></br></>}
-                        {hasTypeExtraInfo(peopleType) && <span>စာရင်းပြင်ချင်ပါက <a target='_blank' rel='noreferrer' href='https://forms.gle/dZ4wKV2gFoPhTRff9'>ဒီမှာပြင်ဆင်ပါ</a></span>}
+                        {hasLiveData(peopleType) && <span>စာရင်းပြင်ချင်ပါက <a target='_blank' rel='noreferrer' href='https://forms.gle/dZ4wKV2gFoPhTRff9'>ဒီမှာပြင်ဆင်ပါ</a></span>}
                     </div>
                     <div className='search'>
                         <label>ရှာဖွေရန်</label>&nbsp;
@@ -181,7 +189,7 @@ export const PeopleBreakdown: FC<{}> = () => {
                     <TableCell></TableCell>
                     <TableCell onClick={() => setSortBy("name")}><TableSortLabel active={sortBy === 'name'}>နာမည်</TableSortLabel></TableCell>
                     <TableCell onClick={() => setSortBy("city")}><TableSortLabel active={sortBy === 'city'}>ရာထူး/နေရပ်</TableSortLabel></TableCell>
-                    {hasTypeExtraInfo(peopleType) &&
+                    {hasLiveData(peopleType) &&
                         <>
                             <TableCell onClick={() => setSortBy("date")}><TableSortLabel active={sortBy === 'date'}>နေ့ရက်</TableSortLabel></TableCell>
                             <TableCell onClick={() => setSortBy("age")}><TableSortLabel active={sortBy === 'age'}>အသက်</TableSortLabel></TableCell>
@@ -200,7 +208,7 @@ export const PeopleBreakdown: FC<{}> = () => {
                         <div className='name-cell' onClick={() => setPersonCol([row, 'name'])}>{row.honorific || ''}{row.name} {row.confirmed && verifiedIcon} {getPersonMedia(row, peopleType) && <PhotoLibraryIcon fontSize='small' />}</div>
                     </TableCell>
                     <TableCell>{row.city}</TableCell>
-                    {hasTypeExtraInfo(peopleType) &&
+                    {hasLiveData(peopleType) &&
                         <>
                             <TableCell>{row.date ? (new Date(parseInt(row.date))).toLocaleDateString() : ''}</TableCell>
                             <TableCell>{row.age || '-'}</TableCell>
@@ -219,11 +227,11 @@ export const PeopleBreakdown: FC<{}> = () => {
         <Snackbar
             open={snackbarOpen}
             message={
-                <div style={{fontSize: '0.8em'}}>
-                    <p>အချက်အလက်များကို အွန်လိုင်း မှရယူကာ မတ်လ ၆ ရက်တွင် နောက်ဆုံးပြင်ဆင်ထားပါသည်။</p>
-                    <p>သတင်းနောက်ထပ်ရရှိပါက၊ သတင်းမှားယွင်းမှုရှိပါက အတတ်နိုင်ဆုံး ပြင်ဆင်ပေးသွားပါမယ်။ သတင်းပေးပို့၊ ဖြည့်စွက်လိုပါက Controlsကိုနှိပ်ပြီး Formဖြည့်ပေးနိုင်ပါတယ်။</p>
+                <div style={{fontSize: '0.8em', textAlign: 'left'}}>
+                    <p>အချက်အလက်များကို အွန်လိုင်းမှ ရယူကာ အလျင်မှီသလို ထည့်သွင်းပြင်ဆင်ထားပါသည်။</p>
+                    <p>သတင်းမှားယွင်းမှုရှိပါက အတတ်နိုင်ဆုံး ပြင်ဆင်ပေးသွားပါမယ်။ သတင်းပေးပို့၊ ဖြည့်စွက်လိုပါက Controlsကိုနှိပ်ပြီး Formဖြည့်ပေးနိုင်ပါတယ်။</p>
                     <p>သတင်းပေးရှာဖွေမှုလွယ်ကူစေရန် ကျဆုံးသွားသူများအတွက် #mmFallenHeroes နဲ့ ပျောက်ဆုံးနေသူများအတွက် #mmMissingHeroes ဟုအသုံးပြုပေးကြပါ။</p>
-                    <p>အာဇာနည်များအား ဝမ်းနည်းလှစွာဖြင့် ဂုဏ်ပြုမှတ်တမ်းတင်အပ်ပါသည်။ <strong>သတိ! ဗီဒီယို ဓာတ်ပုံများသည် သွေးထွက်သံယိုများ ပါနိုင်ပါသည်။</strong></p>
+                    <p>အာဇာနည်များအား ဝမ်းနည်းလှစွာဖြင့် ဂုဏ်ပြုမှတ်တမ်းတင်အပ်ပါသည်။</p>
                 </div>
             }
             autoHideDuration={20000}
