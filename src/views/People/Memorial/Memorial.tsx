@@ -94,10 +94,10 @@ export const Memorial = () => {
                     </GridList>
                 </DialogContent>
             </Dialog>
-            <div className='background-vid'>
+            <div className='background-vid' onClick={toggleVidSound} >
                 <video autoPlay loop muted  ref={vidRef}><source src={backgroundVid} /></video>
-                {vidSoundOn && <VolumeUpIcon onClick={toggleVidSound} />}
-                {!vidSoundOn && <VolumeOffIcon onClick={toggleVidSound} />}
+                {vidSoundOn && <VolumeUpIcon/>}
+                {!vidSoundOn && <VolumeOffIcon />}
                 <div className='background-vid-credit'><a href='https://bit.ly/3sVLFXc'>Fantasy of the new Worldမှ</a></div>
             </div>
         </div>

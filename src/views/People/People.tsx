@@ -39,12 +39,14 @@ const exportPeople = (people: Person[]) => {
 const verifiedIcon = <CheckCircleIcon style={{color: '#115293'}} fontSize='small'/>
 
 const getPersonMedia = (person: Person | undefined, peopleType: People) => {
+    let media
     if (peopleType === People.detained) {
-        return person?.media
+        media = person?.media
     } else {
         const images = peopleType === People.fallen ? fallenImages : woundedImages
-        return images.get(person?.folder || person?.name || '')
+        media = images.get(person?.folder?.trim() || person?.name.trim() || '')
     }
+    return media?.filter(m => !/hidden/.test(m))
 }
 
 const normalizePeopleData = (data: Person[]) => data.map(p => {
@@ -230,10 +232,11 @@ export const PeopleBreakdown: FC<{}> = () => {
             open={snackbarOpen}
             message={
                 <div style={{fontSize: '0.8em', textAlign: 'left'}}>
-                    <p>အချက်အလက်များကို အွန်လိုင်းမှ ရယူကာ အလျင်မှီသလို ထည့်သွင်းပြင်ဆင်ထားပါသည်။</p>
+                    <p>အချက်အလက်များ၊ ရုပ်ပုံများကို အွန်လိုင်းမှ ရယူကာ အလျင်မှီသလို ထည့်သွင်းပြင်ဆင်ထားပါသည်။ မူပိုင်ခွင့်သည် ပိုင်ရှင်များနှင့်သာ သက်ဆိုင်ပါသည်။</p>
                     <p>သတင်းမှားယွင်းမှုရှိပါက အတတ်နိုင်ဆုံး ပြင်ဆင်ပေးသွားပါမယ်။ သတင်းပေးပို့၊ ဖြည့်စွက်လိုပါက Controlsကိုနှိပ်ပြီး Formဖြည့်ပေးနိုင်ပါတယ်။</p>
                     <p>သတင်းပေးရှာဖွေမှုလွယ်ကူစေရန် ကျဆုံးသွားသူများအတွက် #mmFallenHeroes နဲ့ ပျောက်ဆုံးနေသူများအတွက် #mmMissingHeroes ဟုအသုံးပြုပေးကြပါ။</p>
                     <p>အာဇာနည်များအား ဝမ်းနည်းလှစွာဖြင့် ဂုဏ်ပြုမှတ်တမ်းတင်အပ်ပါသည်။</p>
+                    <p>ကျန်ရစ်သူများကို ကူညီလိုပါက <a href='https://nwayooheroes.org/'>https://nwayooheroes.org/</a>ကို သွားပါ(ဒီsiteနှင့် မသက်ဆိုင်)</p>
                 </div>
             }
             autoHideDuration={20000}
