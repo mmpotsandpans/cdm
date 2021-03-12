@@ -1,4 +1,6 @@
 import React from 'react';
+// import before other components
+import './utils/i18n'
 import './App.scss';
 import {
   Switch,
@@ -10,6 +12,8 @@ import { PeopleBreakdown } from './views/People/People';
 import { Memorial } from './views/People/Memorial/Memorial';
 import { AppBar, createMuiTheme, Divider, ThemeProvider, Toolbar, Typography } from '@material-ui/core';
 import { Redirect } from './views/Redirect/Redirect';
+import {t} from 'ttag'
+import { Language } from './components/Language/Language';
 
 const theme = createMuiTheme({
   typography: {
@@ -21,7 +25,8 @@ const theme = createMuiTheme({
     ].join(','),
   },
 })
-function App() {
+
+const App = () => {
   return (
     <div className="App">
       <ThemeProvider theme={theme}>
@@ -30,12 +35,13 @@ function App() {
             <AppBar position="static">
               <Toolbar>
                 <Typography variant="h6">
-                  <NavLink to="/" exact={true}>နွေဦးတော်လှန်ရေးအာဇာနည်များ</NavLink>
+                  <NavLink to="/" exact={true}>{t`နွေဦးတော်လှန်ရေးအာဇာနည်များ`}</NavLink>
                 </Typography>
                 <Divider orientation="vertical" flexItem />
                 <Typography variant="h6">
-                  <NavLink to="/memorial">စုပေါင်းမှတ်တမ်းများ</NavLink>
+                  <NavLink to="/memorial">{t`စုပေါင်းမှတ်တမ်းများ`}</NavLink>
                 </Typography>
+                <Language />
               </Toolbar>
             </AppBar>
             <Switch>

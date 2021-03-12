@@ -1,6 +1,7 @@
 // import { GridList, GridListTile, ListSubheader } from '@material-ui/core'
 import { FormControlLabel, Switch } from '@material-ui/core'
 import React, { FC, useRef, useState } from 'react'
+import { t } from 'ttag'
 // import { Person } from '../../models/People'
 
 // const songUrl = process.env.PUBLIC_URL + '/sounds/kabar-ma-kyay-buu.mp3'
@@ -37,7 +38,7 @@ export const Salute: FC<SaluteProps> = () => {
                 />
                 }
                 // label="ကမ္ဘာမကျေသီချင်းဖွင့်"
-                label='Revolutionသီချင်းဖွင့်'
+                label={t`Revolutionသီချင်းဖွင့်`}
             />
             <audio ref={audioRef} loop>
                 <source src={songUrl} type='audio/mpeg' />

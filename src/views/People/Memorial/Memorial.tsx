@@ -66,7 +66,7 @@ export const Memorial = () => {
                 {Array.from(images.keys()).map(k => (
                     <ListItem onClick={() => handleMonthClick(k)} key={k}>
                         <Button variant="contained" color="primary">
-                            {k} ကိုကြည့်ရန်
+                            {k}
                         </Button>
                     </ListItem>
                 ))}

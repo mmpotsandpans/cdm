@@ -1,7 +1,7 @@
 import React, { FC, useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Link from '@material-ui/core/Link';
-import { People, peopleData, peopleTypes, Person } from '../../models/People';
+import { People, peopleData, peopleTypes, peopleTypesStrings, Person } from '../../models/People';
 import { TableContainer, Paper, Table, TableHead, TableRow, TableCell, TableBody, TableSortLabel, Snackbar, GridListTile, Dialog, DialogContent, Drawer, Accordion, AccordionDetails, AccordionSummary, Typography, CircularProgress, Divider } from '@material-ui/core';
 import sort from 'lodash.sortby'
 import PhotoLibraryIcon from '@material-ui/icons/PhotoLibrary';
@@ -19,6 +19,8 @@ import { Media } from '../../components/Media/Media';
 import { getMediaFormatFromUrl, shouldBlurImage } from '../../utils/mediaUtils';
 import { Format } from '../../models/Format';
 import { woundedImages } from '../../resources/wounded';
+import { t } from 'ttag'
+import { getLocale } from '../../utils/i18n';
 
 const hasLiveData = (type: People) => [People.fallen, People.wounded].includes(type)
 
@@ -28,7 +30,7 @@ const exportPeople = (people: Person[]) => {
     text += props.join('\t') + '\n\n'
     people.forEach((person: any) => {
         props.forEach((prop: any) => {
-            text += prop === 'date' && person[prop] ? (new Date(parseInt(person[prop]))).toLocaleDateString() : (person[prop] || '-')
+            text += getExportCol(person, prop)
             text += '\t'
         })
         text += '\n\n'
@@ -49,6 +51,47 @@ const getPersonMedia = (person: Person | undefined, peopleType: People) => {
     return media?.filter(m => !/hidden/.test(m))
 }
 
+const locale = getLocale()
+
+const getName = (p: Person | undefined) => {
+    if (!p) {
+        return undefined
+    }
+    const defaultName = `${p.honorific || ''}${p.name}`
+    if (locale === 'my') {
+        return defaultName
+    } else {
+        const localeName = `${locale}Name`
+        return (p as any)[localeName] ? (p as any)[localeName] : defaultName
+    }
+}
+
+const getDetails = (p: Person | undefined) => {
+    if (!p) {
+        return undefined
+    }
+    let details
+    if (locale === 'my') {
+        details = p.details
+    } else {
+        const localeDetails = `${locale}Details`
+        details = (p as any)[localeDetails] ? (p as any)[localeDetails] : p.details
+    }
+    return details?.replace(/https?:\/\//g, '')
+}
+
+const getExportCol = (p: Person, col: keyof Person) => {
+    if (col === 'name') {
+        return getName(p)
+    } else if (col === 'details') {
+        return getDetails(p)
+    } else if (col === 'date' && p[col]) {
+        return (new Date(parseInt(p[col] || ''))).toLocaleDateString()
+    } else {
+        return p[col] || '-'
+    }
+}
+
 const normalizePeopleData = (data: Person[]) => data.map(p => {
     let date = undefined
     if (p.date) {
@@ -59,7 +102,8 @@ const normalizePeopleData = (data: Person[]) => data.map(p => {
         ...p,
         confirmed: p.confirmed?.toString().toLowerCase() === 'true',
         date,
-        age: p.age ? parseInt(p.age.toString()) : undefined
+        age: p.age ? parseInt(p.age.toString()) : undefined,
+        details: getDetails(p)
     }
 })
 
@@ -83,6 +127,7 @@ const splitPersonMediaIntoRegularBlurred = (media: string[] | undefined) => {
 const cachedData: any = {
     [People.detained]: normalizedPeopleData.filter(p => p.status === People.detained)
 }
+
 export const PeopleBreakdown: FC<{}> = () => {
     const [peopleType, setPeopleType] = useState<People>(People.fallen)
     const [sortBy, setSortBy] = useState<keyof Person>("date");
@@ -97,6 +142,10 @@ export const PeopleBreakdown: FC<{}> = () => {
     const tableRef = useRef<any>(undefined)
     const [loading, setLoading] = useState(false)
     const [data, setData] = useState<Person[]>([])
+    const handleTableScroll = () => {
+        setSnackbarOpen(false)
+        setControlsExpanded(false)
+    }
     useEffect(() => {
         if (cachedData[peopleType]) {
             setData(cachedData[peopleType])
@@ -165,39 +214,39 @@ export const PeopleBreakdown: FC<{}> = () => {
                     <Breadcrumbs>
                         {peopleTypes.map(pt => (
                             <Link key={pt} color={pt === peopleType ? 'textPrimary' : 'inherit'} href='#' onClick={() => setPeopleType(pt)}>
-                                {pt.toString()}
+                                {peopleTypesStrings[pt]}
                             </Link>
                         ))}
                     </Breadcrumbs>
                     <div className='info'>
-                        {peopleType === People.detained && <span>AAPPBမှ ပဏာမစာရင်း။ နေ့စဥ်နောက်ဆုံးရ အသေးစိတ်ကို <a target='_blank' rel='noreferrer' href='https://aappb.org/bu?cat=17'>ဒီမှာကြည့်နိုင်ပါသည်။</a></span>}
-                        {peopleType === People.wounded && <><span>ထိခိုက်သူစာရင်း အတိအကျမရှိသေးပါ</span><br></br></>}
-                        {hasLiveData(peopleType) && <span>စာရင်းပြင်ချင်ပါက <a target='_blank' rel='noreferrer' href='https://forms.gle/dZ4wKV2gFoPhTRff9'>ဒီမှာပြင်ဆင်ပါ</a></span>}
+                        {peopleType === People.detained && <span>{t`AAPPBမှ ပဏာမစာရင်း။ နေ့စဥ်နောက်ဆုံးရ အသေးစိတ်ကို`} <a target='_blank' rel='noreferrer' href='https://aappb.org/bu?cat=17'>{t`ဒီမှာကြည့်နိုင်ပါသည်။`}</a></span>}
+                        {peopleType === People.wounded && <><span>{t`ထိခိုက်သူစာရင်း အတိအကျမရှိသေးပါ`}</span><br></br></>}
+                        {hasLiveData(peopleType) && <span>{t`စာရင်းပြင်ချင်ပါက`} <a target='_blank' rel='noreferrer' href='https://forms.gle/dZ4wKV2gFoPhTRff9'>{t`ဒီမှာပြင်ဆင်ပါ`}</a></span>}
                     </div>
                     <div className='search'>
-                        <label>ရှာဖွေရန်</label>&nbsp;
+                        <label>{t`ရှာဖွေရန်`}</label>&nbsp;
                         <input value={filter} onChange={e => setFilter(e.target.value)} />
                     </div>
                     <div className='actions'>
-                        <Button variant="contained" color="secondary" onClick={() => setIsExportModalOpen(true)}>Export data</Button>
-                        <Button variant="contained" color="secondary" onClick={() => setDrawerOpen(true)}>Legend</Button>
+                        <Button variant="contained" color="secondary" onClick={() => setIsExportModalOpen(true)}>{t`Export data`}</Button>
+                        <Button variant="contained" color="secondary" onClick={() => setDrawerOpen(true)}>{t`Legend`}</Button>
                     </div>
                 </div>
             </AccordionDetails>
         </Accordion>
         {loading && <CircularProgress color="secondary" style={{marginTop: '1em'}} />}
-        {!loading && <TableContainer component={Paper} onClick={() => setControlsExpanded(false)} ref={tableRef}  onScroll={() => setSnackbarOpen(false)}>
+        {!loading && <TableContainer component={Paper} onClick={() => setControlsExpanded(false)} ref={tableRef}  onScroll={handleTableScroll}>
             <Table stickyHeader size="small" aria-label="people">
             <TableHead>
                 <TableRow>
                     <TableCell></TableCell>
-                    <TableCell onClick={() => setSortBy("name")}><TableSortLabel active={sortBy === 'name'}>နာမည်</TableSortLabel></TableCell>
-                    <TableCell onClick={() => setSortBy("city")}><TableSortLabel active={sortBy === 'city'}>ရာထူး/နေရပ်</TableSortLabel></TableCell>
+                    <TableCell onClick={() => setSortBy("name")}><TableSortLabel active={sortBy === 'name'}>{t`နာမည်`}</TableSortLabel></TableCell>
+                    <TableCell onClick={() => setSortBy("city")}><TableSortLabel active={sortBy === 'city'}>{t`မြို့`}</TableSortLabel></TableCell>
                     {hasLiveData(peopleType) &&
                         <>
-                            <TableCell onClick={() => setSortBy("date")}><TableSortLabel active={sortBy === 'date'}>နေ့ရက်</TableSortLabel></TableCell>
-                            <TableCell onClick={() => setSortBy("age")}><TableSortLabel active={sortBy === 'age'}>အသက်</TableSortLabel></TableCell>
-                            <TableCell onClick={() => setSortBy("details")}><TableSortLabel active={sortBy === 'details'}>အသေးစိတ်</TableSortLabel></TableCell>
+                            <TableCell onClick={() => setSortBy("date")}><TableSortLabel active={sortBy === 'date'}>{t`နေ့`}</TableSortLabel></TableCell>
+                            <TableCell onClick={() => setSortBy("age")}><TableSortLabel active={sortBy === 'age'}>{t`အသက်`}</TableSortLabel></TableCell>
+                            <TableCell onClick={() => setSortBy("details")}><TableSortLabel active={sortBy === 'details'}>{t`အသေးစိတ်`}</TableSortLabel></TableCell>
                         </>
                     }
                 </TableRow>
@@ -209,7 +258,7 @@ export const PeopleBreakdown: FC<{}> = () => {
                     {i + 1}
                     </TableCell>
                     <TableCell component="th" scope="row" className='sticky-column'>
-                        <div className='name-cell' onClick={() => setPersonCol([row, 'name'])}>{row.honorific || ''}{row.name} {row.confirmed && verifiedIcon} {getPersonMedia(row, peopleType) && <PhotoLibraryIcon fontSize='small' />}</div>
+                        <div className='name-cell' onClick={() => setPersonCol([row, 'name'])}>{getName(row)} {row.confirmed && verifiedIcon} {getPersonMedia(row, peopleType) && <PhotoLibraryIcon fontSize='small' />}</div>
                     </TableCell>
                     <TableCell>{row.city}</TableCell>
                     {hasLiveData(peopleType) &&
@@ -217,13 +266,13 @@ export const PeopleBreakdown: FC<{}> = () => {
                             <TableCell>{row.date ? (new Date(parseInt(row.date))).toLocaleDateString() : ''}</TableCell>
                             <TableCell>{row.age || '-'}</TableCell>
                             <TableCell onClick={() => setPersonCol([row, 'details'])}>
-                                <Linkify><div className='details'>{row.details?.replace(/https?:\/\//g, '')}</div></Linkify>                                    
+                                <Linkify><div className='details'>{getDetails(row)}</div></Linkify>                                    
                             </TableCell>
                         </>
                     }
                 </TableRow>
                 ))}
-                <TableRow><TableCell colSpan={5}>End of list</TableCell></TableRow>
+                <TableRow><TableCell colSpan={5}>{t`စာရင်းပြီး`}</TableCell></TableRow>
             </TableBody>
             </Table>
         </TableContainer>
@@ -232,10 +281,10 @@ export const PeopleBreakdown: FC<{}> = () => {
             open={snackbarOpen}
             message={
                 <div style={{fontSize: '0.8em', textAlign: 'left'}}>
-                    <p>အချက်အလက်များ၊ ရုပ်ပုံများကို အွန်လိုင်းမှ ရယူကာ အလျင်မှီသလို ထည့်သွင်းပြင်ဆင်ထားပါသည်။ မူပိုင်ခွင့်သည် ပိုင်ရှင်များနှင့်သာ သက်ဆိုင်ပါသည်။</p>
-                    <p>သတင်းမှားယွင်းမှုရှိပါက အတတ်နိုင်ဆုံး ပြင်ဆင်ပေးသွားပါမယ်။ သတင်းပေးပို့၊ ဖြည့်စွက်လိုပါက Controlsကိုနှိပ်ပြီး Formဖြည့်ပေးနိုင်ပါတယ်။</p>
-                    <p>သတင်းပေးရှာဖွေမှုလွယ်ကူစေရန် ကျဆုံးသွားသူများအတွက် #mmFallenHeroes နဲ့ ပျောက်ဆုံးနေသူများအတွက် #mmMissingHeroes ဟုအသုံးပြုပေးကြပါ။</p>
-                    <p>အာဇာနည်များအား ဝမ်းနည်းလှစွာဖြင့် ဂုဏ်ပြုမှတ်တမ်းတင်အပ်ပါသည်။</p>
+                    <p>{t`အချက်အလက်များ၊ ရုပ်ပုံများကို အွန်လိုင်းမှ ရယူကာ အလျင်မှီသလို ထည့်သွင်းပြင်ဆင်ထားပါသည်။ မူပိုင်ခွင့်သည် ပိုင်ရှင်များနှင့်သာ သက်ဆိုင်ပါသည်။`}</p>
+                    <p>{t`သတင်းမှားယွင်းမှုရှိပါက အတတ်နိုင်ဆုံး ပြင်ဆင်ပေးသွားပါမယ်။ သတင်းပေးပို့၊ ဖြည့်စွက်လိုပါက Controlsကိုနှိပ်ပြီး Formဖြည့်ပေးနိုင်ပါတယ်။`}</p>
+                    <p>{t`သတင်းပေးရှာဖွေမှုလွယ်ကူစေရန် ကျဆုံးသွားသူများအတွက် #mmFallenHeroes နဲ့ ပျောက်ဆုံးနေသူများအတွက် #mmMissingHeroes ဟုအသုံးပြုပေးကြပါ။`}</p>
+                    <p style={{textAlign: 'center'}}>{t`အာဇာနည်များအား ဝမ်းနည်းလှစွာဖြင့် ဂုဏ်ပြုမှတ်တမ်းတင်အပ်ပါသည်။`}</p>
                     {/* <p>ကျန်ရစ်သူများကို ကူညီလိုပါက <a href='https://nwayooheroes.org/'>https://nwayooheroes.org/</a>ကို သွားပါ(ဒီsiteနှင့် မသက်ဆိုင်)</p> */}
                 </div>
             }
@@ -258,7 +307,7 @@ export const PeopleBreakdown: FC<{}> = () => {
                         {personMedia?.[1].length &&
                             <GridListTile className='media-warning'>
                                 <Divider />
-                                <div>အောက်ပါ ရုပ်ပုံများသည် အလွန် အမြင်မတော် (သို့) သွေးထွက်သံယိုများပါသည်။ သူရဲကောင်းတို့ ပေးဆပ်ခဲ့ရမှုကို မှတ်တမ်းအရ သာ တင်ပါသည်။ မိသားစုမှ တောင်းဆိုပါက အမြန်ဆုံး ဖြုတ်ချပါမည်။</div>
+                                <div>{t`အောက်ပါ ရုပ်ပုံများသည် အလွန် အမြင်မတော် (သို့) သွေးထွက်သံယိုများပါသည်။ သူရဲကောင်းတို့ ပေးဆပ်ခဲ့ရမှုကို မှတ်တမ်းအရ သာ တင်ပါသည်။ မိသားစုမှ တောင်းဆိုပါက အမြန်ဆုံး ဖြုတ်ချပါမည်။`}</div>
                             </GridListTile>
                         }
                         {personMedia?.[1]?.map((m) => (
@@ -276,7 +325,7 @@ export const PeopleBreakdown: FC<{}> = () => {
             className='media-modal'
         >
             <DialogContent>
-                <div>{person?.name}</div><br />
+                <div className='name-in-details'>{getName(person)}</div><br />
                 <div><Linkify>{person?.details}</Linkify></div>
             </DialogContent>
         </Dialog>
@@ -291,8 +340,8 @@ export const PeopleBreakdown: FC<{}> = () => {
         </Modal>
         <Drawer open={drawerOpen} onClose={() => setDrawerOpen(false)} anchor='bottom'>
             <div className='legend'>
-                <div>{verifiedIcon} သတင်းမီဒီယာမှ အတည်ပြုထားခြင်း၊ ဓာတ်ပုံ ဗီဒီယို၊ တိုက်ရိုက်လင့်ခ်ရှိခြင်း</div>
-                <div><PhotoLibraryIcon /> ဓာတ်ပုံများကို ကလစ်နှိပ်၍ကြည့်နိုင်</div>
+                <div>{verifiedIcon} {t`သတင်းမီဒီယာမှ အတည်ပြုထားခြင်း၊ ဓာတ်ပုံ ဗီဒီယို၊ တိုက်ရိုက်လင့်ခ်ရှိခြင်း`}</div>
+                <div><PhotoLibraryIcon /> {t`ဓာတ်ပုံများကို ကလစ်နှိပ်၍ကြည့်နိုင်`}</div>
             </div>
         </Drawer>
     </div>

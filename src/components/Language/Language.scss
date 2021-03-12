@@ -1,0 +1,10 @@
+.Language {
+    display: flex;
+    svg {
+        cursor: pointer;
+    }
+}
+
+.languages .selected {
+    background-color: rgba(0, 0, 0, 0.04);
+}

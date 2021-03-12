@@ -14,6 +14,9 @@
         display: flex;
         flex-direction: column;
         width: 100%;
+        nav li {
+            text-transform: capitalize;
+        }
     }
     .MuiAccordionSummary-content {
         display: flex;
@@ -28,9 +31,13 @@
         justify-content: space-around;
     }
     .MuiTableContainer-root {
+        thead th {
+            text-transform: capitalize;
+        }
         .name-cell {
             display: flex;
             align-items: center;
+            text-transform: capitalize;
         }
         .MuiSvgIcon-root {
             cursor: pointer;
@@ -74,4 +81,8 @@
         height: 0;
         opacity: 0;
     }
+}
+
+.name-in-details {
+    text-transform: capitalize;
 }

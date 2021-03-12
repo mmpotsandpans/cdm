@@ -2,13 +2,21 @@ import parsedDetainees from '../resources/parsedDetainees.json'
 // import parsedOnTheRun from '../resources/parsedOnTheRun.json'
 import parsedFallen from '../resources/fallen'
 import parsedWounded from '../resources/wounded'
+import { t } from 'ttag'
 
 export enum People {
-    detained = 'ထိန်းသိမ်း',
-    onTheRun = 'ဝရမ်း',
-    fallen = 'ကျဆုံး',
-    wounded = 'ထိခိုက်'
-  }
+  detained = 'ထိန်းသိမ်း',
+  onTheRun = 'ဝရမ်း',
+  fallen = 'ကျဆုံး',
+  wounded = 'ထိခိုက်'
+}
+
+export const peopleTypesStrings = {
+  [People.detained]: t`ထိန်းသိမ်း`,
+  [People.onTheRun]: t`ဝရမ်း`,
+  [People.fallen]: t`ကျဆုံး`,
+  [People.wounded]: t`ထိခိုက်`
+}
 
 export interface Person {
   name: string;
@@ -22,6 +30,8 @@ export interface Person {
   confirmed?: boolean;
   gender?: 'm' | 'f';
   honorific?: 'string';
+  enName?: 'string';
+  enDetails?: 'string';
 }
 
 // on the run list is unreliable, so it's omitted for now
