@@ -11,6 +11,7 @@ export const Language: FC<{}> = () => {
     const handleChange = (newLocale: string) => {
         setLocale(newLocale)
         window.location.reload()
+        document.location.href = window.location.href.replace(window.location.hash, '')
     }
     const handleClick = (e: React.MouseEvent) => {
         setAnchorEl(e.currentTarget as HTMLElement)

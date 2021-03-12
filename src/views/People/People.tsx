@@ -20,7 +20,7 @@ import { getMediaFormatFromUrl, shouldBlurImage } from '../../utils/mediaUtils';
 import { Format } from '../../models/Format';
 import { woundedImages } from '../../resources/wounded';
 import { t } from 'ttag'
-import { getLocale } from '../../utils/i18n';
+import { getLocale, getLocaleCity } from '../../utils/i18n';
 
 const hasLiveData = (type: People) => [People.fallen, People.wounded].includes(type)
 
@@ -103,7 +103,8 @@ const normalizePeopleData = (data: Person[]) => data.map(p => {
         confirmed: p.confirmed?.toString().toLowerCase() === 'true',
         date,
         age: p.age ? parseInt(p.age.toString()) : undefined,
-        details: getDetails(p)
+        details: getDetails(p),
+        city: getLocaleCity(p.city)
     }
 })
 
@@ -126,6 +127,18 @@ const splitPersonMediaIntoRegularBlurred = (media: string[] | undefined) => {
 
 const cachedData: any = {
     [People.detained]: normalizedPeopleData.filter(p => p.status === People.detained)
+}
+
+const getNormalizedSortBy = (sortBy: string) => {
+    if (locale === 'my') {
+        return sortBy
+    }
+    // TODO: Until fully translated
+    if (['name'].includes(sortBy)) {
+        return `${locale}${sortBy[0].toLocaleUpperCase()}${sortBy.substr(1)}`
+    } else {
+        return sortBy
+    }
 }
 
 export const PeopleBreakdown: FC<{}> = () => {
@@ -170,7 +183,7 @@ export const PeopleBreakdown: FC<{}> = () => {
                 .finally(() => setLoading(false))   
         }
     }, [peopleType])
-    const rows = sort(data.filter((person: Person) => person.status === peopleType), [sortBy])
+    const rows = sort(data.filter((person: Person) => person.status === peopleType), [getNormalizedSortBy(sortBy)])
         .filter((person: any) => {
             for (let key in person) {
                 if (typeof person[key] === 'string' && (person[key]).toLowerCase().match(filter.toLowerCase())) {

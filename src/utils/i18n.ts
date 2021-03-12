@@ -1,3 +1,4 @@
+import { cityMappings } from './../models/LanguageMappings'
 import { addLocale, useLocale } from 'ttag';
 
 const defaultLocale = 'my'
@@ -19,9 +20,8 @@ export const setLocale = (locale: string) => {
   window.localStorage.setItem(cacheName, locale.toString())
 }
 
+const locale = getLocale();
 const initI18N = () => {
-    const locale = getLocale();
-
     if (locale !== 'my') {
         const translationsObj = require(`../../i18n/${locale}.json`);
         addLocale(locale, translationsObj);
@@ -29,5 +29,7 @@ const initI18N = () => {
         useLocale(locale);
     }
 }
+
+export const getLocaleCity = (city: string | undefined) => city && locale !== 'my' ? cityMappings[city.trim()] : city
 
 initI18N()

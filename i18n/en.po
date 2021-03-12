@@ -6,67 +6,67 @@ msgstr ""
 "mime-version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/App.tsx:36
+#: src/App.tsx:38
 msgid "နွေဦးတော်လှန်ရေးအာဇာနည်များ"
 msgstr "Spring Revolution Heroes"
 
-#: src/App.tsx:40
+#: src/App.tsx:42
 msgid "စုပေါင်းမှတ်တမ်းများ"
 msgstr "Vigil Gallery"
 
-#: src/views/People/People.tsx:222
+#: src/views/People/People.tsx:235
 msgid "AAPPBမှ ပဏာမစာရင်း။ နေ့စဥ်နောက်ဆုံးရ အသေးစိတ်ကို"
 msgstr "Initial list from AAPPB. Check daily updated list"
 
-#: src/views/People/People.tsx:222
+#: src/views/People/People.tsx:235
 msgid "ဒီမှာကြည့်နိုင်ပါသည်။"
 msgstr "here"
 
-#: src/views/People/People.tsx:223
+#: src/views/People/People.tsx:236
 msgid "ထိခိုက်သူစာရင်း အတိအကျမရှိသေးပါ"
 msgstr "Wounded list is not up-to-date"
 
-#: src/views/People/People.tsx:224
+#: src/views/People/People.tsx:237
 msgid "စာရင်းပြင်ချင်ပါက"
 msgstr "Edit the list"
 
-#: src/views/People/People.tsx:224
+#: src/views/People/People.tsx:237
 msgid "ဒီမှာပြင်ဆင်ပါ"
 msgstr "here"
 
-#: src/views/People/People.tsx:227
+#: src/views/People/People.tsx:240
 msgid "ရှာဖွေရန်"
 msgstr "Search"
 
-#: src/views/People/People.tsx:231
+#: src/views/People/People.tsx:244
 msgid "Export data"
 msgstr ""
 
-#: src/views/People/People.tsx:232
+#: src/views/People/People.tsx:245
 msgid "Legend"
 msgstr ""
 
-#: src/views/People/People.tsx:243
+#: src/views/People/People.tsx:256
 msgid "နာမည်"
 msgstr "name"
 
-#: src/views/People/People.tsx:244
+#: src/views/People/People.tsx:257
 msgid "မြို့"
 msgstr "city"
 
-#: src/views/People/People.tsx:248
+#: src/views/People/People.tsx:261
 msgid "အသက်"
 msgstr "age"
 
-#: src/views/People/People.tsx:249
+#: src/views/People/People.tsx:262
 msgid "အသေးစိတ်"
 msgstr "details"
 
-#: src/views/People/People.tsx:275
+#: src/views/People/People.tsx:288
 msgid "စာရင်းပြီး"
 msgstr "end of list"
 
-#: src/views/People/People.tsx:284
+#: src/views/People/People.tsx:297
 msgid ""
 "အချက်အလက်များ၊ ရုပ်ပုံများကို အွန်လိုင်းမှ ရယူကာ အလျင်မှီသလို "
 "ထည့်သွင်းပြင်ဆင်ထားပါသည်။ မူပိုင်ခွင့်သည် ပိုင်ရှင်များနှင့်သာ "
@@ -75,7 +75,7 @@ msgstr ""
 "Info and media are downloaded from online sources. All credits go to the "
 "owners. Translations are in progress."
 
-#: src/views/People/People.tsx:285
+#: src/views/People/People.tsx:298
 msgid ""
 "သတင်းမှားယွင်းမှုရှိပါက အတတ်နိုင်ဆုံး ပြင်ဆင်ပေးသွားပါမယ်။ သတင်းပေးပို့၊ "
 "ဖြည့်စွက်လိုပါက Controlsကိုနှိပ်ပြီး Formဖြည့်ပေးနိုင်ပါတယ်။"
@@ -83,7 +83,7 @@ msgstr ""
 "We will fix any errors asap. You can send us info by going to the form in "
 "the controls."
 
-#: src/views/People/People.tsx:286
+#: src/views/People/People.tsx:299
 msgid ""
 "သတင်းပေးရှာဖွေမှုလွယ်ကူစေရန် ကျဆုံးသွားသူများအတွက် #mmFallenHeroes နဲ့ "
 "ပျောက်ဆုံးနေသူများအတွက် #mmMissingHeroes ဟုအသုံးပြုပေးကြပါ။"
@@ -91,11 +91,11 @@ msgstr ""
 "To share information efficiently, use #mmFallenHeroes and #mmMissingHeroes "
 "facebook tags"
 
-#: src/views/People/People.tsx:287
+#: src/views/People/People.tsx:300
 msgid "အာဇာနည်များအား ဝမ်းနည်းလှစွာဖြင့် ဂုဏ်ပြုမှတ်တမ်းတင်အပ်ပါသည်။"
 msgstr "In honor of our fallen heroes"
 
-#: src/views/People/People.tsx:310
+#: src/views/People/People.tsx:323
 msgid ""
 "အောက်ပါ ရုပ်ပုံများသည် အလွန် အမြင်မတော် (သို့) သွေးထွက်သံယိုများပါသည်။ "
 "သူရဲကောင်းတို့ ပေးဆပ်ခဲ့ရမှုကို မှတ်တမ်းအရ သာ တင်ပါသည်။ မိသားစုမှ "
@@ -105,11 +105,11 @@ msgstr ""
 "here as records of their sacrifices. We will swiftly take them down at the "
 "request of family members."
 
-#: src/views/People/People.tsx:343
+#: src/views/People/People.tsx:356
 msgid "သတင်းမီဒီယာမှ အတည်ပြုထားခြင်း၊ ဓာတ်ပုံ ဗီဒီယို၊ တိုက်ရိုက်လင့်ခ်ရှိခြင်း"
 msgstr "Confirmed by news media and/or has multiple image/vid/direct links"
 
-#: src/views/People/People.tsx:344
+#: src/views/People/People.tsx:357
 msgid "ဓာတ်ပုံများကို ကလစ်နှိပ်၍ကြည့်နိုင်"
 msgstr "Can click the icon to see media files"
 
@@ -134,6 +134,6 @@ msgstr "fallen"
 msgid "ထိခိုက်"
 msgstr "wounded"
 
-#: src/views/People/People.tsx:247
+#: src/views/People/People.tsx:260
 msgid "နေ့"
 msgstr "date"
