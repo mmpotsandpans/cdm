@@ -46,7 +46,8 @@
     "predeploy": "yarn build",
     "deploy": "gh-pages -d build",
     "cleanup": "find ./src/resources/images -type f -iname \\*.docx -delete",
-    "ttag": "npx ttag update i18n/*.po src/ && npx ttag po2json i18n/en.po > i18n/en.json"
+    "ttag": "npx ttag update i18n/*.po src/ && npx ttag po2json i18n/en.po > i18n/en.json",
+    "compress-videos": "bash bin/compress-vids.sh"
   },
   "eslintConfig": {
     "extends": [
