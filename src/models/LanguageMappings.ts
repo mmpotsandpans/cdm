@@ -1,5 +1,5 @@
 export const cityMappings: any = {
-    "မြိုင် (မကွေး)": "Myaing (Magway)",
+    "မြိုင် (မ‌ကွေး)": "Myaing (Magway)",
     "ထားဝယ်": "Dawei",
     "မန္တလေး": "Mandalay",
     "ပဲခူး": "Bago",

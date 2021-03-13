@@ -146,6 +146,7 @@ const updatedTime = process.env.REACT_APP_INDEX_HASH ? (new Date(parseInt(proces
 export const PeopleBreakdown: FC<{}> = () => {
     const [peopleType, setPeopleType] = useState<People>(People.fallen)
     const [sortBy, setSortBy] = useState<keyof Person>("date");
+    const [sortDir, setSortDir] = useState<'asc' | 'desc'>('desc')
     const [filter, setFilter] = useState('')
     const [snackbarOpen, setSnackbarOpen] = useState(true);
     const [personCol, setPersonCol] = useState<[Person | undefined, keyof Person | undefined] | undefined>(undefined)
@@ -194,7 +195,9 @@ export const PeopleBreakdown: FC<{}> = () => {
             }
             return false
         })
-        .reverse()
+    if (sortDir === 'desc') {
+        rows.reverse()
+    }
     const handleDataCopy = () => {
         if (dataExportModalRef.current) {
             dataExportModalRef.current.querySelector('textarea')?.select()
@@ -217,6 +220,13 @@ export const PeopleBreakdown: FC<{}> = () => {
     const personMedia = person && column === 'name'
         ? splitPersonMediaIntoRegularBlurred(getPersonMedia(person, peopleType))
         : undefined
+    const handleHeaderClick = (col: keyof Person) => {
+        if (col === sortBy) {
+            setSortDir(sortDir === 'asc' ? 'desc' : 'asc')
+        } else {
+            setSortBy(col)
+        }
+    }
     return (
       <div className='PeopleBreakdown'>
           <Accordion expanded={controlsExpanded} ref={controlsRef} onAnimationEnd={adjustTableHeight}>
@@ -249,19 +259,19 @@ export const PeopleBreakdown: FC<{}> = () => {
                 </div>
             </AccordionDetails>
         </Accordion>
-        {loading && <CircularProgress color="secondary" style={{marginTop: '1em'}} />}
+        {loading && <CircularProgress color="secondary" style={{marginTop: '2em'}} />}
         {!loading && <TableContainer component={Paper} onClick={() => setControlsExpanded(false)} ref={tableRef}  onScroll={handleTableScroll}>
             <Table stickyHeader size="small" aria-label="people">
             <TableHead>
                 <TableRow>
                     <TableCell></TableCell>
-                    <TableCell onClick={() => setSortBy("name")}><TableSortLabel active={sortBy === 'name'}>{t`နာမည်`}</TableSortLabel></TableCell>
-                    <TableCell onClick={() => setSortBy("city")}><TableSortLabel active={sortBy === 'city'}>{t`မြို့`}</TableSortLabel></TableCell>
+                    <TableCell onClick={() => handleHeaderClick("name")}><TableSortLabel direction={sortDir} active={sortBy === 'name'}>{t`နာမည်`}</TableSortLabel></TableCell>
+                    <TableCell onClick={() => handleHeaderClick("city")}><TableSortLabel direction={sortDir} active={sortBy === 'city'}>{t`မြို့`}</TableSortLabel></TableCell>
                     {hasLiveData(peopleType) &&
                         <>
-                            <TableCell onClick={() => setSortBy("date")}><TableSortLabel active={sortBy === 'date'}>{t`နေ့`}</TableSortLabel></TableCell>
-                            <TableCell onClick={() => setSortBy("age")}><TableSortLabel active={sortBy === 'age'}>{t`အသက်`}</TableSortLabel></TableCell>
-                            <TableCell onClick={() => setSortBy("details")}><TableSortLabel active={sortBy === 'details'}>{t`အသေးစိတ်`}</TableSortLabel></TableCell>
+                            <TableCell onClick={() => handleHeaderClick("date")}><TableSortLabel direction={sortDir} active={sortBy === 'date'}>{t`နေ့`}</TableSortLabel></TableCell>
+                            <TableCell onClick={() => handleHeaderClick("age")}><TableSortLabel direction={sortDir} active={sortBy === 'age'}>{t`အသက်`}</TableSortLabel></TableCell>
+                            <TableCell onClick={() => handleHeaderClick("details")}><TableSortLabel direction={sortDir} active={sortBy === 'details'}>{t`အသေးစိတ်`}</TableSortLabel></TableCell>
                         </>
                     }
                 </TableRow>
