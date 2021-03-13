@@ -141,6 +141,8 @@ const getNormalizedSortBy = (sortBy: string) => {
     }
 }
 
+const updatedTime = process.env.REACT_APP_INDEX_HASH ? (new Date(parseInt(process.env.REACT_APP_INDEX_HASH) * 1000)) : undefined
+
 export const PeopleBreakdown: FC<{}> = () => {
     const [peopleType, setPeopleType] = useState<People>(People.fallen)
     const [sortBy, setSortBy] = useState<keyof Person>("date");
@@ -285,7 +287,7 @@ export const PeopleBreakdown: FC<{}> = () => {
                     }
                 </TableRow>
                 ))}
-                <TableRow><TableCell colSpan={5}>{t`စာရင်းပြီး`}</TableCell></TableRow>
+                <TableRow><TableCell colSpan={5}>{t`ရုပ်ပုံများ နောက်ဆုံးပြင်ဆင်ချိန်`} {updatedTime?.toLocaleDateString()} {updatedTime?.toLocaleTimeString()}</TableCell></TableRow>
             </TableBody>
             </Table>
         </TableContainer>
