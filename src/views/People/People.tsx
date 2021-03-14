@@ -21,6 +21,7 @@ import { Format } from '../../models/Format';
 import { woundedImages } from '../../resources/wounded';
 import { t } from 'ttag'
 import { getLocale, getLocaleCity } from '../../utils/i18n';
+import { CSVLink } from 'react-csv';
 
 const hasLiveData = (type: People) => [People.fallen, People.wounded].includes(type)
 
@@ -36,6 +37,17 @@ const exportPeople = (people: Person[]) => {
         text += '\n\n'
     })
     return text
+}
+
+const data2csv = (data: string) => {
+    const csv: string[][] = []
+    data.split('\n').forEach(line => {
+        if (line) {
+            const row = line.split('\t')
+            csv.push(row)
+        }
+    })
+    return csv
 }
 
 const verifiedIcon = <CheckCircleIcon style={{color: '#115293'}} fontSize='small'/>
@@ -357,7 +369,7 @@ export const PeopleBreakdown: FC<{}> = () => {
         <Modal ref={dataExportModalRef} className='export-modal' open={isExportModalOpen} onClose={() => setIsExportModalOpen(false)}>
             <>
                 <pre>
-                    <div>Copy <FileCopyIcon onClick={handleDataCopy} /></div>
+                    <div>Copy <FileCopyIcon onClick={handleDataCopy} /> <CSVLink data={data2csv(exportData)} filename='heroes.csv'>Download CSV</CSVLink></div>
                     {exportData}
                 </pre>
                 <textarea defaultValue={exportData}></textarea>
