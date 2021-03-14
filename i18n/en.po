@@ -136,4 +136,4 @@ msgstr "date"
 
 #: src/views/People/People.tsx:300
 msgid "ရုပ်ပုံများ နောက်ဆုံးပြင်ဆင်ချိန်"
-msgstr "Medial files last updated"
+msgstr "Media files last updated"

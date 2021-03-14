@@ -1,5 +1,7 @@
 export const cityMappings: any = {
+    // TODO: yea encoding ordering issues, yolo for now
     "မြိုင် (မ‌ကွေး)": "Myaing (Magway)",
+    "မြိုင် (မကွေး)": "Myaing (Magway)",
     "ထားဝယ်": "Dawei",
     "မန္တလေး": "Mandalay",
     "ပဲခူး": "Bago",
@@ -19,6 +21,8 @@ export const cityMappings: any = {
     "ဘားအံ": "Hpa-an",
     "နေပြည်တော်": "Naypyitaw",
     "မြိတ်": "Myeik",
-    "မကွေး": "Magway"
+    "မကွေး": "Magway",
+    "ပြည်": "Pyay",
+    "ချောက်": "Chauk"
 }
     
