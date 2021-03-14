@@ -23,6 +23,8 @@ export const cityMappings: any = {
     "မြိတ်": "Myeik",
     "မကွေး": "Magway",
     "ပြည်": "Pyay",
-    "ချောက်": "Chauk"
+    "ချောက်": "Chauk",
+    "တွံတေး": "Twantay",
+    "ဖားကန့်": "Hpakant"
 }
     

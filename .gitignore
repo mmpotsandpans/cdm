@@ -26,4 +26,5 @@ yarn-error.log*
 .ssh/
 
 # exclude large vids
-.hidden
+.hidden/
+*.hidden*
