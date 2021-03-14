@@ -9,9 +9,12 @@ const locale = getLocale()
 export const Language: FC<{}> = () => {
     const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null)
     const handleChange = (newLocale: string) => {
+        if (locale === newLocale) {
+            return
+        }
         setLocale(newLocale)
+        document.location.href = window.location.href.replace(/\?.*/, '')
         window.location.reload()
-        document.location.href = window.location.href.replace(window.location.hash, '')
     }
     const handleClick = (e: React.MouseEvent) => {
         setAnchorEl(e.currentTarget as HTMLElement)

@@ -22,6 +22,7 @@ import { woundedImages } from '../../resources/wounded';
 import { t } from 'ttag'
 import { getLocale, getLocaleCity } from '../../utils/i18n';
 import { CSVLink } from 'react-csv';
+import { NavLink } from 'react-router-dom';
 
 const hasLiveData = (type: People) => [People.fallen, People.wounded].includes(type)
 
@@ -321,8 +322,8 @@ export const PeopleBreakdown: FC<{}> = () => {
                     <p>{t`အချက်အလက်များ၊ ရုပ်ပုံများကို အွန်လိုင်းမှ ရယူကာ အလျင်မှီသလို ထည့်သွင်းပြင်ဆင်ထားပါသည်။ မူပိုင်ခွင့်သည် ပိုင်ရှင်များနှင့်သာ သက်ဆိုင်ပါသည်။`}</p>
                     <p>{t`သတင်းမှားယွင်းမှုရှိပါက အတတ်နိုင်ဆုံး ပြင်ဆင်ပေးသွားပါမယ်။ သတင်းပေးပို့၊ ဖြည့်စွက်လိုပါက Controlsကိုနှိပ်ပြီး Formဖြည့်ပေးနိုင်ပါတယ်။`}</p>
                     <p>{t`သတင်းပေးရှာဖွေမှုလွယ်ကူစေရန် ကျဆုံးသွားသူများအတွက် #mmFallenHeroes နဲ့ ပျောက်ဆုံးနေသူများအတွက် #mmMissingHeroes ဟုအသုံးပြုပေးကြပါ။`}</p>
+                    <p>{t`ကျန်ရစ်သူများကို ကူညီလိုပါက`} <NavLink to="/resources" style={{color: 'yellowgreen'}}>link</NavLink></p>
                     <p style={{textAlign: 'center'}}>{t`အာဇာနည်များအား ဝမ်းနည်းလှစွာဖြင့် ဂုဏ်ပြုမှတ်တမ်းတင်အပ်ပါသည်။`}</p>
-                    {/* <p>ကျန်ရစ်သူများကို ကူညီလိုပါက <a href='https://nwayooheroes.org/'>https://nwayooheroes.org/</a>ကို သွားပါ(ဒီsiteနှင့် မသက်ဆိုင်)</p> */}
                 </div>
             }
             autoHideDuration={20000}

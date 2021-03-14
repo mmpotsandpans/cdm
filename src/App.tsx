@@ -14,6 +14,7 @@ import { AppBar, createMuiTheme, Divider, ThemeProvider, Toolbar, Typography } f
 import { Redirect } from './views/Redirect/Redirect';
 import {t} from 'ttag'
 import { Language } from './components/Language/Language';
+import { Resources } from './views/Resources/Resources';
 
 const theme = createMuiTheme({
   typography: {
@@ -53,6 +54,9 @@ const App = () => {
                 </Route>
                 <Route path='/list'>
                   <Redirect url='https://docs.google.com/spreadsheets/d/1g5fnoIRgKa68ewRh9PS0lpz704SE5xUdVEqS4LVbBl0/edit?usp=sharing' />
+                </Route>
+                <Route path='/resources'>
+                  <Resources />
                 </Route>
                 <Route path="/">
                   <PeopleBreakdown />

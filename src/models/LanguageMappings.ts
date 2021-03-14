@@ -25,6 +25,7 @@ export const cityMappings: any = {
     "ပြည်": "Pyay",
     "ချောက်": "Chauk",
     "တွံတေး": "Twantay",
-    "ဖားကန့်": "Hpakant"
+    "ဖားကန့်": "Hpakant",
+    "ဖားကန့်": "Hpakant"
 }
     
