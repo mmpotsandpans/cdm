@@ -16,6 +16,7 @@ import { Redirect } from './views/Redirect/Redirect';
 import { t } from 'ttag'
 import { Language } from './components/Language/Language';
 import { Resources } from './views/Resources/Resources';
+import { getLocale } from './utils/i18n';
 
 const theme = createMuiTheme({
   typography: {
@@ -45,17 +46,20 @@ const App = () => {
     </ThemeProvider>
   </div>
 }
+
+const locale = getLocale()
 const Views = () => {
   const routerLocation = useLocation()
   useEffect(() => {
-    const pageName = pageNames[routerLocation.pathname] 
-    document.title = pageName ? `${pageName} : ${siteName}` : siteName
+    const pageName = pageNames[routerLocation.pathname]
+    const title = pageName ? `${pageName} : ${siteName}` : siteName
+    document.title = title
     if (process.env.NODE_ENV !== 'development') {
-      (window as any).gtag('send', {
-        hitType: 'pageview',
-        page: window.location.pathname + window.location.search + window.location.hash,
-        title: document.title
-      });
+      (window as any).gtag('event', 'page_view', {
+        page_title: title,
+        page_path: window.location.pathname + window.location.search + window.location.hash,
+        locale
+      })
     }
   }, [routerLocation])
   return (

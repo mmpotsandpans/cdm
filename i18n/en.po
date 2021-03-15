@@ -6,11 +6,11 @@ msgstr ""
 "mime-version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/App.tsx:39
+#: src/App.tsx:66
 msgid "နွေဦးတော်လှန်ရေးအာဇာနည်များ"
 msgstr "Spring Revolution Heroes"
 
-#: src/App.tsx:43
+#: src/App.tsx:70
 msgid "စုပေါင်းမှတ်တမ်းများ"
 msgstr "Vigil Gallery"
 
