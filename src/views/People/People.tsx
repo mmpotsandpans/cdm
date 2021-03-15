@@ -257,9 +257,11 @@ export const PeopleBreakdown: FC<{}> = () => {
                         ))}
                     </Breadcrumbs>
                     <div className='info'>
-                        {peopleType === People.detained && <span>{t`AAPPBမှ ပဏာမစာရင်း။ နေ့စဥ်နောက်ဆုံးရ အသေးစိတ်ကို`} <a target='_blank' rel='noreferrer' href='https://aappb.org/bu?cat=17'>{t`ဒီမှာကြည့်နိုင်ပါသည်။`}</a></span>}
+                        {/* eslint-disable-next-line react/jsx-no-target-blank */}
+                        {peopleType === People.detained && <span>{t`AAPPBမှ ပဏာမစာရင်း။ နေ့စဥ်နောက်ဆုံးရ အသေးစိတ်ကို`} <a target='_blank' rel='noopener' href='https://aappb.org/bu?cat=17'>{t`ဒီမှာကြည့်နိုင်ပါသည်။`}</a></span>}
                         {peopleType === People.wounded && <><span>{t`ထိခိုက်သူစာရင်း အတိအကျမရှိသေးပါ`}</span><br></br></>}
-                        {hasLiveData(peopleType) && <span>{t`စာရင်းပြင်ချင်ပါက`} <a target='_blank' rel='noreferrer' href='https://forms.gle/dZ4wKV2gFoPhTRff9'>{t`ဒီမှာပြင်ဆင်ပါ`}</a></span>}
+                        {/* eslint-disable-next-line react/jsx-no-target-blank */}
+                        {hasLiveData(peopleType) && <span>{t`စာရင်းပြင်ချင်ပါက`} <a target='_blank' rel='noopener' href='https://forms.gle/dZ4wKV2gFoPhTRff9'>{t`ဒီမှာပြင်ဆင်ပါ`}</a></span>}
                     </div>
                     <div className='search'>
                         <label>{t`ရှာဖွေရန်`}</label>&nbsp;

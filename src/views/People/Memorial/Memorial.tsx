@@ -40,7 +40,9 @@ images.set('mar', ({
         'https://bit.ly/3sSvvOr',
         'bit.ly/2NRLyx1',
         'bit.ly/3kTEnkc',
-        'bit.ly/3elvdM3'
+        'bit.ly/3elvdM3',
+        'https://rb.gy/byos2l',
+        'https://rb.gy/k5wvjk'
     ]
 }))
 

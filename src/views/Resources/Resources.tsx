@@ -17,7 +17,8 @@ export const Resources: FC<{}> = () => {
             <h1>{t`အကူအညီပေးနိုင်သော၊ မှတ်တမ်းတင်ထားသော နေရာများ (ဒီဆိုက်နှင့် မသက်ဆိုင်)`}</h1>
             <List>
                 {Object.entries(resources).map(([name, link]) => (
-                    <ListItem key={name}><a href={link} target='_blank' rel='noreferrer'>{name}</a></ListItem>
+                    // eslint-disable-next-line react/jsx-no-target-blank
+                    <ListItem key={name}><a href={link} target='_blank' rel='noopener'>{name}</a></ListItem>
                 ))}
             </List>
         </div>
