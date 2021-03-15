@@ -3,20 +3,15 @@ import React, { useEffect } from 'react';
 import './utils/i18n'
 import './App.scss';
 import {
-  Switch,
-  Route,
   NavLink,
   HashRouter,
   useLocation,
 } from "react-router-dom";
-import { PeopleBreakdown } from './views/People/People';
-import { Memorial } from './views/People/Memorial/Memorial';
 import { AppBar, createMuiTheme, Divider, ThemeProvider, Toolbar, Typography } from '@material-ui/core';
-import { Redirect } from './views/Redirect/Redirect';
 import { t } from 'ttag'
 import { Language } from './components/Language/Language';
-import { Resources } from './views/Resources/Resources';
 import { getLocale } from './utils/i18n';
+import { Routes } from './routes';
 
 const theme = createMuiTheme({
   typography: {
@@ -76,20 +71,7 @@ const Views = () => {
           <Language />
         </Toolbar>
       </AppBar>
-      <Switch>
-        <Route path="/memorial">
-          <Memorial />
-        </Route>
-        <Route path='/form'>
-          <Redirect url='https://forms.gle/dZ4wKV2gFoPhTRff9' />
-        </Route>
-        <Route path='/resources'>
-          <Resources />
-        </Route>
-        <Route path="/">
-          <PeopleBreakdown />
-        </Route>
-      </Switch>
+      <Routes />
     </div>
   );
 }
