@@ -1,0 +1,13 @@
+.Scroll {
+    position: fixed;
+    right: 0.1em;
+    top: 50%;
+    display: flex;
+    flex-direction: column;
+    svg {
+        cursor: pointer;
+        background: black;
+        padding: 0.1em;
+        color: antiquewhite;
+    }
+}

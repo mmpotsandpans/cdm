@@ -24,6 +24,8 @@ import { getLocale, getLocaleCity } from '../../utils/i18n';
 import { CSVLink } from 'react-csv';
 import { NavLink } from 'react-router-dom';
 import debounce from 'lodash.debounce';
+import { Scroll } from '../../components/Scroll/Scroll';
+import throttle from 'lodash.throttle';
 
 const hasLiveData = (type: People) => [People.fallen, People.wounded].includes(type)
 
@@ -169,14 +171,25 @@ export const PeopleBreakdown: FC<{}> = () => {
     const [controlsExpanded, setControlsExpanded] = React.useState(false);
     const dataExportModalRef = useRef<HTMLElement | undefined>(undefined);
     const controlsRef = useRef<HTMLDivElement | undefined>(undefined)
-    const tableRef = useRef<any>(undefined)
+    const tableRef = useRef<HTMLTableElement | null>(null)
     const [loading, setLoading] = useState(false)
     const [data, setData] = useState<Person[]>([])
-    const handleTableScroll = () => {
+    const [showScroll, setShowScroll] = useState(false)
+    const handleTableScroll = throttle(() => {
         setSnackbarOpen(false)
         setControlsExpanded(false)
-    }
-    const handleFilterChange = debounce(setFilter, 1000)
+        setShowScroll(true)
+    }, 1000)
+    useEffect(() => {
+        if (!showScroll) {
+            return
+        }
+        const hideTimeout = window.setTimeout(() => {
+            setShowScroll(false)
+        }, 5000)
+        return () => window.clearTimeout(hideTimeout)
+    }, [showScroll])
+    const handleFilterChange = debounce(setFilter, 2000)
     useEffect(() => {
         if (cachedData[peopleType]) {
             setData(cachedData[peopleType])
@@ -276,6 +289,7 @@ export const PeopleBreakdown: FC<{}> = () => {
                 </div>
             </AccordionDetails>
         </Accordion>
+        {showScroll && <Scroll node={tableRef.current} />}
         {loading && <CircularProgress color="secondary" style={{marginTop: '2em'}} />}
         {!loading && <TableContainer component={Paper} onClick={() => setControlsExpanded(false)} ref={tableRef}  onScroll={handleTableScroll}>
             <Table stickyHeader size="small" aria-label="people">
