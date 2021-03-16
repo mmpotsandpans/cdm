@@ -23,6 +23,7 @@ import { t } from 'ttag'
 import { getLocale, getLocaleCity } from '../../utils/i18n';
 import { CSVLink } from 'react-csv';
 import { NavLink } from 'react-router-dom';
+import debounce from 'lodash.debounce';
 
 const hasLiveData = (type: People) => [People.fallen, People.wounded].includes(type)
 
@@ -175,6 +176,7 @@ export const PeopleBreakdown: FC<{}> = () => {
         setSnackbarOpen(false)
         setControlsExpanded(false)
     }
+    const handleFilterChange = debounce(setFilter, 1000)
     useEffect(() => {
         if (cachedData[peopleType]) {
             setData(cachedData[peopleType])
@@ -265,7 +267,7 @@ export const PeopleBreakdown: FC<{}> = () => {
                     </div>
                     <div className='search'>
                         <label>{t`ရှာဖွေရန်`}</label>&nbsp;
-                        <input value={filter} onChange={e => setFilter(e.target.value)} />
+                        <input onChange={e => handleFilterChange(e.target.value)} />
                     </div>
                     <div className='actions'>
                         <Button variant="contained" color="secondary" onClick={() => setIsExportModalOpen(true)}>{t`Export data`}</Button>
@@ -292,8 +294,9 @@ export const PeopleBreakdown: FC<{}> = () => {
                 </TableRow>
             </TableHead>
             <TableBody>
+                {/* TODO: fix key after we win this */}
                 {rows.map((row, i) => (
-                <TableRow key={row.name}>
+                <TableRow key={row.name + '-' + i}>
                     <TableCell component="th" scope="row">
                     {i + 1}
                     </TableCell>

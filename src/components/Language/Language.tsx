@@ -1,4 +1,4 @@
-import LanguageIcon from '@material-ui/icons/Language';
+import TranslateIcon from '@material-ui/icons/Translate';
 import Popover from '@material-ui/core/Popover';
 import React, { FC, useState } from 'react';
 import { getLocale, localeNames, locales, setLocale } from '../../utils/i18n';
@@ -24,7 +24,7 @@ export const Language: FC<{}> = () => {
     }
     return (
         <div className='Language'>
-            <LanguageIcon onClick={handleClick} />
+            <TranslateIcon onClick={handleClick} />
             <Popover
                 open={!!anchorEl}
                 anchorEl={anchorEl}
