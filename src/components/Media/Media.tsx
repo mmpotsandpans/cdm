@@ -1,8 +1,10 @@
-import { FC, useMemo, useState } from "react"
+import React, { FC, useMemo, useState } from "react"
 import { Format } from "../../models/Format"
 import { getMediaFormatFromUrl, shouldBlurImage } from "../../utils/mediaUtils"
 import BlurOnIcon from '@material-ui/icons/BlurOn';
 import BlurOffIcon from '@material-ui/icons/BlurOff';
+import ProgressiveImage from 'react-progressive-image'
+import preloadImage from '../../resources/images/preloading.jpg'
 import './Media.scss'
 
 export interface MediaProps {
@@ -20,7 +22,9 @@ export const Media: FC<MediaProps> = ({src, alt}) => {
         {getMediaFormatFromUrl(src) !== Format.video &&
             <div className='media-image-container'>
                 {originallyBlurred && <BlurIcon className='blur-icon' onClick={() => setBlurred(!blurred)} fontSize='large' color='secondary' />}
-                <img src={src} alt={alt} className={blurred ? 'blurred' : ''}/>
+                <ProgressiveImage src={src} placeholder={preloadImage}>
+                    {(src: string) => <img src={src} alt={alt} className={blurred ? 'blurred' : ''}/>}
+                </ProgressiveImage>
             </div>
         }
         {getMediaFormatFromUrl(src) === Format.video && <video controls><source src={src} /></video>}
