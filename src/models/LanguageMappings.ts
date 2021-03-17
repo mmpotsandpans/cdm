@@ -26,6 +26,9 @@ export const cityMappings: any = {
     "ချောက်": "Chauk",
     "တွံတေး": "Twantay",
     "ဖားကန့်": "Hpakant",
-    "ဖားကန့်": "Hpakant"
+    "ဖားကန့်": "Hpakant",
+    "ကောလင်း (စစ်ကိုင်း)": "Kawlin (Sagain)",
+    "ပုသိမ်": "Pathein",
+    "အောင်လံ": "Aunglan"
 }
     
