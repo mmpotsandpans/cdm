@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import React, { FC, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Link from '@material-ui/core/Link';
 import { People, peopleData, peopleTypes, peopleTypesStrings, Person } from '../../models/People';
@@ -159,6 +159,22 @@ const getNormalizedSortBy = (sortBy: string) => {
 
 const updatedTime = process.env.REACT_APP_INDEX_HASH ? (new Date(parseInt(process.env.REACT_APP_INDEX_HASH) * 1000)) : undefined
 
+const getTotals = (people: Person[])  => {
+    const totals: any = {
+        date: {},
+        city: {}
+    }
+    people.forEach((person: Person) => {
+        if (person.date) {
+            totals.date[person.date] = (totals.date[person.date] || 0) + 1
+        }
+        if (person.city) {
+            totals.city[person.city] = (totals.city[person.city] || 0) + 1
+        }
+    })
+    return totals
+}
+
 export const PeopleBreakdown: FC<{}> = () => {
     const [peopleType, setPeopleType] = useState<People>(People.fallen)
     const [sortBy, setSortBy] = useState<keyof Person>("date");
@@ -175,6 +191,7 @@ export const PeopleBreakdown: FC<{}> = () => {
     const [loading, setLoading] = useState(false)
     const [data, setData] = useState<Person[]>([])
     const [showScroll, setShowScroll] = useState(false)
+    const [error, setError] = useState(false)
     const handleTableScroll = throttle(() => {
         setSnackbarOpen(false)
         setControlsExpanded(false)
@@ -193,6 +210,7 @@ export const PeopleBreakdown: FC<{}> = () => {
     useEffect(() => {
         if (cachedData[peopleType]) {
             setData(cachedData[peopleType])
+            setError(false)
             return
         }
         setLoading(true)
@@ -201,6 +219,7 @@ export const PeopleBreakdown: FC<{}> = () => {
             setLoading(false)
             setData(cachedData[peopleType])
         } else {
+            setError(false)
             const url = peopleType === People.fallen ? 'https://heroesofmyanmar.api.stdlib.com/gsheets-database@dev/select/' : 'https://heroesofmyanmar.api.stdlib.com/wounded@dev/select/'
             fetch(url)
                 .then(resp => resp.json())
@@ -210,6 +229,11 @@ export const PeopleBreakdown: FC<{}> = () => {
                         status: peopleType
                     }))
                     setData(cachedData[peopleType])
+                    setError(false)
+                })
+                .catch((e) => {
+                    setError(true)
+                    console.error(e)
                 })
                 .finally(() => setLoading(false))   
         }
@@ -255,6 +279,8 @@ export const PeopleBreakdown: FC<{}> = () => {
             setSortBy(col)
         }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    const totals = useMemo(() => getTotals(rows), [data])
     return (
       <div className='PeopleBreakdown'>
           <Accordion expanded={controlsExpanded} ref={controlsRef} onAnimationEnd={adjustTableHeight}>
@@ -290,8 +316,9 @@ export const PeopleBreakdown: FC<{}> = () => {
             </AccordionDetails>
         </Accordion>
         {showScroll && <Scroll node={tableRef.current} />}
+        {error && <div className='error-msg'>There was an error loading data. Please reload the page again later.</div>}
         {loading && <CircularProgress color="secondary" style={{marginTop: '2em'}} />}
-        {!loading && <TableContainer component={Paper} onClick={() => setControlsExpanded(false)} ref={tableRef}  onScroll={handleTableScroll}>
+        {!loading && !error && <TableContainer component={Paper} onClick={() => setControlsExpanded(false)} ref={tableRef}  onScroll={handleTableScroll}>
             <Table stickyHeader size="small" aria-label="people">
             <TableHead>
                 <TableRow>
@@ -317,10 +344,10 @@ export const PeopleBreakdown: FC<{}> = () => {
                     <TableCell component="th" scope="row" className='sticky-column'>
                         <div className='name-cell' onClick={() => setPersonCol([row, 'name'])}>{getName(row)} {row.confirmed && verifiedIcon} {getPersonMedia(row, peopleType) && <PhotoLibraryIcon fontSize='small' />}</div>
                     </TableCell>
-                    <TableCell>{row.city}</TableCell>
+                    <TableCell title={row.city ? `Total ${totals.city[row.city]}` : ''}>{row.city}</TableCell>
                     {hasLiveData(peopleType) &&
                         <>
-                            <TableCell>{row.date ? (new Date(parseInt(row.date))).toLocaleDateString() : ''}</TableCell>
+                            <TableCell title={row.date ? `Total ${totals.date[row.date]}` : ''}>{row.date ? (new Date(parseInt(row.date))).toLocaleDateString() : ''}</TableCell>
                             <TableCell>{row.age || '-'}</TableCell>
                             <TableCell onClick={() => setPersonCol([row, 'details'])}>
                                 <Linkify><div className='details'>{getDetails(row)}</div></Linkify>                                    

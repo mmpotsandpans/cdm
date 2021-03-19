@@ -7,6 +7,8 @@ import './Resources.scss'
 const resources = {
     'Nway Oo Heroes': 'https://nwayooheroes.org',
     'Memoirs of the Fallen': 'https://memoirsofthefallen.com',
+    'Honor Heroes Myanmar': 'https://www.facebook.com/pg/HonorHeroesMyanmar/',
+    'Lu Pyout': 'https://lupyout.com',
     'How Many Dead Bodies': 'https://www.facebook.com/How-many-dead-bodies-112813997526188/',
     'Myanmar Spring Revolution Fallen Stars': 'https://bit.ly/myanmarspring22222',
     'Myanmar Freedom Memorial': 'https://myanmarfreedommemorial.info/'
