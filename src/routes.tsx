@@ -16,6 +16,9 @@ export const Routes = () => (
         <Route path='/resources'>
           <Resources />
         </Route>
+        <Route path='/graphs'>
+          <iframe title='graphs' width="100%" height="1068" src="https://datastudio.google.com/embed/reporting/cb88e51e-5a0c-4333-9675-4a6a224b9c2e/page/aDL8B" frameBorder="0" style={{border:0}} allowFullScreen></iframe>
+        </Route>
         <Route path="/">
           <PeopleBreakdown />
         </Route>

@@ -23,7 +23,7 @@ const sortImages = (a: string, b: string) => {
 const images = new Map<string, MonthImages>()
 const febImages = importAll(require.context('../../../resources/images/memorial/feb', true));
 images.set('feb', ({
-    srcs: febImages.map((m:any) => m.default).sort(sortImages),
+    srcs: febImages.map((m:any) => m.default).sort(sortImages).reverse(),
     links: [
         'bit.ly/3b22PMF',
         'bit.ly/3sxuL0P',
@@ -33,7 +33,7 @@ images.set('feb', ({
 const marImages = importAll(require.context('../../../resources/images/memorial/mar', true));
 const backgroundVid = marImages.find((i: any) => /v2/.test(i.default)).default
 images.set('mar', ({
-    srcs: marImages.map((m:any) => m.default).sort(sortImages),
+    srcs: marImages.map((m:any) => m.default).sort(sortImages).reverse(),
     links: [
         'bit.ly/3uU6zaV',
         'bit.ly/2OsoWDp',
