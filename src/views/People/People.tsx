@@ -26,6 +26,7 @@ import { NavLink } from 'react-router-dom';
 import debounce from 'lodash.debounce';
 import { Scroll } from '../../components/Scroll/Scroll';
 import throttle from 'lodash.throttle';
+import { normalizeString } from '../../utils/stringUtils';
 
 const hasLiveData = (type: People) => [People.fallen, People.wounded].includes(type)
 
@@ -116,11 +117,12 @@ const normalizePeopleData = (data: Person[]) => data.map(p => {
     }
     return {
         ...p,
+        name: normalizeString(p.name),
         confirmed: p.confirmed?.toString().toLowerCase() === 'true',
         date,
         age: p.age ? parseInt(p.age.toString()) : undefined,
         details: getDetails(p),
-        city: getLocaleCity(p.city)
+        city: getLocaleCity(normalizeString(p.city || ''))
     }
 })
 

@@ -1,6 +1,5 @@
-export const cityMappings: any = {
-    // TODO: yea encoding ordering issues, yolo for now
-    "မြိုင် (မ‌ကွေး)": "Myaing (Magway)",
+import { normalizeString } from './../utils/stringUtils'
+const _cityMappings: any = {
     "မြိုင် (မကွေး)": "Myaing (Magway)",
     "ထားဝယ်": "Dawei",
     "မန္တလေး": "Mandalay",
@@ -26,9 +25,16 @@ export const cityMappings: any = {
     "ချောက်": "Chauk",
     "တွံတေး": "Twantay",
     "ဖားကန့်": "Hpakant",
-    "ဖားကန့်": "Hpakant",
     "ကောလင်း (စစ်ကိုင်း)": "Kawlin (Sagain)",
     "ပုသိမ်": "Pathein",
-    "အောင်လံ": "Aunglan"
+    "အောင်လံ": "Aunglan",
+    "အောင်ပန်း": "Aungpan",
+    "လွိုင်ကော်": "Loikaw",
+    "မိုးကုတ်": "Mogok",
+    "ပေါင်": "Paung"
 }
-    
+
+export const cityMappings: any = {}
+for (const [city, engCity] of Object.entries(_cityMappings)) {
+    cityMappings[normalizeString(city)] = engCity
+}

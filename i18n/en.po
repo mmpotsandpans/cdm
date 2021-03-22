@@ -138,7 +138,7 @@ msgstr "date"
 msgid "ရုပ်ပုံများ နောက်ဆုံးပြင်ဆင်ချိန်"
 msgstr "Media files last updated"
 
-#: src/views/Resources/Resources.tsx:19
+#: src/views/Resources/Resources.tsx:21
 msgid "အကူအညီပေးနိုင်သော၊ မှတ်တမ်းတင်ထားသော နေရာများ (ဒီဆိုက်နှင့် မသက်ဆိုင်)"
 msgstr ""
 "Places where you can donate or learn more about the heores (Unaffiliated "

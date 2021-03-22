@@ -1,0 +1,1 @@
+export const normalizeString = (s: string) => s.trim().normalize('NFD')
