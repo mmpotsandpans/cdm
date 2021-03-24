@@ -14,55 +14,55 @@ msgstr "Spring Revolution Heroes"
 msgid "စုပေါင်းမှတ်တမ်းများ"
 msgstr "Vigil Gallery"
 
-#: src/views/People/People.tsx:302
+#: src/views/People/People.tsx:304
 msgid "AAPPBမှ ပဏာမစာရင်း။ နေ့စဥ်နောက်ဆုံးရ အသေးစိတ်ကို"
 msgstr "Initial list from AAPPB. Check daily updated list"
 
-#: src/views/People/People.tsx:302
+#: src/views/People/People.tsx:304
 msgid "ဒီမှာကြည့်နိုင်ပါသည်။"
 msgstr "here"
 
-#: src/views/People/People.tsx:303
+#: src/views/People/People.tsx:305
 msgid "ထိခိုက်သူစာရင်း အတိအကျမရှိသေးပါ"
 msgstr "Wounded list is not up-to-date"
 
-#: src/views/People/People.tsx:305
+#: src/views/People/People.tsx:307
 msgid "စာရင်းပြင်ချင်ပါက"
 msgstr "Edit the list"
 
-#: src/views/People/People.tsx:305
+#: src/views/People/People.tsx:307
 msgid "ဒီမှာပြင်ဆင်ပါ"
 msgstr "here"
 
-#: src/views/People/People.tsx:308
+#: src/views/People/People.tsx:310
 msgid "ရှာဖွေရန်"
 msgstr "Search"
 
-#: src/views/People/People.tsx:312
+#: src/views/People/People.tsx:314
 msgid "Export data"
 msgstr ""
 
-#: src/views/People/People.tsx:313
+#: src/views/People/People.tsx:315
 msgid "Legend"
 msgstr ""
 
-#: src/views/People/People.tsx:326
+#: src/views/People/People.tsx:328
 msgid "နာမည်"
 msgstr "name"
 
-#: src/views/People/People.tsx:327
+#: src/views/People/People.tsx:329
 msgid "မြို့"
 msgstr "city"
 
-#: src/views/People/People.tsx:331
+#: src/views/People/People.tsx:333
 msgid "အသက်"
 msgstr "age"
 
-#: src/views/People/People.tsx:332
+#: src/views/People/People.tsx:334
 msgid "အသေးစိတ်"
 msgstr "details"
 
-#: src/views/People/People.tsx:368
+#: src/views/People/People.tsx:370
 msgid ""
 "အချက်အလက်များ၊ ရုပ်ပုံများကို အွန်လိုင်းမှ ရယူကာ အလျင်မှီသလို "
 "ထည့်သွင်းပြင်ဆင်ထားပါသည်။ မူပိုင်ခွင့်သည် ပိုင်ရှင်များနှင့်သာ "
@@ -71,7 +71,7 @@ msgstr ""
 "Info and media are downloaded from online sources. All credits go to the "
 "owners. Translations are in progress."
 
-#: src/views/People/People.tsx:369
+#: src/views/People/People.tsx:371
 msgid ""
 "သတင်းမှားယွင်းမှုရှိပါက အတတ်နိုင်ဆုံး ပြင်ဆင်ပေးသွားပါမယ်။ သတင်းပေးပို့၊ "
 "ဖြည့်စွက်လိုပါက Controlsကိုနှိပ်ပြီး Formဖြည့်ပေးနိုင်ပါတယ်။"
@@ -79,7 +79,7 @@ msgstr ""
 "We will fix any errors asap. You can send us info by going to the form in "
 "the controls."
 
-#: src/views/People/People.tsx:370
+#: src/views/People/People.tsx:372
 msgid ""
 "သတင်းပေးရှာဖွေမှုလွယ်ကူစေရန် ကျဆုံးသွားသူများအတွက် #mmFallenHeroes နဲ့ "
 "ပျောက်ဆုံးနေသူများအတွက် #mmMissingHeroes ဟုအသုံးပြုပေးကြပါ။"
@@ -87,11 +87,11 @@ msgstr ""
 "To share information efficiently, use #mmFallenHeroes and #mmMissingHeroes "
 "facebook tags"
 
-#: src/views/People/People.tsx:372
+#: src/views/People/People.tsx:374
 msgid "အာဇာနည်များအား ဝမ်းနည်းလှစွာဖြင့် ဂုဏ်ပြုမှတ်တမ်းတင်အပ်ပါသည်။"
 msgstr "In honor of our fallen heroes"
 
-#: src/views/People/People.tsx:394
+#: src/views/People/People.tsx:396
 msgid ""
 "အောက်ပါ ရုပ်ပုံများသည် အလွန် အမြင်မတော် (သို့) သွေးထွက်သံယိုများပါသည်။ "
 "သူရဲကောင်းတို့ ပေးဆပ်ခဲ့ရမှုကို မှတ်တမ်းအရ သာ တင်ပါသည်။ မိသားစုမှ "
@@ -101,11 +101,11 @@ msgstr ""
 "here as records of their sacrifices. We will swiftly take them down at the "
 "request of family members."
 
-#: src/views/People/People.tsx:427
+#: src/views/People/People.tsx:429
 msgid "သတင်းမီဒီယာမှ အတည်ပြုထားခြင်း၊ ဓာတ်ပုံ ဗီဒီယို၊ တိုက်ရိုက်လင့်ခ်ရှိခြင်း"
 msgstr "Confirmed by news media and/or has multiple image/vid/direct links"
 
-#: src/views/People/People.tsx:428
+#: src/views/People/People.tsx:430
 msgid "ဓာတ်ပုံများကို ကလစ်နှိပ်၍ကြည့်နိုင်"
 msgstr "Can click the icon to see media files"
 
@@ -130,20 +130,20 @@ msgstr "fallen"
 msgid "ထိခိုက်"
 msgstr "wounded"
 
-#: src/views/People/People.tsx:330
+#: src/views/People/People.tsx:332
 msgid "နေ့"
 msgstr "date"
 
-#: src/views/People/People.tsx:359
+#: src/views/People/People.tsx:361
 msgid "ရုပ်ပုံများ နောက်ဆုံးပြင်ဆင်ချိန်"
 msgstr "Media files last updated"
 
-#: src/views/Resources/Resources.tsx:21
+#: src/views/Resources/Resources.tsx:22
 msgid "အကူအညီပေးနိုင်သော၊ မှတ်တမ်းတင်ထားသော နေရာများ (ဒီဆိုက်နှင့် မသက်ဆိုင်)"
 msgstr ""
 "Places where you can donate or learn more about the heores (Unaffiliated "
 "with this site)"
 
-#: src/views/People/People.tsx:371
+#: src/views/People/People.tsx:373
 msgid "ကျန်ရစ်သူများကို ကူညီလိုပါက"
 msgstr "If you'd like to help the families"

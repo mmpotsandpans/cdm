@@ -5,6 +5,7 @@ import {t} from 'ttag'
 import './Resources.scss'
 
 const resources = {
+    'Ku Nyi': 'https://www.facebook.com/Ku-Nyi-100280548827059/',
     'Fallen Heroes Fund Myanmar': 'https://www.facebook.com/fhfmyanmar',
     'Heroes of Spring Revolution 2021': 'https://heroesofspringrevolution2021.com/',
     'Nway Oo Heroes': 'https://nwayooheroes.org',
