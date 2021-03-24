@@ -12,6 +12,7 @@ import { t } from 'ttag'
 import { Language } from './components/Language/Language';
 import { getLocale } from './utils/i18n';
 import { Routes } from './routes';
+import { Sidebar } from './components/Sidebar/Sidebar';
 
 const theme = createMuiTheme({
   typography: {
@@ -72,6 +73,7 @@ const Views = () => {
         </Toolbar>
       </AppBar>
       <Routes />
+      <Sidebar />
     </div>
   );
 }

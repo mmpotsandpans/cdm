@@ -4,7 +4,7 @@ import Link from '@material-ui/core/Link';
 import { People, peopleData, peopleTypes, peopleTypesStrings, Person } from '../../models/People';
 import { TableContainer, Paper, Table, TableHead, TableRow, TableCell, TableBody, TableSortLabel, Snackbar, GridListTile, Dialog, DialogContent, Drawer, Accordion, AccordionDetails, AccordionSummary, Typography, CircularProgress, Divider } from '@material-ui/core';
 import sort from 'lodash.sortby'
-import PhotoLibraryIcon from '@material-ui/icons/PhotoLibrary';
+import PhotoCameraIcon from '@material-ui/icons/PhotoCamera';
 import './People.scss';
 import { Modal } from '@material-ui/core';
 import { GridList } from '@material-ui/core';
@@ -344,7 +344,7 @@ export const PeopleBreakdown: FC<{}> = () => {
                     {i + 1}
                     </TableCell>
                     <TableCell component="th" scope="row" className='sticky-column'>
-                        <div className='name-cell' onClick={() => setPersonCol([row, 'name'])}>{getName(row)} {row.confirmed && verifiedIcon} {getPersonMedia(row, peopleType) && <PhotoLibraryIcon fontSize='small' />}</div>
+                        <div className='name-cell' onClick={() => setPersonCol([row, 'name'])}>{getName(row)} {row.confirmed && verifiedIcon} {getPersonMedia(row, peopleType) && <PhotoCameraIcon fontSize='small' />}</div>
                     </TableCell>
                     <TableCell title={row.city ? `Total ${totals.city[row.city]}` : ''}>{row.city}</TableCell>
                     {hasLiveData(peopleType) &&
@@ -427,7 +427,7 @@ export const PeopleBreakdown: FC<{}> = () => {
         <Drawer open={drawerOpen} onClose={() => setDrawerOpen(false)} anchor='bottom'>
             <div className='legend'>
                 <div>{verifiedIcon} {t`သတင်းမီဒီယာမှ အတည်ပြုထားခြင်း၊ ဓာတ်ပုံ ဗီဒီယို၊ တိုက်ရိုက်လင့်ခ်ရှိခြင်း`}</div>
-                <div><PhotoLibraryIcon /> {t`ဓာတ်ပုံများကို ကလစ်နှိပ်၍ကြည့်နိုင်`}</div>
+                <div><PhotoCameraIcon /> {t`ဓာတ်ပုံများကို ကလစ်နှိပ်၍ကြည့်နိုင်`}</div>
             </div>
         </Drawer>
     </div>
