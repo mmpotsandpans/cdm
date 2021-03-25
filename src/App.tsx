@@ -34,6 +34,9 @@ const pageNames: any = {
 }
 
 const App = () => {
+  useEffect(() => {
+    document.querySelector('body')?.classList.remove('loading')
+  }, [])
   return <div className="App">
     <ThemeProvider theme={theme}>
       <HashRouter>
