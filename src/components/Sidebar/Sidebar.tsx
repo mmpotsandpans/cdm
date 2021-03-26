@@ -7,16 +7,22 @@ import PieChartIcon from '@material-ui/icons/PieChart';
 import AccountBalanceIcon from '@material-ui/icons/AccountBalance';
 import ListIcon from '@material-ui/icons/List';
 import PhotoLibraryIcon from '@material-ui/icons/PhotoLibrary';
+import InfoIcon from '@material-ui/icons/Info';
 import './Sidebar.scss'
 import { t } from 'ttag';
 
 export const Sidebar = () => {
     const [open, setOpen] = useState(false)
+    const handleAnchorClick = (e: React.MouseEvent) => {
+        if (e.target instanceof HTMLAnchorElement) {
+            setOpen(false)
+        }
+    }
     return (
         <>
             <ArrowForwardIosIcon className='sidebar-toggle' onClick={() => setOpen(!open)}/>
             <Drawer open={open} onClose={() => setOpen(false)}>
-                <div className='sidebar'>
+                <div className='sidebar' onClick={handleAnchorClick}>
                     <Typography variant="h6">
                         <NavLink to="/"><ListIcon /> {t`နွေဦးတော်လှန်ရေးအာဇာနည်များ`}</NavLink>
                     </Typography>
@@ -28,6 +34,9 @@ export const Sidebar = () => {
                     </Typography>
                     <Typography variant="h6">
                         <NavLink to="/graphs"><PieChartIcon /> Graphs</NavLink>
+                    </Typography>
+                    <Typography variant="h6">
+                        <NavLink to="/about"><InfoIcon /> About</NavLink>
                     </Typography>
                 </div>
             </Drawer>

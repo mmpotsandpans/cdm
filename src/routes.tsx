@@ -1,5 +1,6 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
+import { About } from "./views/About/About";
 import { Memorial } from "./views/People/Memorial/Memorial";
 import { PeopleBreakdown } from "./views/People/People";
 import { Redirect } from "./views/Redirect/Redirect";
@@ -18,6 +19,9 @@ export const Routes = () => (
         </Route>
         <Route path='/graphs'>
           <iframe title='graphs' width="100%" height="1068" src="https://datastudio.google.com/embed/reporting/cb88e51e-5a0c-4333-9675-4a6a224b9c2e/page/aDL8B" frameBorder="0" style={{border:0, maxHeight: '95vh', overflowY: 'auto'}} allowFullScreen></iframe>
+        </Route>
+        <Route path='/about'>
+          <About />
         </Route>
         <Route path="/">
           <PeopleBreakdown />
