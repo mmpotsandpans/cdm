@@ -17,4 +17,4 @@ ReactDOM.render(
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
 // TODO: add pwa support later because we don't want the users to reload manually
-serviceWorkerRegistration.unregister();
+serviceWorkerRegistration.register();
