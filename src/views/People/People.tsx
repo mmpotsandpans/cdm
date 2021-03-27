@@ -13,20 +13,20 @@ import FileCopyIcon from '@material-ui/icons/FileCopy';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { Salute } from '../../components/Salute/Salute';
-import { fallenImages } from '../../resources/fallen';
 import { Linkify } from '../../components/Linkify/Linkify';
 import { Media } from '../../components/Media/Media';
 import { getMediaFormatFromUrl, shouldBlurImage } from '../../utils/mediaUtils';
 import { Format } from '../../models/Format';
-import { woundedImages } from '../../resources/wounded';
 import { t } from 'ttag'
-import { getLocale, getLocaleCity } from '../../utils/i18n';
 import { CSVLink } from 'react-csv';
 import { NavLink } from 'react-router-dom';
 import debounce from 'lodash.debounce';
 import { Scroll } from '../../components/Scroll/Scroll';
 import throttle from 'lodash.throttle';
-import { normalizeString } from '../../utils/stringUtils';
+import { getDetails, getExportCol, getName, getPersonMedia, normalizePeopleData } from '../../utils/personUtils';
+import { getLocale } from '../../utils/i18n';
+
+const locale = getLocale()
 
 const hasLiveData = (type: People) => [People.fallen, People.wounded].includes(type)
 
@@ -56,75 +56,6 @@ const data2csv = (data: string) => {
 }
 
 const verifiedIcon = <CheckCircleIcon style={{color: '#115293'}} fontSize='small'/>
-
-const getPersonMedia = (person: Person | undefined, peopleType: People) => {
-    let media
-    if (peopleType === People.detained) {
-        media = person?.media
-    } else {
-        const images = peopleType === People.fallen ? fallenImages : woundedImages
-        media = images.get(person?.folder?.trim() || person?.name.trim() || '')
-    }
-    return media?.filter(m => !/hidden/.test(m))
-}
-
-const locale = getLocale()
-
-const getName = (p: Person | undefined) => {
-    if (!p) {
-        return undefined
-    }
-    const defaultName = `${p.honorific || ''}${p.name}`
-    if (locale === 'my') {
-        return defaultName
-    } else {
-        const localeName = `${locale}Name`
-        return (p as any)[localeName] ? (p as any)[localeName] : defaultName
-    }
-}
-
-const getDetails = (p: Person | undefined) => {
-    if (!p) {
-        return undefined
-    }
-    let details
-    if (locale === 'my') {
-        details = p.details
-    } else {
-        const localeDetails = `${locale}Details`
-        details = (p as any)[localeDetails] ? (p as any)[localeDetails] : p.details
-    }
-    return details?.replace(/https?:\/\//g, '')
-}
-
-const getExportCol = (p: Person, col: keyof Person) => {
-    if (col === 'name') {
-        return getName(p)
-    } else if (col === 'details') {
-        return getDetails(p)
-    } else if (col === 'date' && p[col]) {
-        return (new Date(parseInt(p[col] || ''))).toLocaleDateString()
-    } else {
-        return p[col] || '-'
-    }
-}
-
-const normalizePeopleData = (data: Person[]) => data.map(p => {
-    let date = undefined
-    if (p.date) {
-        const [day, month, year] = p.date.split('/').map(i => parseInt(i))
-        date = (new Date(year, month - 1, day)).getTime().toString()
-    }
-    return {
-        ...p,
-        name: normalizeString(p.name),
-        confirmed: p.confirmed?.toString().toLowerCase() === 'true',
-        date,
-        age: p.age ? parseInt(p.age.toString()) : undefined,
-        details: getDetails(p),
-        city: getLocaleCity(normalizeString(p.city || ''))
-    }
-})
 
 const normalizedPeopleData = normalizePeopleData(peopleData)
 

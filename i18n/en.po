@@ -16,56 +16,56 @@ msgstr "Spring Revolution Heroes"
 msgid "စုပေါင်းမှတ်တမ်းများ"
 msgstr "Vigil Gallery"
 
-#: src/views/People/People.tsx:304
+#: src/views/People/People.tsx:235
 msgid "AAPPBမှ ပဏာမစာရင်း။ နေ့စဥ်နောက်ဆုံးရ အသေးစိတ်ကို"
 msgstr "Initial list from AAPPB. Check daily updated list"
 
-#: src/views/People/People.tsx:304
+#: src/views/People/People.tsx:235
 msgid "ဒီမှာကြည့်နိုင်ပါသည်။"
 msgstr "here"
 
-#: src/views/People/People.tsx:305
+#: src/views/People/People.tsx:236
 msgid "ထိခိုက်သူစာရင်း အတိအကျမရှိသေးပါ"
 msgstr "Wounded list is not up-to-date"
 
-#: src/views/People/People.tsx:307
+#: src/views/People/People.tsx:238
 msgid "စာရင်းပြင်ချင်ပါက"
 msgstr "Edit the list"
 
-#: src/views/People/People.tsx:307
+#: src/views/People/People.tsx:238
 msgid "ဒီမှာပြင်ဆင်ပါ"
 msgstr "here"
 
-#: src/views/People/People.tsx:310
+#: src/views/People/People.tsx:241
 msgid "ရှာဖွေရန်"
 msgstr "Search"
 
-#: src/views/People/People.tsx:314
+#: src/views/People/People.tsx:245
 msgid "Export data"
 msgstr ""
 
-#: src/views/People/People.tsx:315
+#: src/views/People/People.tsx:246
 msgid "Legend"
 msgstr ""
 
-#: src/views/People/People.tsx:328
+#: src/views/People/People.tsx:259
 msgid "နာမည်"
 msgstr "name"
 
-#: src/views/People/People.tsx:329
+#: src/views/People/People.tsx:260
 msgid "မြို့"
 msgstr "city"
 
-#: src/views/People/People.tsx:333
+#: src/views/People/People.tsx:264
 msgid "အသက်"
 msgstr "age"
 
-#: src/views/People/People.tsx:334
+#: src/views/People/People.tsx:265
 msgid "အသေးစိတ်"
 msgstr "details"
 
 #: src/views/About/About.tsx:7
-#: src/views/People/People.tsx:370
+#: src/views/People/People.tsx:301
 msgid ""
 "အချက်အလက်များ၊ ရုပ်ပုံများကို အွန်လိုင်းမှ ရယူကာ အလျင်မှီသလို "
 "ထည့်သွင်းပြင်ဆင်ထားပါသည်။ မူပိုင်ခွင့်သည် ပိုင်ရှင်များနှင့်သာ "
@@ -74,7 +74,7 @@ msgstr ""
 "Info and media are downloaded from online sources. All credits go to the "
 "owners. Translations are in progress."
 
-#: src/views/People/People.tsx:371
+#: src/views/People/People.tsx:302
 msgid ""
 "သတင်းမှားယွင်းမှုရှိပါက အတတ်နိုင်ဆုံး ပြင်ဆင်ပေးသွားပါမယ်။ သတင်းပေးပို့၊ "
 "ဖြည့်စွက်လိုပါက Controlsကိုနှိပ်ပြီး Formဖြည့်ပေးနိုင်ပါတယ်။"
@@ -82,7 +82,7 @@ msgstr ""
 "We will fix any errors asap. You can send us info by going to the form in "
 "the controls."
 
-#: src/views/People/People.tsx:372
+#: src/views/People/People.tsx:303
 msgid ""
 "သတင်းပေးရှာဖွေမှုလွယ်ကူစေရန် ကျဆုံးသွားသူများအတွက် #mmFallenHeroes နဲ့ "
 "ပျောက်ဆုံးနေသူများအတွက် #mmMissingHeroes ဟုအသုံးပြုပေးကြပါ။"
@@ -91,11 +91,11 @@ msgstr ""
 "facebook tags"
 
 #: src/views/About/About.tsx:10
-#: src/views/People/People.tsx:374
+#: src/views/People/People.tsx:305
 msgid "အာဇာနည်များအား ဝမ်းနည်းလှစွာဖြင့် ဂုဏ်ပြုမှတ်တမ်းတင်အပ်ပါသည်။"
 msgstr "In honor of our fallen heroes"
 
-#: src/views/People/People.tsx:396
+#: src/views/People/People.tsx:327
 msgid ""
 "အောက်ပါ ရုပ်ပုံများသည် အလွန် အမြင်မတော် (သို့) သွေးထွက်သံယိုများပါသည်။ "
 "သူရဲကောင်းတို့ ပေးဆပ်ခဲ့ရမှုကို မှတ်တမ်းအရ သာ တင်ပါသည်။ မိသားစုမှ "
@@ -105,11 +105,11 @@ msgstr ""
 "here as records of their sacrifices. We will swiftly take them down at the "
 "request of family members."
 
-#: src/views/People/People.tsx:429
+#: src/views/People/People.tsx:360
 msgid "သတင်းမီဒီယာမှ အတည်ပြုထားခြင်း၊ ဓာတ်ပုံ ဗီဒီယို၊ တိုက်ရိုက်လင့်ခ်ရှိခြင်း"
 msgstr "Confirmed by news media and/or has multiple image/vid/direct links"
 
-#: src/views/People/People.tsx:430
+#: src/views/People/People.tsx:361
 msgid "ဓာတ်ပုံများကို ကလစ်နှိပ်၍ကြည့်နိုင်"
 msgstr "Can click the icon to see media files"
 
@@ -134,11 +134,11 @@ msgstr "fallen"
 msgid "ထိခိုက်"
 msgstr "wounded"
 
-#: src/views/People/People.tsx:332
+#: src/views/People/People.tsx:263
 msgid "နေ့"
 msgstr "date"
 
-#: src/views/People/People.tsx:361
+#: src/views/People/People.tsx:292
 msgid "ရုပ်ပုံများ နောက်ဆုံးပြင်ဆင်ချိန်"
 msgstr "Media files last updated"
 
@@ -149,6 +149,27 @@ msgstr ""
 "with this site)"
 
 #: src/views/About/About.tsx:8
-#: src/views/People/People.tsx:373
+#: src/views/People/People.tsx:304
 msgid "ကျန်ရစ်သူများကို ကူညီလိုပါက"
 msgstr "If you'd like to help the families"
+
+#: src/utils/personUtils.ts:86
+msgid "ဦး"
+msgstr "u"
+
+#: src/utils/personUtils.ts:86
+msgid "ဒေါ်"
+msgstr "daw"
+
+#: src/utils/personUtils.ts:88
+msgid "ကို"
+msgstr "ko"
+
+#: src/utils/personUtils.ts:88
+#: src/utils/personUtils.ts:90
+msgid "မ"
+msgstr "ma"
+
+#: src/utils/personUtils.ts:90
+msgid "မောင်"
+msgstr "mg"
