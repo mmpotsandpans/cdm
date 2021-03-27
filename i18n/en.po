@@ -64,7 +64,7 @@ msgstr "age"
 msgid "အသေးစိတ်"
 msgstr "details"
 
-#: src/views/About/About.tsx:7
+#: src/views/About/About.tsx:12
 #: src/views/People/People.tsx:301
 msgid ""
 "အချက်အလက်များ၊ ရုပ်ပုံများကို အွန်လိုင်းမှ ရယူကာ အလျင်မှီသလို "
@@ -90,20 +90,10 @@ msgstr ""
 "To share information efficiently, use #mmFallenHeroes and #mmMissingHeroes "
 "facebook tags"
 
-#: src/views/About/About.tsx:10
+#: src/views/About/About.tsx:15
 #: src/views/People/People.tsx:305
 msgid "အာဇာနည်များအား ဝမ်းနည်းလှစွာဖြင့် ဂုဏ်ပြုမှတ်တမ်းတင်အပ်ပါသည်။"
 msgstr "In honor of our fallen heroes"
-
-#: src/views/People/People.tsx:327
-msgid ""
-"အောက်ပါ ရုပ်ပုံများသည် အလွန် အမြင်မတော် (သို့) သွေးထွက်သံယိုများပါသည်။ "
-"သူရဲကောင်းတို့ ပေးဆပ်ခဲ့ရမှုကို မှတ်တမ်းအရ သာ တင်ပါသည်။ မိသားစုမှ "
-"တောင်းဆိုပါက အမြန်ဆုံး ဖြုတ်ချပါမည်။"
-msgstr ""
-"Following images/vids could be too bloody or unceremonious. They are only "
-"here as records of their sacrifices. We will swiftly take them down at the "
-"request of family members."
 
 #: src/views/People/People.tsx:360
 msgid "သတင်းမီဒီယာမှ အတည်ပြုထားခြင်း၊ ဓာတ်ပုံ ဗီဒီယို၊ တိုက်ရိုက်လင့်ခ်ရှိခြင်း"
@@ -148,28 +138,64 @@ msgstr ""
 "Places where you can donate or learn more about the heores (Unaffiliated "
 "with this site)"
 
-#: src/views/About/About.tsx:8
+#: src/views/About/About.tsx:13
 #: src/views/People/People.tsx:304
 msgid "ကျန်ရစ်သူများကို ကူညီလိုပါက"
 msgstr "If you'd like to help the families"
 
-#: src/utils/personUtils.ts:86
+#: src/utils/personUtils.ts:87
 msgid "ဦး"
 msgstr "u"
 
-#: src/utils/personUtils.ts:86
+#: src/utils/personUtils.ts:87
 msgid "ဒေါ်"
 msgstr "daw"
 
-#: src/utils/personUtils.ts:88
+#: src/utils/personUtils.ts:89
 msgid "ကို"
 msgstr "ko"
 
-#: src/utils/personUtils.ts:88
-#: src/utils/personUtils.ts:90
+#: src/utils/personUtils.ts:89
+#: src/utils/personUtils.ts:91
 msgid "မ"
 msgstr "ma"
 
-#: src/utils/personUtils.ts:90
+#: src/utils/personUtils.ts:91
 msgid "မောင်"
 msgstr "mg"
+
+#: src/views/People/People.tsx:327
+msgid ""
+"အောက်ပါ ရုပ်ပုံများသည် အလွန့်အလွန် အမြင်မတော် (သို့) "
+"သွေးထွက်သံယိုများနိုင်ပါသည်။ သူရဲကောင်းတို့ ပေးဆပ်ခဲ့ရမှုကို မှတ်တမ်းအရ သာ "
+"တင်ပါသည်။ မိသားစုမှ တောင်းဆိုပါက အမြန်ဆုံး ဖြုတ်ချပါမည်။"
+msgstr ""
+"Following images/vids could be too bloody, violent, or unceremonious. They "
+"are only here as records of their sacrifices. We will swiftly take them "
+"down at the request of family members."
+
+#: src/views/About/About.tsx:10
+msgid ""
+"ရက်အနည်းငယ်အတွင်း မတရားအကြမ်းဖက်မှုကြောင့် ကျဆုံးသူအမြောက်အမြားရှိခဲ့ပါသည်။ "
+"ကျနော်တို့ အားလုံးသည်လည်း သူရဲကောင်းများ သမိုင်းမပျောက်ရေးအတွက် "
+"ကိုယ်စွမ်းဥာဏ်စွမ်း ရှိသမျှ ကြိုးစားသွားပါမည်။"
+msgstr ""
+"There were hundreds of casualties within a few days. We will do everything "
+"in our power to accurately record the sacrifices  of each and every one of "
+"our heroes."
+
+#: src/views/About/About.tsx:14
+msgid "စာရင်းထည့်/ပြင် (သို့) အကြံပေးလိုပါက"
+msgstr "To edit the list/suggest"
+
+#: src/views/About/About.tsx:20
+msgid "ကျဆုံးသူများနှင့် ပတ်သက်သော၊ ပျံ့နှံ့နေသော သတင်းမှားများ တင်ပြရန်"
+msgstr "Misinformation page"
+
+#: src/views/About/About.tsx:21
+msgid "မြို့နယ်နှင့် ပြည်နယ်တိုင်းပါအောင် ထည့်သွင်းရန်"
+msgstr "Catalogue township and division/region data"
+
+#: src/views/About/About.tsx:22
+msgid "သေဆုံးသည့်အကြောင်းရင်း"
+msgstr "Cause of death data"
