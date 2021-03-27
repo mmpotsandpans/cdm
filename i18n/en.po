@@ -7,12 +7,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: src/App.tsx:69
-#: src/components/Sidebar/Sidebar.tsx:21
+#: src/components/Sidebar/Sidebar.tsx:27
 msgid "နွေဦးတော်လှန်ရေးအာဇာနည်များ"
 msgstr "Spring Revolution Heroes"
 
 #: src/App.tsx:73
-#: src/components/Sidebar/Sidebar.tsx:27
+#: src/components/Sidebar/Sidebar.tsx:33
 msgid "စုပေါင်းမှတ်တမ်းများ"
 msgstr "Vigil Gallery"
 
@@ -64,6 +64,7 @@ msgstr "age"
 msgid "အသေးစိတ်"
 msgstr "details"
 
+#: src/views/About/About.tsx:7
 #: src/views/People/People.tsx:370
 msgid ""
 "အချက်အလက်များ၊ ရုပ်ပုံများကို အွန်လိုင်းမှ ရယူကာ အလျင်မှီသလို "
@@ -89,6 +90,7 @@ msgstr ""
 "To share information efficiently, use #mmFallenHeroes and #mmMissingHeroes "
 "facebook tags"
 
+#: src/views/About/About.tsx:10
 #: src/views/People/People.tsx:374
 msgid "အာဇာနည်များအား ဝမ်းနည်းလှစွာဖြင့် ဂုဏ်ပြုမှတ်တမ်းတင်အပ်ပါသည်။"
 msgstr "In honor of our fallen heroes"
@@ -146,6 +148,7 @@ msgstr ""
 "Places where you can donate or learn more about the heores (Unaffiliated "
 "with this site)"
 
+#: src/views/About/About.tsx:8
 #: src/views/People/People.tsx:373
 msgid "ကျန်ရစ်သူများကို ကူညီလိုပါက"
 msgstr "If you'd like to help the families"

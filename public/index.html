@@ -43,6 +43,9 @@
       });
     </script>
     <style>
+      html {
+        overflow: hidden;
+      }
       body.loading {
         background-color: rgba(0, 0, 0, 0.8);
         overflow: hidden;
@@ -63,11 +66,13 @@
       .letter-animation span {
         display: inline-block;
         text-shadow: 0 0 0 orange;
-        animation: smoky 15s 10s both;
+        animation: smoky 10s 1s both;
+        animation-iteration-count: infinite;
       }
 
       .letter-animation span:nth-child(even) {
         animation-name: smoky-mirror;
+        animation-iteration-count: infinite;
       }
 
       @keyframes smoky {
