@@ -1,4 +1,4 @@
-import { cityMappings } from './../models/LanguageMappings'
+import { adminBoundMappings } from './../models/LanguageMappings'
 import { addLocale, useLocale } from 'ttag';
 
 const defaultLocale = 'my'
@@ -30,6 +30,8 @@ const initI18N = () => {
     }
 }
 
-export const getLocaleCity = (city: string | undefined) => city && locale !== 'my' ? cityMappings[city.trim()] : city
+// TODO: refactor
+export const getLocaleCity = (city: string | undefined) => city && locale !== 'my' ? adminBoundMappings[city.trim()] : city
+export const getLocaleState = (state: string | undefined) => state && locale !== 'my' ? adminBoundMappings[state.trim()] : state
 
 initI18N()

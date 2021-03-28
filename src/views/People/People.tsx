@@ -32,7 +32,7 @@ const hasLiveData = (type: People) => [People.fallen, People.wounded].includes(t
 
 const exportPeople = (people: Person[]) => {
     let text = ''
-    const props = ['name', 'confirmed', 'date', 'city', 'details', 'age']
+    const props = ['name', 'confirmed', 'date', 'city', 'details', 'age', 'state']
     text += props.join('\t') + '\n\n'
     people.forEach((person: any) => {
         props.forEach((prop: any) => {
@@ -92,10 +92,12 @@ const getNormalizedSortBy = (sortBy: string) => {
 
 const updatedTime = process.env.REACT_APP_INDEX_HASH ? (new Date(parseInt(process.env.REACT_APP_INDEX_HASH) * 1000)) : undefined
 
+// TODO: refactor
 const getTotals = (people: Person[])  => {
     const totals: any = {
         date: {},
-        city: {}
+        city: {},
+        state: {}
     }
     people.forEach((person: Person) => {
         if (person.date) {
@@ -103,6 +105,9 @@ const getTotals = (people: Person[])  => {
         }
         if (person.city) {
             totals.city[person.city] = (totals.city[person.city] || 0) + 1
+        }
+        if (person.state) {
+            totals.state[person.state] = (totals.state[person.state] || 0) + 1
         }
     })
     return totals
@@ -265,6 +270,7 @@ export const PeopleBreakdown: FC<{}> = () => {
                             <TableCell onClick={() => handleHeaderClick("details")}><TableSortLabel direction={sortDir} active={sortBy === 'details'}>{t`အသေးစိတ်`}</TableSortLabel></TableCell>
                         </>
                     }
+                    <TableCell onClick={() => handleHeaderClick("state")}><TableSortLabel direction={sortDir} active={sortBy === 'state'}>{t`တိုင်း/ပြည်နယ်`}</TableSortLabel></TableCell>
                 </TableRow>
             </TableHead>
             <TableBody>
@@ -287,6 +293,7 @@ export const PeopleBreakdown: FC<{}> = () => {
                             </TableCell>
                         </>
                     }
+                    <TableCell title={row.state ? `Total ${totals.state[row.state]}` : ''}>{row.state}</TableCell>
                 </TableRow>
                 ))}
                 <TableRow><TableCell colSpan={5}>{t`ရုပ်ပုံများ နောက်ဆုံးပြင်ဆင်ချိန်`} {updatedTime?.toLocaleDateString()} {updatedTime?.toLocaleTimeString()}</TableCell></TableRow>

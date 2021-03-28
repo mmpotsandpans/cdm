@@ -1,9 +1,10 @@
+import { getStateFromCity } from './../models/adminBoundaries'
 import { t } from "ttag";
 import { normalizeString } from './stringUtils';
 import { People, Person } from "../models/People";
 import { fallenImages } from "../resources/fallen";
 import { woundedImages } from "../resources/wounded";
-import { getLocale, getLocaleCity } from "./i18n";
+import { getLocale, getLocaleCity, getLocaleState } from "./i18n";
 
 export const getPersonMedia = (person: Person | undefined, peopleType: People) => {
     let media
@@ -63,6 +64,7 @@ export const normalizePeopleData = (data: Person[]) => data.map(p => {
         const [day, month, year] = p.date.split('/').map(i => parseInt(i))
         date = (new Date(year, month - 1, day)).getTime().toString()
     }
+    const normalizedCity = normalizeString(p.city || '')
     return {
         ...p,
         name: normalizeString(p.name),
@@ -70,8 +72,9 @@ export const normalizePeopleData = (data: Person[]) => data.map(p => {
         date,
         age: p.age ? parseInt(p.age.toString()) : undefined,
         details: getDetails(p),
-        city: getLocaleCity(normalizeString(p.city || '')),
-        honorific: getHonorific(p)
+        city: getLocaleCity(normalizedCity),
+        honorific: getHonorific(p),
+        state: getLocaleState(getStateFromCity(normalizedCity))
     }
 })
 

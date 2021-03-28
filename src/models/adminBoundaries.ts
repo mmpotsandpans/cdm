@@ -1,3 +1,4 @@
+import { normalizeString } from './../utils/stringUtils'
 export const adminBounds = [
     {
         "name": "ကချင်",
@@ -12,6 +13,14 @@ export const adminBounds = [
             },
             {
                 "name": "မြစ်ကြီးနား",
+                "townships": {}
+            },
+            {
+                "name": "ဟိုပင်",
+                "townships": {}
+            },
+            {
+                "name": "ဗန်းမော်",
                 "townships": {}
             },
         ]
@@ -49,6 +58,10 @@ export const adminBounds = [
                 "name": "မော်လမြိုင်",
                 "townships": {}
             },
+            {
+                "name": "ကျိုက်ထို",
+                "townships": {}
+            },
         ]
     },
     {
@@ -74,6 +87,10 @@ export const adminBounds = [
                 "name": "အောင်ပန်း",
                 "townships": {}
             },
+            {
+                "name": "လားရှိုး",
+                "townships": {}
+            },
         ]
     },
     {
@@ -91,6 +108,26 @@ export const adminBounds = [
                 "name": "မုံရွာ",
                 "townships": {}
             },
+            {
+                "name": "ချောင်းဦး",
+                "townships": {}
+            },
+            {
+                "name": "တမူး",
+                "townships": {}
+            },
+            {
+                "name": "ရွှေဘို",
+                "townships": {}
+            },
+            {
+                "name": "ယင်းမာပင်",
+                "townships": {}
+            },
+            {
+                "name": "စစ်ကိုင်း",
+                "townships": {}
+            },
         ]
     },
     {
@@ -102,6 +139,10 @@ export const adminBounds = [
             },
             {
                 "name": "မြိတ်",
+                "townships": {}
+            },
+            {
+                "name": "ကော့သောင်း",
                 "townships": {}
             },
         ]
@@ -121,6 +162,18 @@ export const adminBounds = [
                 "name": "ပြည်ကြီးမဏ္ဏိုင်",
                 "townships": {}
             },
+            {
+                "name": "မိုးညို",
+                "townships": {}
+            },
+            {
+                "name": "ဖဒို",
+                "townships": {}
+            },
+            {
+                "name": "ဒိုက်ဦး",
+                "townships": {}
+            },
         ]
     },
     {
@@ -135,7 +188,7 @@ export const adminBounds = [
                 "townships": {}
             },
             {
-                "name": "တောင်တွန်းကြီး",
+                "name": "တောင်တွင်းကြီး",
                 "townships": {}
             },
             {
@@ -158,6 +211,10 @@ export const adminBounds = [
                 "name": "အောင်လံ",
                 "townships": {}
             },
+            {
+                "name": "ပွင့်ဖြူ",
+                "townships": {}
+            },
         ]
     },
     {
@@ -177,6 +234,34 @@ export const adminBounds = [
             },
             {
                 "name": "မြင်းခြံ",
+                "townships": {}
+            },
+            {
+                "name": "အမရပူရ",
+                "townships": {}
+            },
+            {
+                "name": "ဝမ်းတွင်း",
+                "townships": {}
+            },
+            {
+                "name": "မိတ္ထီလာ",
+                "townships": {}
+            },
+            {
+                "name": "မတ္တရာ",
+                "townships": {}
+            },
+            {
+                "name": "ပြင်ဦးလွင်",
+                "townships": {}
+            },
+            {
+                "name": "ညောင်ဦး",
+                "townships": {}
+            },
+            {
+                "name": "စဥ့်ကိုင်",
                 "townships": {}
             },
         ]
@@ -218,4 +303,5 @@ export const adminBounds = [
     },
 ]
 
-export const getStateFromCity = (name: string | undefined) => adminBounds.find(state => state.cities.find(city => city.name === name))
+export const states = adminBounds.map(adb => adb.name)
+export const getStateFromCity = (name: string | undefined) => adminBounds.find(state => state.cities.find(city => normalizeString(city.name) === name))?.name

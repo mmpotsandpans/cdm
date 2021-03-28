@@ -3,6 +3,7 @@ import parsedDetainees from '../resources/parsedDetainees.json'
 import parsedFallen from '../resources/fallen'
 import parsedWounded from '../resources/wounded'
 import { t } from 'ttag'
+import { states } from './adminBoundaries'
 
 export enum People {
   detained = 'ထိန်းသိမ်း',
@@ -23,6 +24,7 @@ export interface Person {
   status: People;
   date?: string;
   city?: string;
+  state?: typeof states[number]
   details?: string;
   age?: number;
   media?: string[];

@@ -1,5 +1,5 @@
 import { normalizeString } from './../utils/stringUtils'
-const _cityMappings: any = {
+const _adminBoundMappings: any = {
 	"ကလေး": "Kale",
 	"ကောလင်း": "Kawlin",
     "ကျောက်ပန်းတောင်း": "Kyaukpadaung",
@@ -55,10 +55,19 @@ const _cityMappings: any = {
 	"ရန်ကုန်": "Yangon",
 	"လွိုင်ကော်": "Loikaw",
 	"အောင်ပန်း": "Aungpan",
-	"အောင်လံ": "Aunglan"
+	"အောင်လံ": "Aunglan",
+	"ကချင်": "Kachin",
+	"ကယား": "Kayah",
+	"ကရင်": "Kayin",
+	"ချင်း": "Chin",
+	"ရခိုင်": "Rakhine",
+	"ရှမ်း": "Shan",
+	"မွန်": "Mon",
+	"တနင်္သာရီ": "Tanintharyi",
+	"ဧရာဝတီ": "Ayeyarwady",
 }
 
-export const cityMappings: any = {}
-for (const [city, engCity] of Object.entries(_cityMappings)) {
-    cityMappings[normalizeString(city)] = engCity
+export const adminBoundMappings: any = {}
+for (const [city, engCity] of Object.entries(_adminBoundMappings)) {
+    adminBoundMappings[normalizeString(city)] = engCity
 }
