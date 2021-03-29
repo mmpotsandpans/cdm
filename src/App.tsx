@@ -30,6 +30,8 @@ const pageNames: any = {
   '/memorial': 'Memorial',
   '/form': 'Form',
   '/resources': 'Resources',
+  '/about': 'About',
+  '/graphs': 'Graphs',
   '/': ''
 }
 
