@@ -8,6 +8,7 @@ import AccountBalanceIcon from '@material-ui/icons/AccountBalance';
 import ListIcon from '@material-ui/icons/List';
 import PhotoLibraryIcon from '@material-ui/icons/PhotoLibrary';
 import InfoIcon from '@material-ui/icons/Info';
+import DeveloperModeIcon from '@material-ui/icons/DeveloperMode';
 import './Sidebar.scss'
 import { t } from 'ttag';
 
@@ -34,6 +35,9 @@ export const Sidebar = () => {
                     </Typography>
                     <Typography variant="h6">
                         <NavLink to="/graphs"><PieChartIcon /> Graphs</NavLink>
+                    </Typography>
+                    <Typography variant='h6'>
+                        <NavLink to='/api'><DeveloperModeIcon />API</NavLink>
                     </Typography>
                     <Typography variant="h6">
                         <NavLink to="/about"><InfoIcon /> About</NavLink>

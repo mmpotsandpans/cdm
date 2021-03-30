@@ -1,6 +1,7 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 import { About } from "./views/About/About";
+import { Api } from "./views/Api/Api";
 import { Memorial } from "./views/People/Memorial/Memorial";
 import { PeopleBreakdown } from "./views/People/People";
 import { Redirect } from "./views/Redirect/Redirect";
@@ -22,6 +23,9 @@ export const Routes = () => (
         </Route>
         <Route path='/about'>
           <About />
+        </Route>
+        <Route path='/api'>
+          <Api />
         </Route>
         <Route path="/">
           <PeopleBreakdown />
