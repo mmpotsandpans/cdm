@@ -7,4 +7,12 @@
     h2 {
         font-size: 1.05rem;
     }
+    .coverpic {
+        height: 230px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        @media only screen and (min-width: 768px) {
+            height: 730px;
+        }
+    }
 }

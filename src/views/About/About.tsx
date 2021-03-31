@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom"
 import './About.scss'
 import { t } from "ttag"
 import { Divider } from "@material-ui/core"
+import coverpic from '../../resources/images/misc/coverpic.png'
 
 export const About = () => {
     return <div className='About'>
@@ -18,12 +19,13 @@ export const About = () => {
             <h3 style={{fontSize: '1rem', fontWeight: 400}}>"{t`ရည်ရွယ်ချက်မှာ တစ်ခြားလှူတန်းဖို့ ချိတ်ဆက်ပေးသော အဖွဲ့များ၊ ရုပ်ပုံ၊ စာပန်းချီများဖြင့် ဂုဏ်ပြုလိုသူများ၊ စာရင်းစစ်/ကောက်လိုသူများ အလွယ်တကူ အသုံးချနိုင်ရန်ဖြစ်ပါသည်`}"</h3>
             <ol>
                 <li>{t`စာရင်းပိုမိုတိကျပြီး အချက်အလက်စုံစေရန် ထပ်မံစစ်ဆေးခြင်း။ ကူညီလိုသူများ အလွယ်တကူ ကူညီနိုင်ရန် နည်းလမ်းများ ရှာဖွေခြင်း`}</li>
-                <li>{t`ကျဆုံးသူများနှင့် ပတ်သက်သော၊ ပျံ့နှံ့နေသော သတင်းမှားများ တင်ပြရန်`}</li>
-                <li>{t`မြို့နယ်နှင့် ပြည်နယ်တိုင်းပါအောင် ထည့်သွင်းရန်`}</li>
+                <li style={{textDecoration: 'line-through'}}>{t`ကျဆုံးသူများနှင့် ပတ်သက်သော၊ ပျံ့နှံ့နေသော သတင်းမှားများ တင်ပြရန်`}</li>
+                <li style={{textDecoration: 'line-through'}}>{t`မြို့နယ်နှင့် ပြည်နယ်တိုင်းပါအောင် ထည့်သွင်းရန်`}</li>
                 <li>{t`သေဆုံးသည့်အကြောင်းရင်း`}</li>
             </ol>
         </div>
         <Divider />
         <p style={{textAlign: 'center', fontWeight: 900}}>{t`အာဇာနည်များအား ဝမ်းနည်းလှစွာဖြင့် ဂုဏ်ပြုမှတ်တမ်းတင်အပ်ပါသည်။`}</p>
+        <div className='coverpic' style={{backgroundImage: `url(${coverpic})`}}/>
     </div>
 }
