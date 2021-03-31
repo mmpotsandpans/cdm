@@ -76,7 +76,7 @@ export const normalizePeopleData = (data: Person[]) => data.map(p => {
         honorific: getHonorific(p),
         state: getLocaleState(getStateFromCity(normalizedCity))
     }
-})
+}).filter(p => p.name)
 
 export const getHonorific = (p: Person) => {
     if (locale === 'my' && p.honorific) {

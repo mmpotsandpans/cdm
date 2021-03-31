@@ -2,6 +2,7 @@ import React from "react";
 import { Route, Switch } from "react-router-dom";
 import { About } from "./views/About/About";
 import { Api } from "./views/Api/Api";
+import { Misinformation } from "./views/Misinformation/Misinformation";
 import { Memorial } from "./views/People/Memorial/Memorial";
 import { PeopleBreakdown } from "./views/People/People";
 import { Redirect } from "./views/Redirect/Redirect";
@@ -26,6 +27,9 @@ export const Routes = () => (
         </Route>
         <Route path='/api'>
           <Api />
+        </Route>
+        <Route path='/misinformation'>
+          <Misinformation />
         </Route>
         <Route path="/">
           <PeopleBreakdown />

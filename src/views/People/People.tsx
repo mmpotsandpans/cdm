@@ -176,18 +176,21 @@ export const PeopleBreakdown: FC<{}> = () => {
                 .finally(() => setLoading(false))   
         }
     }, [peopleType])
-    const rows = sort(data.filter((person: Person) => person.status === peopleType), [getNormalizedSortBy(sortBy)])
-        .filter((person: any) => {
-            for (let key in person) {
-                if (typeof person[key] === 'string' && (person[key]).toLowerCase().match(filter.toLowerCase())) {
-                    return true
+    const rows = useMemo(() => {
+        const _rows = sort(data.filter((person: Person) => person.status === peopleType), [getNormalizedSortBy(sortBy)])
+            .filter((person: any) => {
+                for (let key in person) {
+                    if (typeof person[key] === 'string' && (person[key]).toLowerCase().match(filter.toLowerCase())) {
+                        return true
+                    }
                 }
-            }
-            return false
-        })
-    if (sortDir === 'desc') {
-        rows.reverse()
-    }
+                return false
+            })
+        if (sortDir === 'desc') {
+            _rows.reverse()
+        }
+        return _rows
+    }, [data, filter, peopleType, sortBy, sortDir])
     const handleDataCopy = () => {
         if (dataExportModalRef.current) {
             dataExportModalRef.current.querySelector('textarea')?.select()

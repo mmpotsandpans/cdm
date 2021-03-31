@@ -9,6 +9,7 @@ import ListIcon from '@material-ui/icons/List';
 import PhotoLibraryIcon from '@material-ui/icons/PhotoLibrary';
 import InfoIcon from '@material-ui/icons/Info';
 import DeveloperModeIcon from '@material-ui/icons/DeveloperMode';
+import CancelScheduleSendIcon from '@material-ui/icons/CancelScheduleSend';
 import './Sidebar.scss'
 import { t } from 'ttag';
 
@@ -32,6 +33,9 @@ export const Sidebar = () => {
                     </Typography>
                     <Typography variant="h6">
                         <NavLink to="/"><PhotoLibraryIcon /> {t`စုပေါင်းမှတ်တမ်းများ`}</NavLink>
+                    </Typography>
+                    <Typography variant='h6'>
+                        <NavLink to='/misinformation'><CancelScheduleSendIcon />{t`မှားနေသော၊ မှားနေနိုင်သော အချက်အလက်များ`}</NavLink>
                     </Typography>
                     <Typography variant="h6">
                         <NavLink to="/graphs"><PieChartIcon /> Graphs</NavLink>
