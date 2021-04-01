@@ -23,7 +23,7 @@ import { NavLink } from 'react-router-dom';
 import debounce from 'lodash.debounce';
 import { Scroll } from '../../components/Scroll/Scroll';
 import throttle from 'lodash.throttle';
-import { getDetails, getExportCol, getName, getPersonMedia, normalizePeopleData } from '../../utils/personUtils';
+import { getDetails, getExportCol, getName, getPersonMedia, normalizePeopleData, validateMediaFolders } from '../../utils/personUtils';
 import { getLocale } from '../../utils/i18n';
 
 const locale = getLocale()
@@ -168,6 +168,7 @@ export const PeopleBreakdown: FC<{}> = () => {
                     }))
                     setData(cachedData[peopleType])
                     setError(false)
+                    validateMediaFolders(cachedData[peopleType], peopleType)
                 })
                 .catch((e) => {
                     setError(true)

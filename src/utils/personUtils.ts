@@ -17,6 +17,23 @@ export const getPersonMedia = (person: Person | undefined, peopleType: People) =
     return media?.filter(m => !/hidden/.test(m))
 }
 
+export const validateMediaFolders = (people: Person[], peopleType: People) => {
+    const images = peopleType === People.fallen ? fallenImages : woundedImages
+    const folderNames = people.map(p => p?.folder).filter(f => f)
+    people.forEach((person: Person) => {
+        const media = images.get(person?.folder?.trim() || person?.name.trim() || '')
+        if (person?.folder && !media) {
+            console.warn(`${person?.name} has invalid media folder`)
+        }
+    })
+    const folders = Array.from(images.keys())
+    folders.forEach(f => {
+        if (!folderNames.includes(f)) {
+            console.warn(`${f} folder is not associated with any person`)
+        }
+    })
+}
+
 const locale = getLocale()
 
 export const getName = (p: Person | undefined) => {
