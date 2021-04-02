@@ -128,10 +128,6 @@ export const adminBounds = [
                 "name": "စစ်ကိုင်း",
                 "townships": {}
             },
-            {
-                "name": "ဂန့်ဂေါ",
-                "townships": {}
-            }
         ]
     },
     {
@@ -219,6 +215,10 @@ export const adminBounds = [
                 "name": "ပွင့်ဖြူ",
                 "townships": {}
             },
+            {
+                "name": "ဂန့်ဂေါ",
+                "townships": {}
+            }
         ]
     },
     {
