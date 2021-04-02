@@ -43,7 +43,7 @@ export const Misinformation = () => {
                         မကြယ်စင် သွေးအမျိုးအစားပုံ
                     </Typography>
                     <Typography variant="body2" color="textSecondary" component="p">
-                        ဒီပုံမှာ မကြည်စင်တင်ခဲ့သည့်ပုံဟု ပျံ့နှံ့ခဲ့ပါသည်။ မကြယ်စင်မဟုတ်ပါ။ မစန္ဒကူးပါ။ အသက်ရှင်လျက်ပါ။
+                        ဒီပုံမှာ မကြယ်စင်တင်ခဲ့သည့်ပုံဟု ပျံ့နှံ့ခဲ့ပါသည်။ မကြယ်စင်မဟုတ်ပါ။ မစန္ဒကူးပါ။ အသက်ရှင်လျက်ပါ။
                         အောက်ကပုံကမှ အစစ်ပါ။
                     </Typography>
                     <CardMedia image={starReal} title='ကြယ်စင်' style={{backgroundSize: 'contain', height: '300px'}}/>

@@ -111,3 +111,28 @@ export const getHonorific = (p: Person) => {
         return gender === 'm' ? t`မောင်` : t`မ`
     }
 }
+
+// TODO: refactor
+export const getTotals = (people: Person[])  => {
+    const totals: any = {
+        date: {},
+        city: {},
+        state: {},
+        township: {},
+    }
+    people.forEach((person: Person) => {
+        if (person.date) {
+            totals.date[person.date] = (totals.date[person.date] || 0) + 1
+        }
+        if (person.city) {
+            totals.city[person.city] = (totals.city[person.city] || 0) + 1
+        }
+        if (person.state) {
+            totals.state[person.state] = (totals.state[person.state] || 0) + 1
+        }
+        if (person.township) {
+            totals.township[person.township] = (totals.township[person.township] || 0) + 1
+        }
+    })
+    return totals
+}

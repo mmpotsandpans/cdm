@@ -23,7 +23,7 @@ import { NavLink } from 'react-router-dom';
 import debounce from 'lodash.debounce';
 import { Scroll } from '../../components/Scroll/Scroll';
 import throttle from 'lodash.throttle';
-import { getDetails, getExportCol, getName, getPersonMedia, normalizePeopleData, validateMediaFolders } from '../../utils/personUtils';
+import { getDetails, getExportCol, getName, getPersonMedia, getTotals, normalizePeopleData, validateMediaFolders } from '../../utils/personUtils';
 import { getLocale } from '../../utils/i18n';
 
 const locale = getLocale()
@@ -91,27 +91,6 @@ const getNormalizedSortBy = (sortBy: string) => {
 }
 
 const updatedTime = process.env.REACT_APP_INDEX_HASH ? (new Date(parseInt(process.env.REACT_APP_INDEX_HASH) * 1000)) : undefined
-
-// TODO: refactor
-const getTotals = (people: Person[])  => {
-    const totals: any = {
-        date: {},
-        city: {},
-        state: {}
-    }
-    people.forEach((person: Person) => {
-        if (person.date) {
-            totals.date[person.date] = (totals.date[person.date] || 0) + 1
-        }
-        if (person.city) {
-            totals.city[person.city] = (totals.city[person.city] || 0) + 1
-        }
-        if (person.state) {
-            totals.state[person.state] = (totals.state[person.state] || 0) + 1
-        }
-    })
-    return totals
-}
 
 export const PeopleBreakdown: FC<{}> = () => {
     const [peopleType, setPeopleType] = useState<People>(People.fallen)
@@ -275,6 +254,7 @@ export const PeopleBreakdown: FC<{}> = () => {
                         </>
                     }
                     <TableCell onClick={() => handleHeaderClick("state")}><TableSortLabel direction={sortDir} active={sortBy === 'state'}>{t`တိုင်း/ပြည်နယ်`}</TableSortLabel></TableCell>
+                    <TableCell onClick={() => handleHeaderClick("township")}><TableSortLabel direction={sortDir} active={sortBy === 'township'}>{t`မြို့နယ်/ကျေးရွာ`}</TableSortLabel></TableCell>
                 </TableRow>
             </TableHead>
             <TableBody>
@@ -298,6 +278,7 @@ export const PeopleBreakdown: FC<{}> = () => {
                         </>
                     }
                     <TableCell title={row.state ? `Total ${totals.state[row.state]}` : ''}>{row.state}</TableCell>
+                    <TableCell title={row.township ? `Total ${totals.township[row.township]}` : ''}>{row.township}</TableCell>
                 </TableRow>
                 ))}
                 <TableRow><TableCell colSpan={5}>{t`ရုပ်ပုံများ နောက်ဆုံးပြင်ဆင်ချိန်`} {updatedTime?.toLocaleDateString()} {updatedTime?.toLocaleTimeString()}</TableCell></TableRow>

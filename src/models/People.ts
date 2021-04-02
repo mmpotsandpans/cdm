@@ -34,6 +34,7 @@ export interface Person {
   honorific?: 'string';
   enName?: 'string';
   enDetails?: 'string';
+  township?: 'string';
 }
 
 // on the run list is unreliable, so it's omitted for now
