@@ -1,8 +1,8 @@
-import React, { FC, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
+import React, { FC, Profiler, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Link from '@material-ui/core/Link';
 import { People, peopleData, peopleTypes, peopleTypesStrings, Person } from '../../models/People';
-import { TableContainer, Paper, Table, TableHead, TableRow, TableCell, TableBody, TableSortLabel, Snackbar, GridListTile, Dialog, DialogContent, Drawer, Accordion, AccordionDetails, AccordionSummary, Typography, CircularProgress, Divider } from '@material-ui/core';
+import { TableContainer, Paper, Table, TableHead, TableRow, TableCell, TableBody, TableSortLabel, Snackbar, GridListTile, Dialog, DialogContent, Drawer, Accordion, AccordionDetails, AccordionSummary, Typography, CircularProgress, Divider, FormControlLabel, Switch } from '@material-ui/core';
 import sort from 'lodash.sortby'
 import PhotoCameraIcon from '@material-ui/icons/PhotoCamera';
 import './People.scss';
@@ -32,7 +32,7 @@ const hasLiveData = (type: People) => [People.fallen, People.wounded].includes(t
 
 const exportPeople = (people: Person[]) => {
     let text = ''
-    const props = ['name', 'confirmed', 'date', 'city', 'details', 'age', 'state']
+    const props = ['name', 'confirmed', 'date', 'city', 'details', 'age', 'state', 'township']
     text += props.join('\t') + '\n\n'
     people.forEach((person: any) => {
         props.forEach((prop: any) => {
@@ -92,6 +92,18 @@ const getNormalizedSortBy = (sortBy: string) => {
 
 const updatedTime = process.env.REACT_APP_INDEX_HASH ? (new Date(parseInt(process.env.REACT_APP_INDEX_HASH) * 1000)) : undefined
 
+const handleProfiler = (
+    id: any, // the "id" prop of the Profiler tree that has just committed
+    phase: any, // either "mount" (if the tree just mounted) or "update" (if it re-rendered)
+    actualDuration: any, // time spent rendering the committed update
+    baseDuration: any, // estimated time to render the entire subtree without memoization
+    startTime: any, // when React began rendering this update
+    commitTime: any, // when React committed this update
+    interactions: any // the Set of interactions belonging to this update
+) => {
+    console.log(phase, actualDuration, baseDuration)
+}
+
 export const PeopleBreakdown: FC<{}> = () => {
     const [peopleType, setPeopleType] = useState<People>(People.fallen)
     const [sortBy, setSortBy] = useState<keyof Person>("date");
@@ -108,6 +120,8 @@ export const PeopleBreakdown: FC<{}> = () => {
     const [loading, setLoading] = useState(false)
     const [data, setData] = useState<Person[]>([])
     const [showScroll, setShowScroll] = useState(false)
+    const [showStateCol, setShowStateCol] = useState(false)
+    const [showTownshipCol, setShowTownshipCol] = useState(false)
     const [error, setError] = useState(false)
     const handleTableScroll = throttle(() => {
         setSnackbarOpen(false)
@@ -204,6 +218,7 @@ export const PeopleBreakdown: FC<{}> = () => {
     const totals = useMemo(() => getTotals(rows), [data])
     return (
       <div className='PeopleBreakdown'>
+          <Profiler id='table' onRender={handleProfiler}>
           <Accordion expanded={controlsExpanded} ref={controlsRef} onAnimationEnd={adjustTableHeight}>
             <AccordionSummary expandIcon={<ExpandMoreIcon />} onClick={() => setControlsExpanded(!controlsExpanded)}>
                 <Salute />
@@ -229,6 +244,28 @@ export const PeopleBreakdown: FC<{}> = () => {
                         <label>{t`ရှာဖွေရန်`}</label>&nbsp;
                         <input onChange={e => handleFilterChange(e.target.value)} />
                     </div>
+                    <div>
+                        <FormControlLabel
+                            control={
+                                <Switch
+                                    checked={showStateCol}
+                                    onChange={() => setShowStateCol(!showStateCol)}
+                                    name="stateCol"
+                                    color="primary"
+                                />}
+                            label="State Column"
+                        />
+                        <FormControlLabel
+                            control={
+                                <Switch
+                                    checked={showTownshipCol}
+                                    onChange={() => setShowTownshipCol(!showTownshipCol)}
+                                    name="townshipCol"
+                                    color="primary"
+                                />}
+                            label="Township Column"
+                        />
+                    </div>
                     <div className='actions'>
                         <Button variant="contained" color="secondary" onClick={() => setIsExportModalOpen(true)}>{t`Export data`}</Button>
                         <Button variant="contained" color="secondary" onClick={() => setDrawerOpen(true)}>{t`Legend`}</Button>
@@ -253,8 +290,8 @@ export const PeopleBreakdown: FC<{}> = () => {
                             <TableCell onClick={() => handleHeaderClick("details")}><TableSortLabel direction={sortDir} active={sortBy === 'details'}>{t`အသေးစိတ်`}</TableSortLabel></TableCell>
                         </>
                     }
-                    <TableCell onClick={() => handleHeaderClick("state")}><TableSortLabel direction={sortDir} active={sortBy === 'state'}>{t`တိုင်း/ပြည်နယ်`}</TableSortLabel></TableCell>
-                    <TableCell onClick={() => handleHeaderClick("township")}><TableSortLabel direction={sortDir} active={sortBy === 'township'}>{t`မြို့နယ်/ကျေးရွာ`}</TableSortLabel></TableCell>
+                    {showStateCol && <TableCell onClick={() => handleHeaderClick("state")}><TableSortLabel direction={sortDir} active={sortBy === 'state'}>{t`တိုင်း/ပြည်နယ်`}</TableSortLabel></TableCell>}
+                    {showTownshipCol && <TableCell onClick={() => handleHeaderClick("township")}><TableSortLabel direction={sortDir} active={sortBy === 'township'}>{t`မြို့နယ်/ကျေးရွာ`}</TableSortLabel></TableCell>}
                 </TableRow>
             </TableHead>
             <TableBody>
@@ -277,8 +314,8 @@ export const PeopleBreakdown: FC<{}> = () => {
                             </TableCell>
                         </>
                     }
-                    <TableCell title={row.state ? `Total ${totals.state[row.state]}` : ''}>{row.state}</TableCell>
-                    <TableCell title={row.township ? `Total ${totals.township[row.township]}` : ''}>{row.township}</TableCell>
+                    {showStateCol && <TableCell title={row.state ? `Total ${totals.state[row.state]}` : ''}>{row.state}</TableCell>}
+                    {showTownshipCol && <TableCell title={row.township ? `Total ${totals.township[row.township]}` : ''}>{row.township}</TableCell>}
                 </TableRow>
                 ))}
                 <TableRow><TableCell colSpan={5}>{t`ရုပ်ပုံများ နောက်ဆုံးပြင်ဆင်ချိန်`} {updatedTime?.toLocaleDateString()} {updatedTime?.toLocaleTimeString()}</TableCell></TableRow>
@@ -353,6 +390,7 @@ export const PeopleBreakdown: FC<{}> = () => {
                 <div><PhotoCameraIcon /> {t`ဓာတ်ပုံများကို ကလစ်နှိပ်၍ကြည့်နိုင်`}</div>
             </div>
         </Drawer>
+        </Profiler>
     </div>
   );
 }
