@@ -1,21 +1,22 @@
 {
   "files": {
     "main.css": "/static/css/main.2537a6e8.chunk.css",
-    "main.js": "/static/js/main.4a033b05.chunk.js",
-    "main.js.map": "/static/js/main.4a033b05.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.ed2210dc.js",
-    "runtime-main.js.map": "/static/js/runtime-main.ed2210dc.js.map",
-    "static/js/2.a461d068.chunk.js": "/static/js/2.a461d068.chunk.js",
-    "static/js/2.a461d068.chunk.js.map": "/static/js/2.a461d068.chunk.js.map",
-    "static/js/3.1c7c8300.chunk.js": "/static/js/3.1c7c8300.chunk.js",
-    "static/js/3.1c7c8300.chunk.js.map": "/static/js/3.1c7c8300.chunk.js.map",
+    "main.js": "/static/js/main.f11c9c75.chunk.js",
+    "main.js.map": "/static/js/main.f11c9c75.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.f09bad3c.js",
+    "runtime-main.js.map": "/static/js/runtime-main.f09bad3c.js.map",
+    "static/js/2.bf179ffb.chunk.js": "/static/js/2.bf179ffb.chunk.js",
+    "static/js/2.bf179ffb.chunk.js.map": "/static/js/2.bf179ffb.chunk.js.map",
+    "static/js/3.882e55ca.chunk.js": "/static/js/3.882e55ca.chunk.js",
+    "static/js/3.882e55ca.chunk.js.map": "/static/js/3.882e55ca.chunk.js.map",
     "index.html": "/index.html",
     "service-worker.js": "/service-worker.js",
     "service-worker.js.map": "/service-worker.js.map",
     "static/css/main.2537a6e8.chunk.css.map": "/static/css/main.2537a6e8.chunk.css.map",
-    "static/js/2.a461d068.chunk.js.LICENSE.txt": "/static/js/2.a461d068.chunk.js.LICENSE.txt",
+    "static/js/2.bf179ffb.chunk.js.LICENSE.txt": "/static/js/2.bf179ffb.chunk.js.LICENSE.txt",
     "static/media/0.jpg": "/static/media/0.3e208b97.jpg",
     "static/media/1 (2).jpg": "/static/media/1 (2).ce4a0e2b.jpg",
+    "static/media/1. blur.jpg": "/static/media/1. blur.db250c5b.jpg",
     "static/media/1.jpg": "/static/media/1.fe9c4873.jpg",
     "static/media/1.png": "/static/media/1.f30d8172.png",
     "static/media/1.JPG": "/static/media/1.3fca2d0b.JPG",
@@ -162,9 +163,9 @@
     "static/media/yazar min.jpg": "/static/media/yazar min.c0f70fff.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.ed2210dc.js",
-    "static/js/2.a461d068.chunk.js",
+    "static/js/runtime-main.f09bad3c.js",
+    "static/js/2.bf179ffb.chunk.js",
     "static/css/main.2537a6e8.chunk.css",
-    "static/js/main.4a033b05.chunk.js"
+    "static/js/main.f11c9c75.chunk.js"
   ]
 }
