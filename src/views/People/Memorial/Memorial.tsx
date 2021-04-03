@@ -45,6 +45,11 @@ images.set('mar', ({
         'https://rb.gy/k5wvjk'
     ]
 }))
+const aprilImages = importAll(require.context('../../../resources/images/memorial/april', true));
+images.set('april', ({
+    srcs: aprilImages.map((m:any) => m.default).sort(sortImages).reverse(),
+    links: []
+}))
 
 export const Memorial = () => {
     const [month, setMonth] = useState(images.keys().next().value)
