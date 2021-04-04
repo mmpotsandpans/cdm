@@ -20,9 +20,9 @@ export const About = () => {
             <ol>
                 <li>ယခုလောလောဆယ် အခြားစာရင်းများထက် အရေအတွက်နည်းနေပါတယ်။ ဖြည်းဖြည်းနဲ့မှန်မှန် သတင်းစုံအောင် ကြိုးစားနေပါတယ်။ အချိန်နှင့်အလိုက် ကိန်းဂဏန်းကို သိချင်ရင်တော့ အပေါ်က စာရင်းတွေမှာ ကြည့်နိုင်ပါတယ်။</li>
                 <li>{t`စာရင်းပိုမိုတိကျပြီး အချက်အလက်စုံစေရန် ထပ်မံစစ်ဆေးခြင်း။ ကူညီလိုသူများ အလွယ်တကူ ကူညီနိုင်ရန် နည်းလမ်းများ ရှာဖွေခြင်း`}</li>
-                <li style={{textDecoration: 'line-through'}}>{t`ကျဆုံးသူများနှင့် ပတ်သက်သော၊ ပျံ့နှံ့နေသော သတင်းမှားများ တင်ပြရန်`} Available for toggle in controls now</li>
-                <li style={{textDecoration: 'line-through'}}>{t`မြို့နယ်နှင့် ပြည်နယ်တိုင်းပါအောင် ထည့်သွင်းရန်`} Available for toggle in controls now</li>
                 <li>{t`သေဆုံးသည့်အကြောင်းရင်း`}</li>
+                <li style={{textDecoration: 'line-through'}}>{t`ကျဆုံးသူများနှင့် ပတ်သက်သော၊ ပျံ့နှံ့နေသော သတင်းမှားများ တင်ပြရန်`} Available as a separate on the sidebar</li>
+                <li style={{textDecoration: 'line-through'}}>{t`မြို့နယ်နှင့် ပြည်နယ်တိုင်းပါအောင် ထည့်သွင်းရန်`} Available for toggle in controls now</li>
             </ol>
         </div>
         <Divider />

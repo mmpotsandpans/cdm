@@ -133,6 +133,29 @@ export const getTotals = (people: Person[])  => {
         if (person.township) {
             totals.township[person.township] = (totals.township[person.township] || 0) + 1
         }
+        hasMissingField(person);
     })
+    console.warn(peopleWithMissingFields)
     return totals
+}
+
+const peopleWithMissingFields = {
+    unconfirmed: new Set(),
+    noAge: new Set(),
+    noDate: new Set(),
+    noCity: new Set()
+}
+export const hasMissingField = (person: Person) => {
+    if (!person.date) {
+        peopleWithMissingFields.noDate.add(person.name)
+    }
+    if (!person.age) {
+        peopleWithMissingFields.noAge.add(person.name)
+    }
+    if (!person.confirmed) {
+        peopleWithMissingFields.unconfirmed.add(person.name)
+    }
+    if (!person.city) {
+        peopleWithMissingFields.noCity.add(person.name)
+    }
 }

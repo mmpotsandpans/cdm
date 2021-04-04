@@ -89,7 +89,7 @@ msgstr ""
 "To share information efficiently, use #mmFallenHeroes and #mmMissingHeroes "
 "facebook tags"
 
-#: src/views/About/About.tsx:28
+#: src/views/About/About.tsx:29
 msgid "အာဇာနည်များအား ဝမ်းနည်းလှစွာဖြင့် ဂုဏ်ပြုမှတ်တမ်းတင်အပ်ပါသည်။"
 msgstr "In honor of our fallen heroes"
 
@@ -130,7 +130,7 @@ msgstr "date"
 msgid "ရုပ်ပုံများ နောက်ဆုံးပြင်ဆင်ချိန်"
 msgstr "Media files last updated"
 
-#: src/views/Resources/Resources.tsx:22
+#: src/views/Resources/Resources.tsx:24
 msgid "အကူအညီပေးနိုင်သော၊ မှတ်တမ်းတင်ထားသော နေရာများ (ဒီဆိုက်နှင့် မသက်ဆိုင်)"
 msgstr ""
 "Places where you can donate or learn more about the heores (Unaffiliated "
@@ -186,15 +186,15 @@ msgstr ""
 msgid "စာရင်းထည့်/ပြင် (သို့) အကြံပေးလိုပါက"
 msgstr "To edit the list/suggest"
 
-#: src/views/About/About.tsx:22
+#: src/views/About/About.tsx:24
 msgid "ကျဆုံးသူများနှင့် ပတ်သက်သော၊ ပျံ့နှံ့နေသော သတင်းမှားများ တင်ပြရန်"
 msgstr "Misinformation page"
 
-#: src/views/About/About.tsx:23
+#: src/views/About/About.tsx:25
 msgid "မြို့နယ်နှင့် ပြည်နယ်တိုင်းပါအောင် ထည့်သွင်းရန်"
 msgstr "Catalogue township and division/region data"
 
-#: src/views/About/About.tsx:24
+#: src/views/About/About.tsx:23
 msgid "သေဆုံးသည့်အကြောင်းရင်း"
 msgstr "Cause of death data"
 
@@ -215,7 +215,7 @@ msgstr ""
 "The goal is to help groups that are spearheading donations, content "
 "creators, and data collectors etc"
 
-#: src/views/About/About.tsx:21
+#: src/views/About/About.tsx:22
 msgid ""
 "စာရင်းပိုမိုတိကျပြီး အချက်အလက်စုံစေရန် ထပ်မံစစ်ဆေးခြင်း။ ကူညီလိုသူများ "
 "အလွယ်တကူ ကူညီနိုင်ရန် နည်းလမ်းများ ရှာဖွေခြင်း"

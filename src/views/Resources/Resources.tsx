@@ -5,6 +5,7 @@ import {t} from 'ttag'
 import './Resources.scss'
 
 const resources = {
+    'Myanmar Fallen Heroes': 'https://myanmarfallenheroes.com',
     'Ku Nyi': 'https://www.facebook.com/Ku-Nyi-100280548827059/',
     'Fallen Heroes Fund Myanmar': 'https://www.facebook.com/fhfmyanmar',
     'Heroes of Spring Revolution 2021': 'https://heroesofspringrevolution2021.com/',
@@ -12,6 +13,7 @@ const resources = {
     'Memoirs of the Fallen': 'https://memoirsofthefallen.com',
     'Honor Heroes Myanmar': 'https://www.facebook.com/pg/HonorHeroesMyanmar/',
     'Lu Pyout': 'https://lupyout.com',
+    'Nway Oo Revolution': 'https://nwayoorevolution.com',
     'How Many Dead Bodies': 'https://www.facebook.com/How-many-dead-bodies-112813997526188/',
     'Myanmar Spring Revolution Fallen Stars': 'https://bit.ly/myanmarspring22222',
     'Myanmar Freedom Memorial': 'https://myanmarfreedommemorial.info/'
