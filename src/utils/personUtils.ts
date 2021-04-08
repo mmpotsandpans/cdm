@@ -143,19 +143,23 @@ const peopleWithMissingFields = {
     unconfirmed: new Set(),
     noAge: new Set(),
     noDate: new Set(),
-    noCity: new Set()
+    noCity: new Set(),
+    noFolder: new Set()
 }
 export const hasMissingField = (person: Person) => {
     if (!person.date) {
-        peopleWithMissingFields.noDate.add(person.name)
+        peopleWithMissingFields.noDate.add(person.name + '-' + person.date)
     }
     if (!person.age) {
-        peopleWithMissingFields.noAge.add(person.name)
+        peopleWithMissingFields.noAge.add(person.name + '-' + person.date)
     }
     if (!person.confirmed) {
-        peopleWithMissingFields.unconfirmed.add(person.name)
+        peopleWithMissingFields.unconfirmed.add(person.name + '-' + person.date)
     }
     if (!person.city) {
-        peopleWithMissingFields.noCity.add(person.name)
+        peopleWithMissingFields.noCity.add(person.name + '-' + person.date)
+    }
+    if (!person.folder) {
+        peopleWithMissingFields.noFolder.add(person.name + '-' + person.date)
     }
 }

@@ -5,12 +5,15 @@ import {t} from 'ttag'
 import './Resources.scss'
 
 const resources = {
-    'Myanmar Fallen Heroes': 'https://myanmarfallenheroes.com',
-    'Ku Nyi': 'https://www.facebook.com/Ku-Nyi-100280548827059/',
     'Fallen Heroes Fund Myanmar': 'https://www.facebook.com/fhfmyanmar',
-    'Heroes of Spring Revolution 2021': 'https://heroesofspringrevolution2021.com/',
-    'Nway Oo Heroes': 'https://nwayooheroes.org',
+    'I Support Myanmar': 'https://www.isupportmyanmar.com/',
+    'Phan Foundation': 'https://phanfoundation.org/appeal-for-idps/',
+    'Mutal Aid Myanmar': 'https://www.mutualaidmyanmar.org/',
     'Memoirs of the Fallen': 'https://memoirsofthefallen.com',
+    'Nway Oo Heroes': 'https://nwayooheroes.org',
+    'Ku Nyi': 'https://www.facebook.com/Ku-Nyi-100280548827059/',
+    'Myanmar Fallen Heroes': 'https://myanmarfallenheroes.com',
+    'Heroes of Spring Revolution 2021': 'https://heroesofspringrevolution2021.com/',
     'Honor Heroes Myanmar': 'https://www.facebook.com/pg/HonorHeroesMyanmar/',
     'Lu Pyout': 'https://lupyout.com',
     'Nway Oo Revolution': 'https://nwayoorevolution.com',

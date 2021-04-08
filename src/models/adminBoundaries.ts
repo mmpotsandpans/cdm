@@ -306,6 +306,10 @@ export const adminBounds = [
             {
                 "name": "တပ်ကုန်း",
                 "townships": {}
+            },
+            {
+                "name": "ပျဥ်းမနား",
+                "townships": {}
             }
         ]
     },
