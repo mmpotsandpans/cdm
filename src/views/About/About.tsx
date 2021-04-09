@@ -27,6 +27,7 @@ export const About = () => {
         </div>
         <Divider />
         <p style={{textAlign: 'center', fontWeight: 900}}>{t`အာဇာနည်များအား ဝမ်းနည်းလှစွာဖြင့် ဂုဏ်ပြုမှတ်တမ်းတင်အပ်ပါသည်။`}</p>
+        <p style={{textAlign: 'center'}}>{t`တိုက်ပွဲများကြောင့် ကျဆုံးခဲ့ရတဲ့ ပြည်သူများကိုပါ မှတ်တမ်းတင်ချင်ပါသော်လည်း ခုချိန်တွင် သတင်းမမှီသေးပါ။`}</p>
         <div className='coverpic' style={{backgroundImage: `url(${coverpic})`}}/>
     </div>
 }

@@ -65,6 +65,17 @@ const _adminBoundMappings: any = {
 	"မွန်": "Mon",
 	"တနင်္သာရီ": "Tanintharyi",
 	"ဧရာဝတီ": "Ayeyarwady",
+	"ပင်လယ်ဘူး": "Pinlebu",
+	"စဥ့်ကူး": "Singu",
+	"ဂန့်ဂေါ": "Gangaw",
+	"ညောင်ရွှေ": "Nyaungshwe",
+	"သထုံ": "Thaton",
+	"ပျဥ်းမနား": "Pyinmana",
+	"တပ်ကုန်း": "Tatkon",
+	"ခင်ဦး": "Khin-U",
+	"ဖြူး": "Phyu",
+	"ဆိပ်ဖြူ": "Seikphyu",
+	"ကျိုက်ထို": "Kyaikto"
 }
 
 export const adminBoundMappings: any = {}

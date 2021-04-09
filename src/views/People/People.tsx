@@ -331,7 +331,8 @@ export const PeopleBreakdown: FC<{}> = () => {
                     <p>{t`သတင်းပေးရှာဖွေမှုလွယ်ကူစေရန် ကျဆုံးသွားသူများအတွက် #mmFallenHeroes နဲ့ ပျောက်ဆုံးနေသူများအတွက် #mmMissingHeroes ဟုအသုံးပြုပေးကြပါ။`}</p>
                     <p>{t`ကျန်ရစ်သူများကို ကူညီလိုပါက`} <NavLink to="/resources" style={{color: 'yellowgreen'}}>link</NavLink></p>
                     <NavLink to='/api' style={{color: 'yellowgreen', fontSize: '1rem', textAlign: 'center', display: 'block'}}>Data API</NavLink>
-                    <NavLink to='/about' style={{color: 'yellow', fontSize: '1rem', textAlign: 'center', display: 'block'}}>Our road map (Apr 2 Update)</NavLink>
+                    <NavLink to='/about' style={{color: 'yellow', fontSize: '1rem', textAlign: 'center', display: 'block'}}>Our road map (Apr 8 Update)</NavLink>
+                    <NavLink to='/memorial' style={{color: 'yellow', fontSize: '1rem'}}>Memorial</NavLink> page video backgroundတွင် ကိုယ်တိုင်လုပ်ထားသည်ကို မျှဝေချင်ပါကလည်း Formတွင်ပို့ပေးနိုင်ပါသည်။
                 </div>
             }
             autoHideDuration={20000}

@@ -99,16 +99,20 @@ export const getHonorific = (p: Person) => {
     if (locale === 'my' && p.honorific) {
         return p.honorific
     }
-    if (!p.age || !p.gender) {
+    if (!p.gender) {
         return ''
     }
     const gender = p.gender.trim()
-    if (p.age >= 40) {
-        return gender === 'm' ? t`ဦး` : t`ဒေါ်`
-    } else if (p.age >= 20) {
-        return gender === 'm' ? t`ကို` : t`မ`
+    if (p.age) {
+        if (p.age >= 40) {
+            return gender === 'm' ? t`ဦး` : t`ဒေါ်`
+        } else if (p.age >= 20) {
+            return gender === 'm' ? t`ကို` : t`မ`
+        } else {
+            return gender === 'm' ? t`မောင်` : t`မ`
+        }
     } else {
-        return gender === 'm' ? t`မောင်` : t`မ`
+        return gender === 'm' ? t`ကို` : t`မ` 
     }
 }
 

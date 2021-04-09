@@ -32,7 +32,7 @@ export const Sidebar = () => {
                         <NavLink to="/resources"><AccountBalanceIcon /> Resources/Organizations</NavLink>
                     </Typography>
                     <Typography variant="h6">
-                        <NavLink to="/"><PhotoLibraryIcon /> {t`စုပေါင်းမှတ်တမ်းများ`}</NavLink>
+                        <NavLink to="/memorial"><PhotoLibraryIcon /> {t`စုပေါင်းမှတ်တမ်းများ`}</NavLink>
                     </Typography>
                     <Typography variant='h6'>
                         <NavLink to='/misinformation'><CancelScheduleSendIcon />{t`မှားနေသော၊ မှားနေနိုင်သော အချက်အလက်များ`}</NavLink>

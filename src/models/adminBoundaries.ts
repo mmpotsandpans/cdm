@@ -62,6 +62,10 @@ export const adminBounds = [
                 "name": "ကျိုက်ထို",
                 "townships": {}
             },
+            {
+                "name": "သထုံ",
+                "townships": {}
+            },
         ]
     },
     {
@@ -89,6 +93,10 @@ export const adminBounds = [
             },
             {
                 "name": "လားရှိုး",
+                "townships": {}
+            },
+            {
+                "name": "ညောင်ရွှေ",
                 "townships": {}
             },
         ]
@@ -126,6 +134,14 @@ export const adminBounds = [
             },
             {
                 "name": "စစ်ကိုင်း",
+                "townships": {}
+            },
+            {
+                "name": "ပင်လယ်ဘူး",
+                "townships": {}
+            },
+            {
+                "name": "ခင်ဦး",
                 "townships": {}
             },
         ]
@@ -174,6 +190,10 @@ export const adminBounds = [
                 "name": "ဒိုက်ဦး",
                 "townships": {}
             },
+            {
+                "name": "ဖြူး",
+                "townships": {}
+            },
         ]
     },
     {
@@ -218,7 +238,11 @@ export const adminBounds = [
             {
                 "name": "ဂန့်ဂေါ",
                 "townships": {}
-            }
+            },
+            {
+                "name": "ဆိပ်ဖြူ",
+                "townships": {}
+            },
         ]
     },
     {
@@ -266,6 +290,10 @@ export const adminBounds = [
             },
             {
                 "name": "စဥ့်ကိုင်",
+                "townships": {}
+            },
+            {
+                "name": "စဥ့်ကူး",
                 "townships": {}
             },
         ]
