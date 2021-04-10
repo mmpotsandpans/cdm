@@ -93,11 +93,11 @@ msgstr ""
 msgid "အာဇာနည်များအား ဝမ်းနည်းလှစွာဖြင့် ဂုဏ်ပြုမှတ်တမ်းတင်အပ်ပါသည်။"
 msgstr "In honor of our fallen heroes"
 
-#: src/views/People/People.tsx:389
+#: src/views/People/People.tsx:390
 msgid "သတင်းမီဒီယာမှ အတည်ပြုထားခြင်း၊ ဓာတ်ပုံ ဗီဒီယို၊ တိုက်ရိုက်လင့်ခ်ရှိခြင်း"
 msgstr "Confirmed by news media and/or has multiple image/vid/direct links"
 
-#: src/views/People/People.tsx:390
+#: src/views/People/People.tsx:391
 msgid "ဓာတ်ပုံများကို ကလစ်နှိပ်၍ကြည့်နိုင်"
 msgstr "Can click the icon to see media files"
 
@@ -130,10 +130,10 @@ msgstr "date"
 msgid "ရုပ်ပုံများ နောက်ဆုံးပြင်ဆင်ချိန်"
 msgstr "Media files last updated"
 
-#: src/views/Resources/Resources.tsx:27
+#: src/views/Resources/Resources.tsx:31
 msgid "အကူအညီပေးနိုင်သော၊ မှတ်တမ်းတင်ထားသော နေရာများ (ဒီဆိုက်နှင့် မသက်ဆိုင်)"
 msgstr ""
-"Places where you can donate or learn more about the heores (Unaffiliated "
+"Places where you can donate or learn more about the heroes (Unaffiliated "
 "with this site)"
 
 #: src/views/About/About.tsx:13
@@ -141,28 +141,30 @@ msgstr ""
 msgid "ကျန်ရစ်သူများကို ကူညီလိုပါက"
 msgstr "If you'd like to help the families"
 
-#: src/utils/personUtils.ts:107
+#: src/utils/personUtils.ts:108
 msgid "ဦး"
 msgstr "u"
 
-#: src/utils/personUtils.ts:107
+#: src/utils/personUtils.ts:108
 msgid "ဒေါ်"
 msgstr "daw"
 
-#: src/utils/personUtils.ts:109
+#: src/utils/personUtils.ts:110
+#: src/utils/personUtils.ts:115
 msgid "ကို"
 msgstr "ko"
 
-#: src/utils/personUtils.ts:109
-#: src/utils/personUtils.ts:111
+#: src/utils/personUtils.ts:110
+#: src/utils/personUtils.ts:112
+#: src/utils/personUtils.ts:115
 msgid "မ"
 msgstr "ma"
 
-#: src/utils/personUtils.ts:111
+#: src/utils/personUtils.ts:112
 msgid "မောင်"
 msgstr "mg"
 
-#: src/views/People/People.tsx:356
+#: src/views/People/People.tsx:357
 msgid ""
 "အောက်ပါ ရုပ်ပုံများသည် အလွန့်အလွန် အမြင်မတော် (သို့) "
 "သွေးထွက်သံယိုများနိုင်ပါသည်။ သူရဲကောင်းတို့ ပေးဆပ်ခဲ့ရမှုကို မှတ်တမ်းအရ သာ "
@@ -231,3 +233,9 @@ msgstr "Misinformation"
 #: src/views/People/People.tsx:294
 msgid "မြို့နယ်/ကျေးရွာ"
 msgstr "township"
+
+#: src/views/About/About.tsx:30
+msgid ""
+"တိုက်ပွဲများကြောင့် ကျဆုံးခဲ့ရတဲ့ ပြည်သူများကိုပါ မှတ်တမ်းတင်ချင်ပါသော်လည်း "
+"ခုချိန်တွင် သတင်းမမှီသေးပါ။"
+msgstr ""
