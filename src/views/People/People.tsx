@@ -25,6 +25,7 @@ import { Scroll } from '../../components/Scroll/Scroll';
 import throttle from 'lodash.throttle';
 import { getDetails, getExportCol, getName, getPersonMedia, getTotals, normalizePeopleData, validateMediaFolders } from '../../utils/personUtils';
 import { getLocale } from '../../utils/i18n';
+import { normalizeString } from '../../utils/stringUtils';
 
 const locale = getLocale()
 
@@ -102,6 +103,36 @@ const handleProfiler = (
     interactions: any // the Set of interactions belonging to this update
 ) => {
     console.log(phase, actualDuration, baseDuration)
+}
+
+const shouldSkipRow = (i: number, row: Person, rows: Person[]) => {
+    if (i === 0 || !row.name.includes(normalizeString('အမည်မသိ'))) {
+        return false
+    }
+    const prevRow = rows[i - 1]
+    return row.date === prevRow.date && row.city === prevRow.city && prevRow.name.includes(normalizeString('အမည်မသိ'))
+}
+
+// get name of consolidated row for unidentified
+const getNameCell = (i: number, row: Person, people: Person[]) => {
+    const end = people.length - 1
+    const name = getName(row)
+    if (i === end || !row.name.includes(normalizeString('အမည်မသိ'))) {
+        return name
+    }
+    const date = row.date
+    const city = row.city
+    let count = 1
+    i++
+    while (i < end) {
+        const curRow = people[i]
+        if (date !== curRow.date || city !== curRow.city || !curRow.name.includes(normalizeString('အမည်မသိ'))) {
+            break
+        }
+        i++
+        count++
+    }
+    return count === 1 ? name : `${name} (${count})`
 }
 
 export const PeopleBreakdown: FC<{}> = () => {
@@ -191,7 +222,7 @@ export const PeopleBreakdown: FC<{}> = () => {
             document.execCommand('copy')
         } 
     }
-    const exportData = exportPeople(rows)
+    const exportData = useMemo(() => exportPeople(rows), [rows])
     const adjustTableHeight = useCallback(() => {
         if (tableRef.current && controlsRef.current) {
             const headerHeight = document.querySelector('header')?.getBoundingClientRect().height || 0
@@ -296,28 +327,33 @@ export const PeopleBreakdown: FC<{}> = () => {
             </TableHead>
             <TableBody>
                 {/* TODO: fix key after we win this */}
-                {rows.map((row, i) => (
-                <TableRow key={row.name + '-' + i}>
-                    <TableCell component="th" scope="row">
-                    {i + 1}
-                    </TableCell>
-                    <TableCell component="th" scope="row" className='sticky-column'>
-                        <div className='name-cell' onClick={() => setPersonCol([row, 'name'])}>{getName(row)} {row.confirmed && verifiedIcon} {getPersonMedia(row, peopleType) && <PhotoCameraIcon fontSize='small' />}</div>
-                    </TableCell>
-                    <TableCell title={row.city ? `Total ${totals.city[row.city]}` : ''}>{row.city}</TableCell>
-                    {hasLiveData(peopleType) &&
-                        <>
-                            <TableCell title={row.date ? `Total ${totals.date[row.date]}` : ''}>{row.date ? (new Date(parseInt(row.date))).toLocaleDateString() : ''}</TableCell>
-                            <TableCell>{row.age || '-'}</TableCell>
-                            <TableCell onClick={() => setPersonCol([row, 'details'])}>
-                                <Linkify><div className='details'>{getDetails(row)}</div></Linkify>                                    
-                            </TableCell>
-                        </>
+                {rows.map((row, i) => {
+                    if (shouldSkipRow(i, row, rows)) {
+                        return null
                     }
-                    {showStateCol && <TableCell title={row.state ? `Total ${totals.state[row.state]}` : ''}>{row.state}</TableCell>}
-                    {showTownshipCol && <TableCell title={row.township ? `Total ${totals.township[row.township]}` : ''}>{row.township}</TableCell>}
-                </TableRow>
-                ))}
+                    return (
+                        <TableRow key={row.name + '-' + i}>
+                            <TableCell component="th" scope="row">
+                            {i + 1}
+                            </TableCell>
+                            <TableCell component="th" scope="row" className='sticky-column'>
+                                <div className='name-cell' onClick={() => setPersonCol([row, 'name'])}>{getNameCell(i, row, rows)} {row.confirmed && verifiedIcon} {getPersonMedia(row, peopleType) && <PhotoCameraIcon fontSize='small' />}</div>
+                            </TableCell>
+                            <TableCell title={row.city ? `Total ${totals.city[row.city]}` : ''}>{row.city}</TableCell>
+                            {hasLiveData(peopleType) &&
+                                <>
+                                    <TableCell title={row.date ? `Total ${totals.date[row.date]}` : ''}>{row.date ? (new Date(parseInt(row.date))).toLocaleDateString() : ''}</TableCell>
+                                    <TableCell>{row.age || '-'}</TableCell>
+                                    <TableCell onClick={() => setPersonCol([row, 'details'])}>
+                                        <Linkify><div className='details'>{getDetails(row)}</div></Linkify>                                    
+                                    </TableCell>
+                                </>
+                            }
+                            {showStateCol && <TableCell title={row.state ? `Total ${totals.state[row.state]}` : ''}>{row.state}</TableCell>}
+                            {showTownshipCol && <TableCell title={row.township ? `Total ${totals.township[row.township]}` : ''}>{row.township}</TableCell>}
+                        </TableRow>
+                    )
+                })}
                 <TableRow><TableCell colSpan={5}>{t`ရုပ်ပုံများ နောက်ဆုံးပြင်ဆင်ချိန်`} {updatedTime?.toLocaleDateString()} {updatedTime?.toLocaleTimeString()}</TableCell></TableRow>
             </TableBody>
             </Table>
