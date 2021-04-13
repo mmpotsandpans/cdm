@@ -110,3 +110,5 @@ export const Memorial = () => {
         </div>
     )
 }
+
+export default Memorial

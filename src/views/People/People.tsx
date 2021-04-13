@@ -431,3 +431,5 @@ export const PeopleBreakdown: FC<{}> = () => {
     </div>
   );
 }
+
+export default PeopleBreakdown

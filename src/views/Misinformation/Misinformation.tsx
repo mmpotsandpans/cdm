@@ -66,3 +66,5 @@ export const Misinformation = () => {
         </Card>
     </div>
 }
+
+export default Misinformation

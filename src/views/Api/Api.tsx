@@ -31,3 +31,5 @@ export const Api = () => {
         </div>
     </div>
 }
+
+export default Api

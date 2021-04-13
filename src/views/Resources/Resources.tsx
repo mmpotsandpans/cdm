@@ -46,3 +46,5 @@ export const Resources: FC<{}> = () => {
         </div>
     )
 }
+
+export default Resources

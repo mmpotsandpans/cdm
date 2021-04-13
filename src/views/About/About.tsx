@@ -31,3 +31,5 @@ export const About = () => {
         <div className='coverpic' style={{backgroundImage: `url(${coverpic})`}}/>
     </div>
 }
+
+export default About

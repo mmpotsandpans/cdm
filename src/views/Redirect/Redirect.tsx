@@ -12,3 +12,5 @@ export const Redirect: FC<RedirectProps> = ({url}) => {
     }, [url])
     return <div style={{padding: '2em'}}>redirecting...</div>
 }
+
+export default Redirect
