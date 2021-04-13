@@ -6,7 +6,7 @@ import './Resources.scss'
 
 const resources = {
     'international': {
-        'Mutal Aid Myanmar': 'https://www.mutualaidmyanmar.org/',
+        'Mutual Aid Myanmar': 'https://www.mutualaidmyanmar.org/',
         'I Support Myanmar': 'https://www.isupportmyanmar.com/',
         'Phan Foundation': 'https://phanfoundation.org/appeal-for-idps/',
         'Myanmar Fallen Heroes': 'https://myanmarfallenheroes.com',

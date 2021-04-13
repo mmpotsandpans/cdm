@@ -144,6 +144,10 @@ export const adminBounds = [
                 "name": "ခင်ဦး",
                 "townships": {}
             },
+            {
+                "name": "တန့်ဆည်",
+                "townships": {}
+            },
         ]
     },
     {

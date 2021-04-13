@@ -33,6 +33,8 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>Fallen Heroes of Myanmar</title>
+    <link rel="preload" href="/fonts/Pyidaungsu-2.5_Regular.ttf" as="font" type="font/ttf" crossorigin>
+    <!-- <link rel="preload" href="/fonts/Pyidaungsu-2.5_Bold.ttf" as="font" type="font/ttf" crossorigin>  -->
     <!-- https://developers.google.com/analytics/devguides/collection/gtagjs/custom-dims-mets -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-RBM1884795"></script>
     <script>
@@ -47,8 +49,16 @@
       });
     </script>
     <style>
-      html {
+      @font-face {
+        font-family: 'Pyidaungsu';
+        src: url(/fonts/Pyidaungsu-2.5_Regular.ttf) format('truetype');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+      }
+      html, body {
         overflow: hidden;
+        font-family: "Pyidaungsu", "Roboto", "Helvetica", "Arial", sans-serif;
       }
       body.loading {
         background-color: rgba(0, 0, 0, 0.8);
