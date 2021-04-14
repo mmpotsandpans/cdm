@@ -76,7 +76,8 @@ const _adminBoundMappings: any = {
 	"ဖြူး": "Phyu",
 	"ဆိပ်ဖြူ": "Seikphyu",
 	"ကျိုက်ထို": "Kyaikto",
-	"တန့်ဆည်": "Taze"
+	"တန့်ဆည်": "Taze",
+	"အရာတော်": "Ayadaw"
 }
 
 export const adminBoundMappings: any = {}

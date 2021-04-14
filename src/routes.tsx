@@ -1,12 +1,12 @@
 import CircularProgress from "@material-ui/core/CircularProgress";
 import React, { lazy, Suspense } from "react";
 import { Route, Switch } from "react-router-dom";
+import PeopleBreakdown from "./views/People/People";
 
 const About = lazy(() => import('./views/About/About'))
 const Api = lazy(() => import('./views/Api/Api'))
 const Misinformation = lazy(() => import('./views/Misinformation/Misinformation'))
 const Memorial = lazy(() => import('./views/People/Memorial/Memorial'))
-const PeopleBreakdown = lazy(() => import('./views/People/People'))
 const Redirect = lazy(() => import('./views/Redirect/Redirect'))
 const Resources = lazy(() => import('./views/Resources/Resources'))
 
