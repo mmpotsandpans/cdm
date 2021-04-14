@@ -40,7 +40,6 @@ const pageNames: any = {
 const App = () => {
   useEffect(() => {
     document.querySelector('body')?.classList.remove('loading')
-    document.documentElement.style.overflowY = 'auto'
   }, [])
   return <div className="App">
     <ThemeProvider theme={theme}>

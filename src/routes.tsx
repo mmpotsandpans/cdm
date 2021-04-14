@@ -1,6 +1,7 @@
 import CircularProgress from "@material-ui/core/CircularProgress";
 import React, { lazy, Suspense } from "react";
 import { Route, Switch } from "react-router-dom";
+import { Page } from "./components/Page/Page";
 import PeopleBreakdown from "./views/People/People";
 
 const About = lazy(() => import('./views/About/About'))
@@ -21,19 +22,19 @@ export const Routes = () => (
           <Redirect url='https://forms.gle/dZ4wKV2gFoPhTRff9' />
         </Route>
         <Route path='/resources'>
-          <Resources />
+          <Page><Resources /></Page>
         </Route>
         <Route path='/graphs'>
-          <iframe title='graphs' width="100%" height="1068" src="https://datastudio.google.com/embed/reporting/cb88e51e-5a0c-4333-9675-4a6a224b9c2e/page/aDL8B" frameBorder="0" style={{border:0, maxHeight: '95vh', overflowY: 'auto'}} allowFullScreen></iframe>
+          <Page><iframe title='graphs' width="100%" height="1068" src="https://datastudio.google.com/embed/reporting/cb88e51e-5a0c-4333-9675-4a6a224b9c2e/page/aDL8B" frameBorder="0" style={{border:0, maxHeight: '95vh', overflowY: 'auto'}} allowFullScreen></iframe></Page>
         </Route>
         <Route path='/about'>
-          <About />
+          <Page><About /></Page>
         </Route>
         <Route path='/api'>
-          <Api />
+          <Page><Api /></Page>
         </Route>
         <Route path='/misinformation'>
-          <Misinformation />
+          <Page><Misinformation /></Page>
         </Route>
         <Route path="/">
           <PeopleBreakdown />
