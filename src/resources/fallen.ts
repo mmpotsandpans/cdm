@@ -18,13 +18,14 @@ const data: any = [
       "confirmed":"TRUE",
       "date":"28/03/2021",
       "city":"ပဲခူး",
-      "details":"၂၇ရက်က အဆုတ်ကျည်သင့်ခဲ့ပြီး ၂၈ မနက် ၃နာရီတွင် ကျဆုံး https://bit.ly/2PbeJM4",
+      "details":"၂၇ရက်က အဆုတ်ကျည်သင့်ခဲ့ပြီး ၂၈ မနက် ၃နာရီတွင် ကျဆုံး",
       "age":"",
       "folder":"thet maung maung",
       "gender":"m",
       "honorific":"",
       "enName":"thet maung maung",
-      "enDetails":""
+      "enDetails":"",
+      "source": "https://bit.ly/2PbeJM4"
    },
    {
       "name":"အမည်မသိရသေး",

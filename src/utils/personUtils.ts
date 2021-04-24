@@ -88,7 +88,7 @@ export const normalizePeopleData = (data: Person[]) => data.map(p => {
         confirmed: p.confirmed?.toString().toLowerCase() === 'true',
         date,
         age: p.age ? parseInt(p.age.toString()) : undefined,
-        details: getDetails(p),
+        details: getDetails(p) + `${p.source ? ' ' + p.source : ''}`,
         city: getLocaleCity(normalizedCity),
         honorific: getHonorific(p),
         state: getLocaleState(getStateFromCity(normalizedCity))

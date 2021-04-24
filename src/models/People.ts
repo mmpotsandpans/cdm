@@ -31,10 +31,11 @@ export interface Person {
   folder?: string;
   confirmed?: boolean;
   gender?: 'm' | 'f';
-  honorific?: 'string';
-  enName?: 'string';
-  enDetails?: 'string';
-  township?: 'string';
+  honorific?: string;
+  enName?: string;
+  enDetails?: string;
+  township?: string;
+  source?: string;
 }
 
 // on the run list is unreliable, so it's omitted for now
