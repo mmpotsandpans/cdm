@@ -36,6 +36,7 @@ export interface Person {
   enDetails?: string;
   township?: string;
   source?: string;
+  occupation?: string;
 }
 
 // on the run list is unreliable, so it's omitted for now

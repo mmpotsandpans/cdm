@@ -167,3 +167,7 @@ export const hasMissingField = (person: Person) => {
         peopleWithMissingFields.noFolder.add(person.name + '-' + person.date)
     }
 }
+
+export const isMilitary = (p: Person) => {
+    return ['soldier', 'kia', 'knu'].includes(p.occupation || '')
+}

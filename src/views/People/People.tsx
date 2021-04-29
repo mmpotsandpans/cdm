@@ -23,9 +23,10 @@ import { NavLink } from 'react-router-dom';
 import debounce from 'lodash.debounce';
 import { Scroll } from '../../components/Scroll/Scroll';
 import throttle from 'lodash.throttle';
-import { getDetails, getExportCol, getName, getPersonMedia, getTotals, normalizePeopleData, validateMediaFolders } from '../../utils/personUtils';
+import { getDetails, getExportCol, getName, getPersonMedia, getTotals, isMilitary, normalizePeopleData, validateMediaFolders } from '../../utils/personUtils';
 import { getLocale } from '../../utils/i18n';
 import { normalizeString } from '../../utils/stringUtils';
+import shield from '../../resources/images/misc/shield.svg'
 
 const locale = getLocale()
 
@@ -56,7 +57,8 @@ const data2csv = (data: string) => {
     return csv
 }
 
-const verifiedIcon = <CheckCircleIcon style={{color: '#115293'}} fontSize='small'/>
+const verifiedIcon = <CheckCircleIcon style={{color: '#115293'}} fontSize='small' />
+const shieldIcon = <img src={shield} alt='shield' className='shield-icon' title='Military personnel' />
 
 const normalizedPeopleData = normalizePeopleData(peopleData)
 
@@ -153,6 +155,7 @@ export const PeopleBreakdown: FC<{}> = () => {
     const [showScroll, setShowScroll] = useState(false)
     const [showStateCol, setShowStateCol] = useState(false)
     const [showTownshipCol, setShowTownshipCol] = useState(false)
+    const [civiliansOnly, setCiviliansOnly] = useState(false)
     const [error, setError] = useState(false)
     const handleTableScroll = throttle(() => {
         setSnackbarOpen(false)
@@ -204,6 +207,9 @@ export const PeopleBreakdown: FC<{}> = () => {
     const rows = useMemo(() => {
         const _rows = sort(data.filter((person: Person) => person.status === peopleType), [getNormalizedSortBy(sortBy)])
             .filter((person: any) => {
+                if (civiliansOnly && isMilitary(person)) {
+                    return false
+                }
                 for (let key in person) {
                     if (typeof person[key] === 'string' && (person[key]).toLowerCase().match(filter.toLowerCase())) {
                         return true
@@ -215,7 +221,7 @@ export const PeopleBreakdown: FC<{}> = () => {
             _rows.reverse()
         }
         return _rows
-    }, [data, filter, peopleType, sortBy, sortDir])
+    }, [data, filter, peopleType, sortBy, sortDir, civiliansOnly])
     const handleDataCopy = () => {
         if (dataExportModalRef.current) {
             dataExportModalRef.current.querySelector('textarea')?.select()
@@ -297,6 +303,18 @@ export const PeopleBreakdown: FC<{}> = () => {
                             label="Township Column"
                         />
                     </div>
+                    <div>
+                        <FormControlLabel
+                            control={
+                                <Switch
+                                    checked={civiliansOnly}
+                                    onChange={() => setCiviliansOnly(!civiliansOnly)}
+                                    name="civiliansOnly"
+                                    color="primary"
+                                />}
+                                label="Civilians only"
+                        />
+                    </div>
                     <div className='actions'>
                         <Button variant="contained" color="secondary" onClick={() => setIsExportModalOpen(true)}>{t`Export data`}</Button>
                         <Button variant="contained" color="secondary" onClick={() => setDrawerOpen(true)}>{t`Legend`}</Button>
@@ -337,7 +355,9 @@ export const PeopleBreakdown: FC<{}> = () => {
                             {i + 1}
                             </TableCell>
                             <TableCell component="th" scope="row" className='sticky-column'>
-                                <div className='name-cell' onClick={() => setPersonCol([row, 'name'])}>{getNameCell(i, row, rows)} {row.confirmed && verifiedIcon} {getPersonMedia(row, peopleType) && <PhotoCameraIcon fontSize='small' />}</div>
+                                <div className='name-cell' onClick={() => setPersonCol([row, 'name'])}>
+                                    {getNameCell(i, row, rows)} {row.confirmed && verifiedIcon} {isMilitary(row) && shieldIcon} {getPersonMedia(row, peopleType) && <PhotoCameraIcon fontSize='small' />}
+                                </div>
                             </TableCell>
                             <TableCell title={row.city ? `Total ${totals.city[row.city]}` : ''}>{row.city}</TableCell>
                             {hasLiveData(peopleType) &&
@@ -425,6 +445,7 @@ export const PeopleBreakdown: FC<{}> = () => {
             <div className='legend'>
                 <div>{verifiedIcon} {t`သတင်းမီဒီယာမှ အတည်ပြုထားခြင်း၊ ဓာတ်ပုံ ဗီဒီယို၊ တိုက်ရိုက်လင့်ခ်ရှိခြင်း`}</div>
                 <div><PhotoCameraIcon /> {t`ဓာတ်ပုံများကို ကလစ်နှိပ်၍ကြည့်နိုင်`}</div>
+                <div>{shieldIcon} {t`လက်နက်ကိုင်တပ်ဖွဲ့ဝင် သို့ CDMဝင် တပ်မတော်သား`}</div>
             </div>
         </Drawer>
         </Profiler>

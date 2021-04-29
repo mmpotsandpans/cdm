@@ -233,7 +233,8 @@ const data: any = [
       "gender":"m",
       "honorific":"",
       "enName":"tin hla",
-      "enDetails":""
+      "enDetails":"",
+      "occupation": "kia"
    },
    {
       "name":"ဝင်းမင်းထွန်း",
