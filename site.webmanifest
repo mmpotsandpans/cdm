@@ -1,5 +1,6 @@
 {
     "name": "Heroes of Myanmar",
+    "start_url": ".",
     "short_name": "Heroes of Myanmar",
     "icons": [
         {
