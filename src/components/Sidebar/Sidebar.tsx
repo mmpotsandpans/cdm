@@ -1,6 +1,5 @@
 import { Typography } from '@material-ui/core';
 import Drawer from '@material-ui/core/Drawer';
-import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import PieChartIcon from '@material-ui/icons/PieChart';
@@ -10,6 +9,7 @@ import PhotoLibraryIcon from '@material-ui/icons/PhotoLibrary';
 import InfoIcon from '@material-ui/icons/Info';
 import DeveloperModeIcon from '@material-ui/icons/DeveloperMode';
 import CancelScheduleSendIcon from '@material-ui/icons/CancelScheduleSend';
+import logo from '../../resources/images/misc/sidebar.png'
 import './Sidebar.scss'
 import { t } from 'ttag';
 
@@ -22,7 +22,9 @@ export const Sidebar = () => {
     }
     return (
         <>
-            <ArrowForwardIosIcon className='sidebar-toggle' onClick={() => setOpen(!open)}/>
+            <div className='sidebar-toggle' onClick={() => setOpen(!open)}>
+                <img src={logo}  alt='sidebar-toggle' />
+            </div>
             <Drawer open={open} onClose={() => setOpen(false)}>
                 <div className='sidebar' onClick={handleAnchorClick}>
                     <Typography variant="h6">
