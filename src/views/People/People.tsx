@@ -156,6 +156,7 @@ export const PeopleBreakdown: FC<{}> = () => {
     const [showStateCol, setShowStateCol] = useState(false)
     const [showTownshipCol, setShowTownshipCol] = useState(false)
     const [civiliansOnly, setCiviliansOnly] = useState(false)
+    const [confirmedOnly, setConfirmedOnly] = useState(false)
     const [error, setError] = useState(false)
     const handleTableScroll = throttle(() => {
         setSnackbarOpen(false)
@@ -210,18 +211,25 @@ export const PeopleBreakdown: FC<{}> = () => {
                 if (civiliansOnly && isMilitary(person)) {
                     return false
                 }
-                for (let key in person) {
-                    if (typeof person[key] === 'string' && (person[key]).toLowerCase().match(filter.toLowerCase())) {
-                        return true
-                    }
+                if (confirmedOnly && !person.confirmed) {
+                    return false
                 }
-                return false
+                if (filter) {
+                    for (let key in person) {
+                        if (typeof person[key] === 'string' && (person[key]).toLowerCase().match(filter.toLowerCase())) {
+                            return true
+                        }
+                    }
+                    return false
+                } else {
+                    return true
+                }
             })
         if (sortDir === 'desc') {
             _rows.reverse()
         }
         return _rows
-    }, [data, filter, peopleType, sortBy, sortDir, civiliansOnly])
+    }, [data, filter, peopleType, sortBy, sortDir, civiliansOnly, confirmedOnly])
     const handleDataCopy = () => {
         if (dataExportModalRef.current) {
             dataExportModalRef.current.querySelector('textarea')?.select()
@@ -313,6 +321,18 @@ export const PeopleBreakdown: FC<{}> = () => {
                                     color="primary"
                                 />}
                                 label="Civilians only"
+                        />
+                    </div>
+                    <div>
+                        <FormControlLabel
+                            control={
+                                <Switch
+                                    checked={confirmedOnly}
+                                    onChange={() => setConfirmedOnly(!confirmedOnly)}
+                                    name="confirmedOnly"
+                                    color="primary"
+                                />}
+                                label="Confirmed only"
                         />
                     </div>
                     <div className='actions'>
