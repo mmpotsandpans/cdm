@@ -80,7 +80,14 @@ const _adminBoundMappings: any = {
 	"အရာတော်": "Ayadaw",
 	"မိုးမောက်": "Momauk",
 	"ကျောက်မဲ": "Kyaukme",
-	"အင်းတော်": "Indaw"
+	"အင်းတော်": "Indaw",
+	"ဒီးမော့ဆို": "Demoso",
+	"ကျောက်ကြီး": "Kyaukkyi",
+	"မင်းတပ်": "Mindat",
+	"ထိုင်းမြန်မာနယ်စပ်": "Thai-Myanmar border",
+	"တီးတိန်": "Tedim",
+	"ချောင်းဆုံ": "Chaungzon",
+	"ကွတ်ခိုင်": "Kutkai"
 }
 
 export const adminBoundMappings: any = {}

@@ -7,60 +7,60 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: src/App.tsx:73
-#: src/components/Sidebar/Sidebar.tsx:29
+#: src/components/Sidebar/Sidebar.tsx:31
 msgid "နွေဦးတော်လှန်ရေးအာဇာနည်များ"
 msgstr "Spring Revolution Heroes"
 
 #: src/App.tsx:77
-#: src/components/Sidebar/Sidebar.tsx:35
+#: src/components/Sidebar/Sidebar.tsx:37
 msgid "စုပေါင်းမှတ်တမ်းများ"
 msgstr "Vigil Gallery"
 
-#: src/views/People/People.tsx:271
+#: src/views/People/People.tsx:283
 msgid "AAPPBမှ ပဏာမစာရင်း။ နေ့စဥ်နောက်ဆုံးရ အသေးစိတ်ကို"
 msgstr "Initial list from AAPPB. Check daily updated list"
 
-#: src/views/People/People.tsx:271
+#: src/views/People/People.tsx:283
 msgid "ဒီမှာကြည့်နိုင်ပါသည်။"
 msgstr "here"
 
-#: src/views/People/People.tsx:272
+#: src/views/People/People.tsx:284
 msgid "ထိခိုက်သူစာရင်း အတိအကျမရှိသေးပါ"
 msgstr "Wounded list is not up-to-date"
 
-#: src/views/People/People.tsx:274
+#: src/views/People/People.tsx:286
 msgid "စာရင်းပြင်ချင်ပါက"
 msgstr "Edit the list"
 
-#: src/views/People/People.tsx:274
+#: src/views/People/People.tsx:286
 msgid "ဒီမှာပြင်ဆင်ပါ"
 msgstr "here"
 
-#: src/views/People/People.tsx:277
+#: src/views/People/People.tsx:289
 msgid "ရှာဖွေရန်"
 msgstr "Search"
 
-#: src/views/People/People.tsx:303
+#: src/views/People/People.tsx:339
 msgid "Export data"
 msgstr ""
 
-#: src/views/People/People.tsx:304
+#: src/views/People/People.tsx:340
 msgid "Legend"
 msgstr ""
 
-#: src/views/People/People.tsx:317
+#: src/views/People/People.tsx:353
 msgid "နာမည်"
 msgstr "name"
 
-#: src/views/People/People.tsx:318
+#: src/views/People/People.tsx:354
 msgid "မြို့"
 msgstr "city"
 
-#: src/views/People/People.tsx:322
+#: src/views/People/People.tsx:358
 msgid "အသက်"
 msgstr "age"
 
-#: src/views/People/People.tsx:323
+#: src/views/People/People.tsx:359
 msgid "အသေးစိတ်"
 msgstr "details"
 
@@ -73,7 +73,7 @@ msgstr ""
 "Info and media are downloaded from online sources. All credits go to the "
 "owners. Translations are in progress."
 
-#: src/views/People/People.tsx:370
+#: src/views/People/People.tsx:406
 msgid ""
 "သတင်းမှားယွင်းမှုရှိပါက အတတ်နိုင်ဆုံး ပြင်ဆင်ပေးသွားပါမယ်။ သတင်းပေးပို့၊ "
 "ဖြည့်စွက်လိုပါက Controlsကိုနှိပ်ပြီး Formဖြည့်ပေးနိုင်ပါတယ်။"
@@ -81,7 +81,7 @@ msgstr ""
 "We will fix any errors asap. You can send us info by going to the form in "
 "the controls."
 
-#: src/views/People/People.tsx:371
+#: src/views/People/People.tsx:407
 msgid ""
 "သတင်းပေးရှာဖွေမှုလွယ်ကူစေရန် ကျဆုံးသွားသူများအတွက် #mmFallenHeroes နဲ့ "
 "ပျောက်ဆုံးနေသူများအတွက် #mmMissingHeroes ဟုအသုံးပြုပေးကြပါ။"
@@ -93,11 +93,11 @@ msgstr ""
 msgid "အာဇာနည်များအား ဝမ်းနည်းလှစွာဖြင့် ဂုဏ်ပြုမှတ်တမ်းတင်အပ်ပါသည်။"
 msgstr "In honor of our fallen heroes"
 
-#: src/views/People/People.tsx:430
+#: src/views/People/People.tsx:466
 msgid "သတင်းမီဒီယာမှ အတည်ပြုထားခြင်း၊ ဓာတ်ပုံ ဗီဒီယို၊ တိုက်ရိုက်လင့်ခ်ရှိခြင်း"
 msgstr "Confirmed by news media and/or has multiple image/vid/direct links"
 
-#: src/views/People/People.tsx:431
+#: src/views/People/People.tsx:467
 msgid "ဓာတ်ပုံများကို ကလစ်နှိပ်၍ကြည့်နိုင်"
 msgstr "Can click the icon to see media files"
 
@@ -122,11 +122,11 @@ msgstr "fallen"
 msgid "ထိခိုက်"
 msgstr "wounded"
 
-#: src/views/People/People.tsx:321
+#: src/views/People/People.tsx:357
 msgid "နေ့"
 msgstr "date"
 
-#: src/views/People/People.tsx:361
+#: src/views/People/People.tsx:397
 msgid "ရုပ်ပုံများ နောက်ဆုံးပြင်ဆင်ချိန်"
 msgstr "Media files last updated"
 
@@ -137,7 +137,7 @@ msgstr ""
 "with this site)"
 
 #: src/views/About/About.tsx:13
-#: src/views/People/People.tsx:372
+#: src/views/People/People.tsx:408
 msgid "ကျန်ရစ်သူများကို ကူညီလိုပါက"
 msgstr "If you'd like to help the families"
 
@@ -164,7 +164,7 @@ msgstr "ma"
 msgid "မောင်"
 msgstr "mg"
 
-#: src/views/People/People.tsx:397
+#: src/views/People/People.tsx:433
 msgid ""
 "အောက်ပါ ရုပ်ပုံများသည် အလွန့်အလွန် အမြင်မတော် (သို့) "
 "သွေးထွက်သံယိုများနိုင်ပါသည်။ သူရဲကောင်းတို့ ပေးဆပ်ခဲ့ရမှုကို မှတ်တမ်းအရ သာ "
@@ -200,7 +200,7 @@ msgstr "Catalogue township and division/region data"
 msgid "သေဆုံးသည့်အကြောင်းရင်း"
 msgstr "Cause of death data"
 
-#: src/views/People/People.tsx:326
+#: src/views/People/People.tsx:362
 msgid "တိုင်း/ပြည်နယ်"
 msgstr "state"
 
@@ -225,12 +225,12 @@ msgstr ""
 "Improve data quality and come up with better ways to involve anyone "
 "(public) who'd like to help"
 
-#: src/components/Sidebar/Sidebar.tsx:38
+#: src/components/Sidebar/Sidebar.tsx:40
 #: src/views/Misinformation/Misinformation.tsx:12
 msgid "မှားနေသော၊ မှားနေနိုင်သော အချက်အလက်များ"
 msgstr "Misinformation"
 
-#: src/views/People/People.tsx:327
+#: src/views/People/People.tsx:363
 msgid "မြို့နယ်/ကျေးရွာ"
 msgstr "township"
 
@@ -240,6 +240,6 @@ msgid ""
 "ခုချိန်တွင် သတင်းမမှီသေးပါ။"
 msgstr ""
 
-#: src/views/People/People.tsx:432
+#: src/views/People/People.tsx:468
 msgid "လက်နက်ကိုင်တပ်ဖွဲ့ဝင် သို့ CDMဝင် တပ်မတော်သား"
 msgstr "Military personnel (e.g. Ethnic armed organizations or CDM soldiers)"

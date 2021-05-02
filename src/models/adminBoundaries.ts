@@ -36,6 +36,10 @@ export const adminBounds = [
                 "name": "လွိုင်ကော်",
                 "townships": {}
             },
+            {
+                "name": "ဒီးမော့ဆို",
+                "townships": {}
+            },
         ]
     },
     {
@@ -49,7 +53,16 @@ export const adminBounds = [
     },
     {
         "name": "ချင်း",
-        "cities": []
+        "cities": [
+            {
+                "name": "မင်းတပ်",
+                "townships": {}
+            },
+            {
+                "name": "တီးတိန်",
+                "townships": {}
+            },
+        ]
     },
     {
         "name": "မွန်",
@@ -68,6 +81,10 @@ export const adminBounds = [
             },
             {
                 "name": "သထုံ",
+                "townships": {}
+            },
+            {
+                "name": "ချောင်းဆုံ",
                 "townships": {}
             },
         ]
@@ -105,6 +122,10 @@ export const adminBounds = [
             },
             {
                 "name": "ကျောက်မဲ",
+                "townships": {}
+            },
+            {
+                "name": "ကွတ်ခိုင်",
                 "townships": {}
             },
         ]
@@ -212,6 +233,10 @@ export const adminBounds = [
             },
             {
                 "name": "ဖြူး",
+                "townships": {}
+            },
+            {
+                "name": "ကျောက်ကြီး",
                 "townships": {}
             },
         ]
