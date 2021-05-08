@@ -27,6 +27,10 @@ export const adminBounds = [
                 "name": "မိုးမောက်",
                 "townships": {}
             },
+            {
+                "name": "မိုးကောင်း",
+                "townships": {}
+            },
         ]
     },
     {
@@ -47,6 +51,10 @@ export const adminBounds = [
         "cities": [
             {
                 "name": "ဘားအံ",
+                "townships": {}
+            },
+            {
+                "name": "လှိုင်းဘွဲ့",
                 "townships": {}
             },
         ]
@@ -128,6 +136,14 @@ export const adminBounds = [
                 "name": "ကွတ်ခိုင်",
                 "townships": {}
             },
+            {
+                "name": "နောင်ချို",
+                "townships": {}
+            },
+            {
+                "name": "သီပေါ",
+                "townships": {}
+            },
         ]
     },
     {
@@ -185,6 +201,14 @@ export const adminBounds = [
                 "name": "အင်းတော်",
                 "townships": {}
             },
+            {
+                "name": "ကနီ",
+                "townships": {}
+            },
+            {
+                "name": "ဝက်လက်",
+                "townships": {}
+            },
         ]
     },
     {
@@ -200,6 +224,10 @@ export const adminBounds = [
             },
             {
                 "name": "ကော့သောင်း",
+                "townships": {}
+            },
+            {
+                "name": "လောင်းလုံ",
                 "townships": {}
             },
         ]
@@ -237,6 +265,18 @@ export const adminBounds = [
             },
             {
                 "name": "ကျောက်ကြီး",
+                "townships": {}
+            },
+            {
+                "name": "ကြို့ပင်ကောက်",
+                "townships": {}
+            },
+            {
+                "name": "ကျောက်တံခါး",
+                "townships": {}
+            },
+            {
+                "name": "ဒိုက်ဦး",
                 "townships": {}
             },
         ]
@@ -286,6 +326,14 @@ export const adminBounds = [
             },
             {
                 "name": "ဆိပ်ဖြူ",
+                "townships": {}
+            },
+            {
+                "name": "မြစ်ခြေ",
+                "townships": {}
+            },
+            {
+                "name": "ရေစကြို",
                 "townships": {}
             },
         ]

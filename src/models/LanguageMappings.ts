@@ -87,7 +87,20 @@ const _adminBoundMappings: any = {
 	"ထိုင်းမြန်မာနယ်စပ်": "Thai-Myanmar border",
 	"တီးတိန်": "Tedim",
 	"ချောင်းဆုံ": "Chaungzon",
-	"ကွတ်ခိုင်": "Kutkai"
+	"ကွတ်ခိုင်": "Kutkai",
+	"ကြို့ပင်ကောက်": "Gyobingauk",
+	"ကျောက်တံခါး": "Kyauktaga",
+	"မြစ်ခြေ": "Myitkhyay",
+	"ရေစကြို": "Yesagyo",
+	"လောင်းလုံ": "Launglon",
+	"ကနီ": "Kani",
+	"ဝက်လက်": "Wetlet",
+	"မိုးကောင်း": "Mogaung",
+	"ဒိုက်ဦး": "Daik-U",
+	"နောင်ချို": "Nawnghkio",
+	"လှိုင်းဘွဲ့": "Hlaingbwe",
+	"မသိရှိ": "Unknown",
+	"သီပေါ": "Hsipaw"
 }
 
 export const adminBoundMappings: any = {}
