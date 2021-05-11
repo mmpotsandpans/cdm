@@ -16,7 +16,7 @@ const _adminBoundMappings: any = {
 	"ပင်လောင်း": "Pinlaung",
 	"ကော့သောင်း": "Kawthoung",
 	"စဥ့်ကိုင်": "Sintgaing",
-	"စစ်ကိုင်း": "Sagain",
+	"စစ်ကိုင်း": "Sagaing",
 	"ပုသိမ်": "Pathein",
 	"ပေါင်": "Paung",
 	"ပဲခူး": "Bago",
@@ -100,7 +100,11 @@ const _adminBoundMappings: any = {
 	"နောင်ချို": "Nawnghkio",
 	"လှိုင်းဘွဲ့": "Hlaingbwe",
 	"မသိရှိ": "Unknown",
-	"သီပေါ": "Hsipaw"
+	"သီပေါ": "Hsipaw",
+	"မြင်းမူ": "Myinmu",
+	"ပုလဲ": "Pale",
+	"ဝိုင်းမော်": "Waingmaw",
+	"နမ္မတီး": "Nanmati"
 }
 
 export const adminBoundMappings: any = {}

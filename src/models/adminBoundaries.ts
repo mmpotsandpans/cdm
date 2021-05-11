@@ -31,6 +31,14 @@ export const adminBounds = [
                 "name": "မိုးကောင်း",
                 "townships": {}
             },
+            {
+                "name": "ဝိုင်းမော်",
+                "townships": {}
+            },
+            {
+                "name": "နမ္မတီး",
+                "townships": {}
+            },
         ]
     },
     {
@@ -207,6 +215,14 @@ export const adminBounds = [
             },
             {
                 "name": "ဝက်လက်",
+                "townships": {}
+            },
+            {
+                "name": "မြင်းမူ",
+                "townships": {}
+            },
+            {
+                "name": "ပုလဲ",
                 "townships": {}
             },
         ]
