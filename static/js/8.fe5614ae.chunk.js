@@ -1,0 +1,2 @@
+(this.webpackJsonpcdm=this.webpackJsonpcdm||[]).push([[8],{2190:function(t,e,c){"use strict";c.r(e),c.d(e,"Redirect",(function(){return r}));var n=c(0),i=c(1),r=function(t){var e=t.url;return Object(n.useLayoutEffect)((function(){e&&(document.location.href=e)}),[e]),Object(i.jsx)("div",{style:{padding:"2em"},children:"redirecting..."})};e.default=r}}]);
+//# sourceMappingURL=8.fe5614ae.chunk.js.map
