@@ -104,7 +104,20 @@ const _adminBoundMappings: any = {
 	"မြင်းမူ": "Myinmu",
 	"ပုလဲ": "Pale",
 	"ဝိုင်းမော်": "Waingmaw",
-	"နမ္မတီး": "Nanmati"
+	"နမ္မတီး": "Nanmati",
+	"ဟားခါး": "Hakha",
+	"တလုပ်": "Taloke",
+	"မိုးဗြဲ": "Mongpai",
+	"ဖလမ်း": "Falam",
+	"တောင်ငူ": "Taungoo",
+	"သပိတ်ကျင်း": "Thabeikkyin",
+	"ပေါက်": "Pauk",
+	"တောင်သာ": "Taungtha",
+	"ရွှေညောင်": "Shwenyaung",
+	"တနိုင်း": "Danai",
+	"ဘော်လခဲ": "Bawlakhe",
+	"ထန်းတပင်": "Htantabin",
+	"ကျုံပျော်": "Kyonpyaw"
 }
 
 export const adminBoundMappings: any = {}

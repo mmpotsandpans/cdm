@@ -141,26 +141,26 @@ msgstr ""
 msgid "ကျန်ရစ်သူများကို ကူညီလိုပါက"
 msgstr "If you'd like to help the families"
 
-#: src/utils/personUtils.ts:108
+#: src/utils/personUtils.ts:111
 msgid "ဦး"
 msgstr "u"
 
-#: src/utils/personUtils.ts:108
+#: src/utils/personUtils.ts:111
 msgid "ဒေါ်"
 msgstr "daw"
 
-#: src/utils/personUtils.ts:110
-#: src/utils/personUtils.ts:115
+#: src/utils/personUtils.ts:113
+#: src/utils/personUtils.ts:118
 msgid "ကို"
 msgstr "ko"
 
-#: src/utils/personUtils.ts:110
-#: src/utils/personUtils.ts:112
+#: src/utils/personUtils.ts:113
 #: src/utils/personUtils.ts:115
+#: src/utils/personUtils.ts:118
 msgid "မ"
 msgstr "ma"
 
-#: src/utils/personUtils.ts:112
+#: src/utils/personUtils.ts:115
 msgid "မောင်"
 msgstr "mg"
 

@@ -28,3 +28,5 @@ yarn-error.log*
 # exclude large vids
 .hidden/
 *.hidden*
+
+bin/hs

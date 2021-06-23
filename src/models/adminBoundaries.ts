@@ -39,6 +39,18 @@ export const adminBounds = [
                 "name": "နမ္မတီး",
                 "townships": {}
             },
+            {
+                "name": "နမ္မတီး",
+                "townships": {}
+            },
+            {
+                "name": "ဟားခါး",
+                "townships": {}
+            },
+            {
+                "name": "တနိုင်း",
+                "townships": {}
+            },
         ]
     },
     {
@@ -50,6 +62,10 @@ export const adminBounds = [
             },
             {
                 "name": "ဒီးမော့ဆို",
+                "townships": {}
+            },
+            {
+                "name": "ဘော်လခဲ",
                 "townships": {}
             },
         ]
@@ -76,6 +92,10 @@ export const adminBounds = [
             },
             {
                 "name": "တီးတိန်",
+                "townships": {}
+            },
+            {
+                "name": "ဖလမ်း",
                 "townships": {}
             },
         ]
@@ -150,6 +170,14 @@ export const adminBounds = [
             },
             {
                 "name": "သီပေါ",
+                "townships": {}
+            },
+            {
+                "name": "မိုးဗြဲ",
+                "townships": {}
+            },
+            {
+                "name": "ရွှေညောင်",
                 "townships": {}
             },
         ]
@@ -295,6 +323,10 @@ export const adminBounds = [
                 "name": "ဒိုက်ဦး",
                 "townships": {}
             },
+            {
+                "name": "တောင်ငူ",
+                "townships": {}
+            },
         ]
     },
     {
@@ -352,6 +384,10 @@ export const adminBounds = [
                 "name": "ရေစကြို",
                 "townships": {}
             },
+            {
+                "name": "ပေါက်",
+                "townships": {}
+            },
         ]
     },
     {
@@ -405,6 +441,18 @@ export const adminBounds = [
                 "name": "စဥ့်ကူး",
                 "townships": {}
             },
+            {
+                "name": "တလုပ်",
+                "townships": {}
+            },
+            {
+                "name": "သပိတ်ကျင်း",
+                "townships": {}
+            },
+            {
+                "name": "တောင်သာ",
+                "townships": {}
+            },
         ]
     },
     {
@@ -429,6 +477,14 @@ export const adminBounds = [
             },
             {
                 "name": "ဖျာပုံ",
+                "townships": {}
+            },
+            {
+                "name": "ထန်းတပင်",
+                "townships": {}
+            },
+            {
+                "name": "ကျုံပျော်",
                 "townships": {}
             },
         ]

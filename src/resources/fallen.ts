@@ -237,6 +237,20 @@ const data: any = [
       "occupation": "kia"
    },
    {
+      "name":"တင်လှ",
+      "confirmed":"TRUE",
+      "date":"27/0372021",
+      "city":"ရန်ကုန်",
+      "details":"သန်လျင်သပိတ် အရှေ့တန်းတွင်ကျန်ခဲ့သောလူငယ်များအားကယ်ထုတ်ရင်းအပစ်ခံ သေဆုံး။ https://bit.ly/3dgEH99",
+      "age":"43",
+      "folder":"",
+      "gender":"m",
+      "honorific":"",
+      "enName":"tin hla",
+      "enDetails":"",
+      "occupation": "kia"
+   },
+   {
       "name":"ဝင်းမင်းထွန်း",
       "confirmed":"TRUE",
       "date":"27/03/2021",

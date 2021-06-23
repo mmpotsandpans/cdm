@@ -102,6 +102,9 @@ export const getHonorific = (p: Person) => {
     if (!p.gender) {
         return ''
     }
+    if (p.name.startsWith(normalizeString('ဆလိုင်း')) || p.name.startsWith('salai')) {
+        return ''
+    }
     const gender = p.gender.trim()
     if (p.age) {
         if (p.age >= 40) {
@@ -124,7 +127,15 @@ export const getTotals = (people: Person[])  => {
         state: {},
         township: {},
     }
+    // hash to check potential duplicates based on name, age, city
+    const hashes = new Set()
     people.forEach((person: Person) => {
+        const hash = hashPerson(person)
+        if (hashes.has(hash)) {
+            console.warn(`${hash} has a potential duplicate`)
+        } else {
+            hashes.add(hash)
+        }
         if (person.date) {
             totals.date[person.date] = (totals.date[person.date] || 0) + 1
         }
@@ -141,6 +152,10 @@ export const getTotals = (people: Person[])  => {
     })
     console.warn(peopleWithMissingFields)
     return totals
+}
+
+const hashPerson = (p: Person) => {
+    return `${p.name} - ${p.age} - ${p.city}`
 }
 
 const peopleWithMissingFields = {
@@ -169,5 +184,5 @@ export const hasMissingField = (person: Person) => {
 }
 
 export const isMilitary = (p: Person) => {
-    return ['soldier', 'kia', 'knu'].includes(p.occupation || '')
+    return ['soldier', 'kia', 'knu', 'free burma ranger', 'cdf'].includes(p.occupation || '')
 }
